@@ -54,6 +54,12 @@ namespace ICT4Event
 
         }
 
+        /// <summary>
+        /// set the current account to the given email
+        /// Zet de account.email gelijk aan het gegeven email
+        /// </summary>
+        /// <param name="email"></param>
+
         public void setCurrentAccount(string email)
         {
             this.currentAccount = dblogin.returnLoggedinAccount(email);
@@ -704,17 +710,6 @@ namespace ICT4Event
         {
             return dblogin.loginCheck(email, password);
         }
-
-        /// <summary>
-        /// set the current account to the given email
-        /// Zet de account.email gelijk aan het gegeven email
-        /// </summary>
-        /// <param name="email"></param>
-        public void setCurrentAccount(string email)
-        {
-            this.currentAccount = dblogin.returnLoggedinAccount(email);
-        }
-
 
         /// <summary>
         /// Doorzoekt de database naar het juiste media bestand en retouneert deze

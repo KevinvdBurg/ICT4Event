@@ -49,6 +49,7 @@
                 </ul>
             </div>
         </div>
+    </nav>
         <nav class="sub-navbar">
             <div class="container">
                 <div class="nav-account">
@@ -117,7 +118,7 @@
         <!-- /container -->
         <script src="js/vendor/jquery-2.1.4.js"></script>
         <script>
-        window.jQuery || document.write('<script src="js/vendor/jquery-2.1.4.js"><\/script>')
+        window.jQuery || document.write("<script src=\"js/vendor/jquery-2.1.4.js\"><\/script>")
         </script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/main.js"></script>
@@ -127,13 +128,13 @@
             b.GoogleAnalyticsObject = l;
             b[l] || (b[l] =
                 function() {
-                    (b[l].q = b[l].q || []).push(arguments)
+                    (b[l].q = b[l].q || []).push(arguments);
                 });
             b[l].l = +new Date;
             e = o.createElement(i);
             r = o.getElementsByTagName(i)[0];
             e.src = '//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e, r)
+            r.parentNode.insertBefore(e, r);
         }(window, document, 'script', 'ga'));
         ga('create', 'UA-XXXXX-X', 'auto');
         ga('send', 'pageview');
