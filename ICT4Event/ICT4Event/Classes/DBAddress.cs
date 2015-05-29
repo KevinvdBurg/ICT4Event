@@ -50,7 +50,7 @@ namespace ICT4Event
         /// <returns></returns>
         public bool Delete(Address address)
         {
-            Administation administation = new Administation();
+            Administration administration = new Administration();
             bool resultaat = false;
             string sql = "DELETE FROM LOCATIE WHERE LOCATIEID = :AddressID";
 
@@ -58,7 +58,7 @@ namespace ICT4Event
             {
                 Connect();
                 OracleCommand cmd = new OracleCommand(sql, connection);
-                cmd.Parameters.Add(new OracleParameter("AddressID", administation.FindAddressID(address.ZipCode, address.Number)));
+                cmd.Parameters.Add(new OracleParameter("AddressID", administration.FindAddressID(address.ZipCode, address.Number)));
                 OracleDataReader reader = cmd.ExecuteReader();
                 resultaat = true;
             }
@@ -82,7 +82,7 @@ namespace ICT4Event
         /// <returns></returns>
         internal Address Select(string zipcode, string housenumber)
         {
-            Administation administation = new Administation();
+            Administration administration = new Administration();
             Address resultaat = null;
             string sql;
             sql = "Select * From Locatie WHERE LOCATIEID = :LOCATIEID";
@@ -95,7 +95,7 @@ namespace ICT4Event
             {
                 Connect();
                 OracleCommand cmd = new OracleCommand(sql, connection);
-                cmd.Parameters.Add(new OracleParameter("LOCATIEID", administation.FindAddressID(zipcode, housenumber)));
+                cmd.Parameters.Add(new OracleParameter("LOCATIEID", administration.FindAddressID(zipcode, housenumber)));
                 OracleDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {

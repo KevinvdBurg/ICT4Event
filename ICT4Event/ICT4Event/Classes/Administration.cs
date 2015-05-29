@@ -5,6 +5,8 @@ using System.Web;
 
 namespace ICT4Event
 {
+    using System.Windows.Forms;
+
     public class Administration
     {
         Database DB = new Database();

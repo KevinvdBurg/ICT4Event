@@ -5,6 +5,8 @@ using System.Web;
 
 namespace ICT4Event
 {
+    using System.Data.OracleClient;
+
     public class Database
     {
         protected OracleConnection connection = new OracleConnection();

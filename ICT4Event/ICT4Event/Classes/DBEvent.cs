@@ -16,7 +16,7 @@ namespace ICT4Event
         /// <returns></returns>
         public bool Insert(Event Event)
         {
-            Administation administation = new Administation();
+            Administration administration = new Administration();
             bool resultaat = false;
             string sql = "INSERT INTO EVENT (EVENTID, NAAM, MAXPERSONEN, BEGINDATUM, EINDDATUM, LOCATIEID) VALUES (:eventid, :naam, :maxpersonen, :begindatum, :einddatum, :locatieid)";
             try
@@ -28,7 +28,7 @@ namespace ICT4Event
                 cmd.Parameters.Add(new OracleParameter("maxpersonen", Event.MaxPerson));
                 cmd.Parameters.Add(new OracleParameter("begindatum", Event.BeginTime));
                 cmd.Parameters.Add(new OracleParameter("einddatum", Event.EndTime));
-                cmd.Parameters.Add(new OracleParameter("locatieid", administation.FindAddressID(Event.Location.Address.ZipCode, Event.Location.Address.Number)));
+                cmd.Parameters.Add(new OracleParameter("locatieid", administration.FindAddressID(Event.Location.Address.ZipCode, Event.Location.Address.Number)));
                 cmd.ExecuteNonQuery();
                 //OracleDataReader reader = cmd.ExecuteReader();
                 resultaat = true;
@@ -190,7 +190,7 @@ namespace ICT4Event
         /// <returns></returns>
         public List<Event> SelectAllperAccount(Account account)
         {
-            Administation administation = new Administation();
+            Administration administration = new Administration();
             List<Event> resultaat = new List<Event>();
             Event AddedEvent = null;
             string sql = "Select e.EVENTID, e.Naam, e.MAXPERSONEN, e.BEGINDATUM, e.EINDDATUM, l.LOCATIEID, l.HUISNUMMER, l.PLAATS, l.POSTCODE From Event e Inner Join Locatie l On e.LOCATIEID = l.LOCATIEID Inner Join GebruikerEvent ge ON ge.EVENTID = e.EVENTID  where ge.GEBRUIKERID = :AccountID";
@@ -209,7 +209,7 @@ namespace ICT4Event
             {
                 Connect();
                 OracleCommand cmd = new OracleCommand(sql, connection);
-                string accountID = Convert.ToString(administation.FindAccountID(account.Person.Email));
+                string accountID = Convert.ToString(administration.FindAccountID(account.Person.Email));
                 cmd.Parameters.Add(new OracleParameter("AccountID", accountID));
                 Console.WriteLine(cmd.CommandText);
 
@@ -464,8 +464,8 @@ namespace ICT4Event
         /// <returns></returns>
         public bool UpdateEvent(Event Event, string oldzip, int oldhuisnummer)
         {
-            Administation administation = new Administation();
-            int locationID = administation.FindAddressID(oldzip, Convert.ToString(oldhuisnummer));
+            Administration administration = new Administration();
+            int locationID = administration.FindAddressID(oldzip, Convert.ToString(oldhuisnummer));
 
             bool resultaat = false;
             string sql;

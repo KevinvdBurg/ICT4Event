@@ -74,10 +74,10 @@ namespace ICT4Event
         //voegt een item toe aan een event
         public bool Insert(ReserveItem reserveItem, int CurrentEventID)
         {
-            Administation administation = new Administation();
+            Administration administration = new Administration();
             int paid = 0;
-            int accountID = administation.FindAccountID(reserveItem.Account.Person.Email);
-            int itemID = administation.FindItemID(reserveItem.Item.Name);
+            int accountID = administration.FindAccountID(reserveItem.Account.Person.Email);
+            int itemID = administration.FindItemID(reserveItem.Item.Name);
             bool resultaat = false;
             if (reserveItem.Paid)
             {
@@ -113,9 +113,9 @@ namespace ICT4Event
         //voegt plekken toe aan een event
         public bool Insert(ReserveSpot reservespot, int CurrentEventID)
         {
-            Administation administation = new Administation();
+            Administration administration = new Administration();
             int paid = 0;
-            int accountID = administation.FindAccountID(reservespot.Account.Person.Email);
+            int accountID = administration.FindAccountID(reservespot.Account.Person.Email);
             bool resultaat = false;
             if (reservespot.Paid)
             {
