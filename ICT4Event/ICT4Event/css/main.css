@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+html, body {
+    max-width: 900px; 
+    min-width: 650px;
+}
+
+.navbar {
+    height: 100px;
+    background-color: #000;
+}
+
+.navbar a{
+	color: #fff;
+}
+
+.sub-navbar {
+    height: 40px;
+    background-color: #313131;
+    display:none;
+}
+
+.logo {
+    height: 100px;
+    width: 200px;
+}
+
+.logo a {
+    color: #fff;
+}
+
+.logoTxt {
+    font-size: 29px;
+    padding-top: 19px;
+}
+
+.logoBot {
+    font-size: 12px;
+    line-height: 4px;
+}
+
+.navMenuTop {
+    display: flex;
+}
+
+.flex-container {
+    list-style: none;
+    margin: 0px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.flex-item {
+    padding: 5px;
+    width: 20%;
+    height: 100px;
+    margin-top: 0px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+}
+
+.flex-item:hover {
+    background-color: #313131;
+}
+
+.sub-flex-container {
+    list-style: none;
+    width: 700px;
+	display:none;
+    height: 40px;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.sub-active{
+	display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.sub-flex-item {
+    padding: 5px;
+    width: 20%;
+    height: 40px;
+    margin-top: 0px;
+    line-height: 25px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+}
+
+.sub-flex-item:hover {
+    background-color: #424242;
+}
+
+@media (min-width: 768px) {
+    .sub-flex-container {
+        width: 700px;
+    }
+}
+
+@media (min-width: 1122px) {
+    .sub-flex-container {
+        width: 960px;
+    }
+}
