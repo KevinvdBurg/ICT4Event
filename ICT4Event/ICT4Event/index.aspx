@@ -33,7 +33,8 @@
         <div class="container">
             <div class="navbar-header logo">
                 <div class="logoTxt">
-                    <a href="#">ICT4Event</a>
+                    <a href="#"> <asp:Label ID="Label1" runat="server" Text="Label">ICT4Event</asp:Label></a>
+                   
                 </div>
                 <div class="logoBot">
                     <a href="#">Medewerker</a>
