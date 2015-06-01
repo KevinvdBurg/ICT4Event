@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="template_admin.aspx.cs" Inherits="ICT4Event.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="template_empty.aspx.cs" Inherits="ICT4Event.index" %>
 
 <!DOCTYPE html>
 
@@ -41,48 +41,14 @@
             </div>
             <div id="navbar">
                 <ul class="flex-container navMenuTop">
-                    <li class="flex-item" id="i-incheck"><a href="#">Incheck</a></li>
-   
-                    <li class="flex-item" id="i-account"><a href="#">Account</a></li>
                     
-                    <li class="flex-item" id="i-reververingen"><a href="#">Reververingen</a></li>
-
-                    <li class="flex-item" id="i-event"><a href="#">Event</a></li>
-
-                    <li class="flex-item" id="i-opties"><a href="#">Opties</a></li>
 
                 </ul>
             </div>
         </div>
         <nav class="sub-navbar">
             <div class="container">
-                <div class="nav-account">
-                    <ul class="sub-flex-container sub sub-account">
-                        <a href=""><li class="sub-flex-item">Alle Account</li></a>
-                        <a href=""><li class="sub-flex-item">Account Wijzigen</li></a>
-                    </ul>
-                </div>
-                <div class="nav-reververingen">
-                    <ul class="sub-flex-container sub sub-reververingen">
-                        <a href=""><li class="sub-flex-item">Alle Reservering</li></a>
-                        <a href=""><li class="sub-flex-item">Reservering Wijzigen</li></a>
-                    </ul>
-                </div>
-                <div class="nav-event">
-                    <ul class="sub-flex-container sub sub-event">
-                        <a href=""><li class="sub-flex-item">Alle Event</li></a>
-                        <a href=""><li class="sub-flex-item">Event Maken</li></a>
-                        <a href=""><li class="sub-flex-item">Event Wijzigen</li></a>
-                    </ul>
-                </div>
-
-                <div class="nav-opties">
-                    <ul class="sub-flex-container sub sub-opties">
-                        <a href=""><li class="sub-flex-item">
-                            <asp:DropDownList ID="dropevent_admin" runat="server"></asp:DropDownList></li></a>
-                        <asp:HyperLink ID="LoginUit_admin" runat="server">Uitloggen</asp:HyperLink>
-                    </ul>
-                </div>
+               
             </div>
         </nav>
         <div class="container" id="wrapper">

@@ -1,86 +1,100 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     var hoverActive;
 
-    $("#i-incheck").hover(function() {
+    $("#i-incheck").hover(function () {
         hoverActive = "incheck";
         //$(".sub-navbar").css('display', 'block');
-    }, function() {
+    }, function () {
         //$(".sub-navbar").css('display', 'none');
     });
 
 
-    $("#i-account").hover(function() {
+    $("#i-account").hover(function () {
         hoverActive = "account";
         $(".sub-navbar").css('display', 'block');
         removeSub();
-        $(".sub-account").css('display', 'flex');
+        $(".sub-account").css('display', 'block');
 
-    }, function() {
+    }, function () {
         $(".sub-navbar").css('display', 'none');
         removeSub();
-
     });
 
-    $("#i-reserveren").hover(function() {
-        hoverActive = "reserveren";
+    $("#i-reververingen").hover(function () {
+        hoverActive = "reververingen";
         $(".sub-navbar").css('display', 'block');
         removeSub();
-        $(".sub-resereven").css('display', 'flex');
-    }, function() {
+        $(".sub-reververingen").css('display', 'block');
+    }, function () {
         $(".sub-navbar").css('display', 'none');
         removeSub();
     });
 
-    $("#i-admin").hover(function() {
-        hoverActive = "admin";
+    $("#i-event").hover(function () {
+        hoverActive = "event";
         $(".sub-navbar").css('display', 'block');
         removeSub();
-        $(".sub-admin").css('display', 'flex');
-    }, function() {
+        $(".sub-event").css('display', 'block');
+    }, function () {
         $(".sub-navbar").css('display', 'none');
         removeSub();
     });
 
-    $("#i-opties").hover(function() {
+    $("#i-post").hover(function () {
+        hoverActive = "post";
+        $(".sub-navbar").css('display', 'block');
+        removeSub();
+        $(".sub-post").css('display', 'block');
+    }, function () {
+        $(".sub-navbar").css('display', 'none');
+        removeSub();
+    });
+
+    $("#i-opties").hover(function () {
         hoverActive = "opties";
         $(".sub-navbar").css('display', 'block');
         removeSub();
-        $(".sub-opties").css('display', 'flex');
-    }, function() {
+        $(".sub-opties").css('display', 'block');
+    }, function () {
         $(".sub-navbar").css('display', 'none');
         removeSub();
     });
 
-    $(".sub-navbar").hover(function() {
+    $(".sub-navbar").hover(function () {
         $(".sub-navbar").css('display', 'block');
 
         if (hoverActive == "incheck") {
 
-        } 
-
-        else if(hoverActive == "account"){
-        	$(".sub-account").css('display', 'flex');
         }
 
-        else if(hoverActive == "reserveren"){
-        	$(".sub-resereven").css('display', 'flex');
+        else if (hoverActive == "account") {
+            $(".sub-account").css('display', 'block');
         }
 
-        else if(hoverActive == "admin"){
-        	$(".sub-admin").css('display', 'flex');
+        else if (hoverActive == "reververingen") {
+            $(".sub-reververingen").css('display', 'block');
         }
 
-        else if(hoverActive == "opties"){
-        	$(".i-opties").css('background-color', '#313131');
-        	$(".sub-opties").css('display', 'flex');
+        else if (hoverActive == "event") {
+            $(".sub-event").css('display', 'block');
         }
 
-        else{
-        	alert("WUt?");
+        else if (hoverActive == "post") {
+            $(".sub-post").css('display', 'block');
+        }
+
+
+        else if (hoverActive == "opties") {
+            $(".i-opties").css('background-color', '#313131');
+            $(".sub-opties").css('display', 'block');
+        }
+
+        else {
+            alert("WUt?");
         };
-        
-    }, function() {
+
+    }, function () {
         $(".sub-navbar").css('display', 'none');
         removeSub();
         hoverActive = "";
@@ -89,7 +103,8 @@ $(document).ready(function() {
 
 function removeSub() {
     $(".sub-account").css('display', 'none');
-    $(".sub-resereven").css('display', 'none');
-    $(".sub-admin").css('display', 'none');
+    $(".sub-reververingen").css('display', 'none');
+    $(".sub-event").css('display', 'none');
     $(".sub-opties").css('display', 'none');
+    $(".sub-post").css('display', 'none');
 };
