@@ -19,8 +19,6 @@ namespace ICT4Event
             try
             {
                 Connect();
-
-
                 OracleCommand cmd = new OracleCommand(sql, connection);
                 cmd.Parameters.Add(new OracleParameter("email", email));
                 cmd.Parameters.Add(new OracleParameter("password", password));
@@ -29,9 +27,6 @@ namespace ICT4Event
                 {
                     resultaat = true;
                 }
-
-
-
             }
             catch (OracleException e)
             {

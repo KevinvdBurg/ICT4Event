@@ -10,9 +10,13 @@ namespace ICT4Event
 
     public class DBAccount : Database
     {
-        //Zoekt op het oude email en geeft hem een nieuw email
-	public  bool Update(Account Account, string oldemail)
-	{
+        public DBAccount()
+        {
+            
+        }
+            //Zoekt op het oude email en geeft hem een nieuw email
+	    public  bool Update(Account Account, string oldemail)
+	    {
 	    bool resultaat = false;
         string sql;
         int gebruikersID = FindAccountID(oldemail);
@@ -53,37 +57,6 @@ namespace ICT4Event
         return resultaat;
 	}
 
-    public bool Insert(AccountEvent accountEvent)
-    {
-        bool resultaat = false;
-        int present = 0;
-        if (accountEvent.Present)
-        {
-            present = 1;
-        }
-        string sql = "INSERT INTO gebruikerevent (GEBRUIKERID, EVENTID, AANWEZIG) VALUES (:gebruikerid, :eventid, :aanwezig)";
-        try
-        {
-            Connect();
-            OracleCommand cmd = new OracleCommand(sql, connection);
-            cmd.Parameters.Add(new OracleParameter("gebruikerid", accountEvent.AccountID));
-            cmd.Parameters.Add(new OracleParameter("eventid", accountEvent.EventID));
-            cmd.Parameters.Add(new OracleParameter("aanwezig", present));
-            cmd.ExecuteNonQuery();
-            //OracleDataReader reader = cmd.ExecuteReader();
-            resultaat = true;
-        }
-        catch (OracleException e)
-        {
-            Console.WriteLine(e.Message);
-            throw;
-        }
-        finally
-        {
-            DisConnect();
-        }
-        return resultaat;
-    }
 
 	public  bool Delete(Account account)
 	{
@@ -151,6 +124,32 @@ namespace ICT4Event
 	{
 	}
 
+    public bool SelectGebruikersnaam(string gebruikersnaam)
+    {
+        bool resultaat = false;
+        string sql = "select gebruikersnaam from account where gebruikersnaam = :gebruikersnaam";
+
+        try
+        {
+            Connect();
+            OracleCommand cmd = new OracleCommand(sql, connection);
+            cmd.Parameters.Add(new OracleParameter("gebruikersnaam", gebruikersnaam));
+            OracleDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+               resultaat = true;
+            }
+        }
+        catch (OracleException e)
+        {
+            throw;
+        }
+        finally
+        {
+            DisConnect();
+        }
+        return resultaat;
+    }
 
     internal Account Select(string email)
     {
@@ -240,148 +239,5 @@ namespace ICT4Event
         return accountID;
     }
 
-    internal List<Account> SelectAll()
-    {
-        List<Account> resultaat = new List<Account>();
-        string sql = "select * from gebruiker";
-        string type = "";
-        try
-        {
-            Connect();
-            OracleCommand cmd = new OracleCommand(sql, connection);
-            OracleDataReader reader = cmd.ExecuteReader();
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    string name = Convert.ToString(reader["voornaam"]);
-                    string lastName = Convert.ToString(reader["achternaam"]);
-                    string rfid = Convert.ToString(reader["rfid"]);
-                    string city = Convert.ToString(reader["plaats"]);
-                    string nr = Convert.ToString(reader["huisnummer"]);
-                    string zipcode = Convert.ToString(reader["postcode"]);
-                    string email = Convert.ToString(reader["emailadres"]);
-                    string wachtwoord = Convert.ToString(reader["wachtwoord"]);
-                    if (Convert.ToInt32(reader["isAdmin"]) > 0)
-                    {
-                        type = "admin";
-                    }
-                    else
-                    {
-                        type = "bezoeker";
-                    }
-
-                    Account tempAccount = new Account(new Person(new Address(city, nr, zipcode), email, name, lastName), type, rfid, wachtwoord);
-                    
-                    resultaat.Add(tempAccount);
-
-                }
-            }
-        }
-        catch (OracleException e)
-        {
-            throw;
-        }
-        finally
-        {
-            DisConnect();
-        }
-        return resultaat;
-    }
-
-    //rfid koppelen aan een account
-    public bool ChainRFID(string email, string rfid)
-    {
-        string ReplaceEmail = "'" + email + "'";
-        string ReplaceRFID = "'" + rfid + "'";
-        bool resultaat = false;
-        string sql;
-        string testsql = "UPDATE GEBRUIKER SET RFID =" + ReplaceRFID + " WHERE EMAILADRES =" + ReplaceEmail;
-        try
-        {
-            Connect();
-            OracleCommand cmd = new OracleCommand(testsql, connection);
-            cmd.Parameters.Add(new OracleParameter("EMAIL", ReplaceEmail));
-            cmd.Parameters.Add(new OracleParameter("rfid", ReplaceRFID));
-            cmd.ExecuteNonQuery();
-            resultaat = true;
-        }
-        catch (OracleException e)
-        {
-            throw;
-        }
-        finally
-        {
-            DisConnect();
-        }
-        return resultaat;
-    }
-
-    public void UpdateAccountEvent(int pressent)
-    {
-        return; 
-    }
-
-    //zet een gebruiker op aanwezig
-    public bool UpdateAccountEvent(AccountEvent accountEvent)
-    {
-        bool resultaat = false;
-        string sql = "UPDATE GEBRUIKEREVENT SET AANWEZIG = '1'  WHERE GEBRUIKERID = :GEBRUIKERID";
-        try
-        {
-            Connect();
-            OracleCommand cmd = new OracleCommand(sql, connection);
-            cmd.Parameters.Add(new OracleParameter("GEBRUIKERID", accountEvent.AccountID));
-            cmd.ExecuteNonQuery();
-            resultaat = true;
-        }
-        catch (OracleException e)
-        {
-            throw;
-        }
-        finally
-        {
-            DisConnect();
-        }
-        return resultaat;
-    }
-
-    //kijkt of een gebruiker aanwezig is
-        public AccountEvent FindAccountEvent(int accountId, int eventId)
-        {
-            AccountEvent accountEvent = null;
-            string sql =
-                "SELECT AANWEZIG, GEBRUIKERID, EVENTID FROM GEBRUIKEREVENT WHERE GEBRUIKERID = :accountId AND EVENTID = :eventId";
-            try
-            {
-                Connect();
-                OracleCommand cmd = new OracleCommand(sql, connection);
-
-                cmd.Parameters.Add(new OracleParameter("accountId", accountId));
-                cmd.Parameters.Add(new OracleParameter("eventId", eventId));
-
-                OracleDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        accountEvent = new AccountEvent(
-                            Convert.ToBoolean(reader["AANWEZIG"]),
-                            Convert.ToInt32(reader["GEBRUIKERID"]),
-                            Convert.ToInt32(reader["EVENTID"]));
-                    }
-                    return accountEvent;
-                }
-            }
-            catch (OracleException e)
-            {
-                throw;
-            }
-            finally
-            {
-                DisConnect();
-            }
-            return accountEvent;
-        }
     }
 }
