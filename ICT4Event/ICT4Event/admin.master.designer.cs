@@ -13,22 +13,13 @@ namespace ICT4Event {
     public partial class admin {
         
         /// <summary>
-        /// dropevent_admin control.
+        /// dropevent_main control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropevent_admin;
-        
-        /// <summary>
-        /// LoginUit_admin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink LoginUit_admin;
+        protected global::System.Web.UI.WebControls.DropDownList dropevent_main;
         
         /// <summary>
         /// content_1 control.

@@ -29,9 +29,9 @@
 
     <div class="nav-opties">
         <ul class="sub-flex-container sub sub-opties">
-            <a href=""><li class="sub-flex-item">
-                <asp:DropDownList ID="dropevent_main" runat="server"></asp:DropDownList></li></a>
-            <asp:HyperLink ID="LoginUit_main" runat="server">Inloggen Uitloggen</asp:HyperLink>
+            <li class="sub-flex-item"><asp:DropDownList ID="dropevent_main" runat="server"></asp:DropDownList></li>
+            <li class="sub-flex-item"><a href="#">Inloggen</a></li>
+            <li class="sub-flex-item"><a href="#">Registeren</a></li>
         </ul>
     </div>
 </asp:Content>
