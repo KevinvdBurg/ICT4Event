@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace ICT4Event
 {
-    public partial class template_mainpage : System.Web.UI.Page
+    public partial class main : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

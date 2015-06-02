@@ -8,10 +8,9 @@
 //------------------------------------------------------------------------------
 
 namespace ICT4Event {
-
-
-    public partial class template_admin
-    {
+    
+    
+    public partial class admin {
         
         /// <summary>
         /// dropevent_admin control.
@@ -30,5 +29,23 @@ namespace ICT4Event {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink LoginUit_admin;
+        
+        /// <summary>
+        /// content_1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder content_1;
+        
+        /// <summary>
+        /// content_2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder content_2;
     }
 }
