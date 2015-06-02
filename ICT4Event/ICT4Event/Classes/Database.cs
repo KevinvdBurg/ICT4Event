@@ -10,9 +10,7 @@ namespace ICT4Event
     public class Database
     {
         protected OracleConnection connection = new OracleConnection();
-        protected string connectionString = "DATA SOURCE=//192.168.15.50:1521/fhictora;PASSWORD=XAWdDJtZWV;USER ID=dbi314159";
-        protected string connectionString2 = "Data Source=localhost:1521/xe; PASSWORD=hallo;USER ID =bryan";
-
+        protected string connectionString = "DATA SOURCE=//ict4events.bb:1521/fhictora;PASSWORD=hallo;USER ID=hallo";
 
         public Database()
         {
