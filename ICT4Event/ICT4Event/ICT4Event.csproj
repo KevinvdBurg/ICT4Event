@@ -65,6 +65,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\main.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Resource Include="Resources\test.png" />
     <Content Include="index.aspx" />
     <Content Include="js\main.js" />
     <Content Include="js\vendor\bootstrap.js" />
@@ -73,8 +74,8 @@
     <Content Include="js\vendor\jquery-2.1.4.js" />
     <Content Include="js\vendor\modernizr-2.8.3-respond-1.4.2.min.js" />
     <Content Include="js\vendor\npm.js" />
+    <Content Include="pages\Post.aspx" />
     <Content Include="pages\registreren.aspx" />
-    <Content Include="Posts.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +134,13 @@
     <Compile Include="master.Master.designer.cs">
       <DependentUpon>master.Master</DependentUpon>
     </Compile>
+    <Compile Include="pages\Post.aspx.cs">
+      <DependentUpon>Post.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Post.aspx.designer.cs">
+      <DependentUpon>Post.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\registreren.aspx.cs">
       <DependentUpon>registreren.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -140,17 +148,15 @@
     <Compile Include="pages\registreren.aspx.designer.cs">
       <DependentUpon>registreren.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Posts.aspx.cs">
-      <DependentUpon>Posts.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Posts.aspx.designer.cs">
-      <DependentUpon>Posts.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Reserve.cs" />
     <Compile Include="Classes\ReserveItem.cs" />
     <Compile Include="Classes\ReserveSpot.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap-theme.css.map" />
@@ -171,6 +177,12 @@
   <ItemGroup>
     <Folder Include="admin\" />
     <Folder Include="img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
