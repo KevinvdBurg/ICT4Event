@@ -7,73 +7,39 @@ namespace ICT4Event
 {
     public class Person
     {
-        private DBAddress dbaddress = new DBAddress();
-        public Address Address
+        public Person(string firstName, string insertion, string lastName, string street, int houseNumber, string city, string bankNumber)
         {
-            get;
-            set;
-        }
-        public string Name
-        {
-            get;
-            set;
-        }
-
-        public string LastName
-        {
-            get;
-            set;
+            this.FirstName = firstName;
+            this.Insertion = insertion;
+            this.LastName = lastName;
+            this.Street = street;
+            this.HouseNumber = houseNumber;
+            this.City = city;
+            this.Banknumber = bankNumber;
         }
 
-        public string Email
+        public Person(string firstName, string lastName, string street, int houseNumber, string city, string bankNumber)
         {
-            get;
-            set;
-        }
-        public DBAddress DBAddress
-        {
-            get;
-            set;
-        }
-
-        public void AddAddress(Address Address)
-        {
-            dbaddress.Insert(Address);
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Street = street;
+            this.HouseNumber = houseNumber;
+            this.City = city;
+            this.Banknumber = bankNumber;
         }
 
-        public void DeleteAddress(Address Address)
-        {
-            dbaddress.Delete(Address);
-        }
+        public string FirstName { get; set; }
 
-        public void FindAddress()
-        {
-            dbaddress.Select(Address.ZipCode, Address.Number);
-        }
+        public string Insertion { get; set; }
 
-        //public void UpdateAddress(Address Address)
-        //{
-        //    dbaddress.Select(Address);
-        //}
+        public string LastName { get; set; }
 
-        public Person(Address Address, string Email, string Name, string LastName)
-        {
-            this.Address = Address;
-            this.Email = Email;
-            this.Name = Name;
-            this.LastName = LastName;
-        }
+        public string Street { get; set; }
 
-        public Person(string Email, string LastName, string Name)
-        {
-            this.Email = Email;
-            this.LastName = LastName;
-            this.Name = Name;
-        }
+        public int HouseNumber { get; set; }
 
-        public Person()
-        {
+        public string City { get; set; }
 
-        }
+        public string Banknumber { get; set; }
     }
 }
