@@ -74,6 +74,7 @@
     <Content Include="js\vendor\modernizr-2.8.3-respond-1.4.2.min.js" />
     <Content Include="js\vendor\npm.js" />
     <Content Include="pages\registreren.aspx" />
+    <Content Include="pages\Reserve.aspx" />
     <Content Include="Posts.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -139,6 +140,13 @@
     </Compile>
     <Compile Include="pages\registreren.aspx.designer.cs">
       <DependentUpon>registreren.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Reserve.aspx.cs">
+      <DependentUpon>Reserve.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Reserve.aspx.designer.cs">
+      <DependentUpon>Reserve.aspx</DependentUpon>
     </Compile>
     <Compile Include="Posts.aspx.cs">
       <DependentUpon>Posts.aspx</DependentUpon>
