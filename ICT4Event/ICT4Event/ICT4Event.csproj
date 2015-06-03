@@ -59,6 +59,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="pages\BestandUploaden.aspx" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
@@ -84,6 +85,13 @@
     </Compile>
     <Compile Include="admin.master.designer.cs">
       <DependentUpon>admin.master</DependentUpon>
+    </Compile>
+    <Compile Include="pages\BestandUploaden.aspx.cs">
+      <DependentUpon>BestandUploaden.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\BestandUploaden.aspx.designer.cs">
+      <DependentUpon>BestandUploaden.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\Account.cs" />
     <Compile Include="Classes\AccountEvent.cs" />
