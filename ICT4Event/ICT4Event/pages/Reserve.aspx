@@ -11,13 +11,11 @@
         banknr: <asp:TextBox ID="tbBank" runat="server"></asp:TextBox> <br />
     </p>
     <p> Plek: <asp:DropDownList ID="ddlSpot" runat="server"></asp:DropDownList> <br />
-        Datum in: <asp:Calendar ID="cldDateIn" runat="server"></asp:Calendar> <br />
-        Datum uit: <asp:Calendar ID="cldDateOut" runat="server"></asp:Calendar> <br />
+    <asp:Button ID="btnAnulleren" runat="server" Text="Annulleren" />
+    <asp:Button ID="btnReserve" runat="server" Text="Reserveren" OnClick="btnReserve_Click" />
     </p>
         
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
-    <asp:Button ID="btnAnulleren" runat="server" Text="Anulleren" />
-    <asp:Button ID="btnReserve" runat="server" Text="Reserveren" OnClick="btnReserve_Click" />
 </asp:Content>

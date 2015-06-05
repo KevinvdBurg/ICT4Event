@@ -28,6 +28,31 @@ namespace ICT4Event
             this.Banknumber = bankNumber;
         }
 
+        public Person(int personID, string firstName, string insertion, string lastName, string street, int houseNumber, string city, string bankNumber)
+        {
+            this.FirstName = firstName;
+            this.Insertion = insertion;
+            this.LastName = lastName;
+            this.Street = street;
+            this.HouseNumber = houseNumber;
+            this.City = city;
+            this.Banknumber = bankNumber;
+            this.PersonID = personID;
+        }
+
+        public Person(int personID, string firstName, string lastName, string street, int houseNumber, string city, string bankNumber)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Street = street;
+            this.HouseNumber = houseNumber;
+            this.City = city;
+            this.Banknumber = bankNumber;
+            this.PersonID = personID;
+        }
+
+        public int PersonID { get; set; }
+
         public string FirstName { get; set; }
 
         public string Insertion { get; set; }

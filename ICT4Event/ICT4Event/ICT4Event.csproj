@@ -103,6 +103,8 @@
     <Compile Include="Classes\Item.cs" />
     <Compile Include="Classes\Location.cs" />
     <Compile Include="Classes\Person.cs" />
+    <Compile Include="Classes\Specification.cs" />
+    <Compile Include="Classes\Spot_Specification.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -148,7 +150,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Reserve.cs" />
     <Compile Include="Classes\ReserveItem.cs" />
-    <Compile Include="Classes\ReserveSpot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap-theme.css.map" />

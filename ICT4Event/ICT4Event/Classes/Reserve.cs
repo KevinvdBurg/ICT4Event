@@ -5,48 +5,34 @@ using System.Web;
 
 namespace ICT4Event
 {
-    public abstract class Reserve
+    public class Reserve
     {
-        public virtual string StartDate
+        public Reserve(Person person, DateTime dateIn, DateTime dateOut, double price)
         {
-            get;
-            set;
+            this.Person = person;
+            this.DateIn = dateIn;
+            this.DateOut = dateOut;
+            this.Price = price;
         }
 
-        public virtual string EndDate
+        public Reserve(int ID, Person person, DateTime dateIn, DateTime dateOut, double price)
         {
-            get;
-            set;
+            this.ReserveID = ID;
+            this.Person = person;
+            this.DateIn = dateIn;
+            this.DateOut = dateOut;
+            this.Price = price;
         }
 
-        public virtual Category Category
-        {
-            get;
-            set;
-        }
+        public int ReserveID { get; set; }
 
-        public virtual Account Account
-        {
-            get;
-            set;
-        }
+        public Person Person { get; set; }
 
-        public virtual bool Paid
-        {
-            get;
-            set;
-        }
+        public DateTime DateIn { get; set; }
 
-        public int ReserveringsID { get; set; }
+        public DateTime DateOut { get; set; }
 
-        public Reserve(Account Account, Category Category, string EndDate, string StartDate, bool Paid, int ReserveringsID)
-        {
-            this.Account = Account;
-            this.Category = Category;
-            this.EndDate = EndDate;
-            this.StartDate = StartDate;
+        public double Price { get; set; }
 
-            this.ReserveringsID = ReserveringsID;
-        }
     }
 }

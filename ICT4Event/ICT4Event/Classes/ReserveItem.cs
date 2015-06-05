@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ICT4Event
 {
-    public class ReserveItem : Reserve
+    public class ReserveItem
     {
         public bool Present
         {
@@ -19,12 +19,12 @@ namespace ICT4Event
             set;
         }
 
-        public ReserveItem(Item Item, bool Present, Account Account, Category Category, string EndDate, string StartDate, bool Paid, int ReserveringsID)
-            : base(Account, Category, EndDate, StartDate, Paid, ReserveringsID)
-        {
-            this.Item = Item;
-            this.Present = Present;
-        }
+        //public ReserveItem(Item Item, bool Present, Account Account, Category Category, string EndDate, string StartDate, bool Paid, int ReserveringsID)
+        //    : base(Account, Category, EndDate, StartDate, Paid, ReserveringsID)
+        //{
+        //    this.Item = Item;
+        //    this.Present = Present;
+        //}
 
     }
 }

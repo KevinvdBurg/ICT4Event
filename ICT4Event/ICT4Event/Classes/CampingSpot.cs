@@ -7,23 +7,26 @@ namespace ICT4Event
 {
     public class CampingSpot
     {
-        //public int Location
-        //{
-        //    get;
-        //    set;
-        //}
+        public CampingSpot(int ID, int locationID, string number, int maxPeople)
+        {
+            this.ID = ID;
+            this.LocationID = locationID;
+            this.Number = number;
+            this.MaxPeople = maxPeople;
+        }
 
-        public CategorySpots Category { get; set; }
+        public CampingSpot(int locationID, string number, int maxPeople)
+        {
+            this.LocationID = locationID;
+            this.Number = number;
+            this.MaxPeople = maxPeople;
+        }
+        public int ID { get; set; }
+
         public int LocationID { get; set; }
 
-        public int SpotID { get; set; }
+        public string Number { get; set; }
 
-        public CampingSpot(CategorySpots category, int locationid, int spotID)
-        {
-            //this.Location = Location;
-            this.Category = category;
-            this.LocationID = locationid;
-            this.SpotID = spotID;
-        }
+        public int MaxPeople { get; set; }
     }
 }

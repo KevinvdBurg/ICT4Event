@@ -14,13 +14,38 @@ namespace ICT4Event.pages
         {
             if (!IsPostBack)
             {
+                Administration administration = new Administration();
+                foreach (var item in administration.FindAllFreeCampingSpots())
+                {
+                    ddlSpot.Items.Add(Convert.ToString(item.ID));
+                }
                 
             }
         }
 
         protected void btnReserve_Click(object sender, EventArgs e)
         {
-            
+            if (tbInsertion != null)
+            {
+                Person newPerson = new Person(
+                    tbFirstName.Text,
+                    tbLastName.Text,
+                    tbStreet.Text,
+                    Convert.ToInt32(tbHouseNumber.Text),
+                    tbCity.Text,
+                    tbBank.Text);
+            }
+            else
+            {
+                Person newPerson = new Person(
+                    tbFirstName.Text,
+                    tbInsertion.Text,
+                    tbLastName.Text,
+                    tbStreet.Text,
+                    Convert.ToInt32(tbHouseNumber.Text),
+                    tbCity.Text,
+                    tbBank.Text);
+            }
         }
     }
 }
