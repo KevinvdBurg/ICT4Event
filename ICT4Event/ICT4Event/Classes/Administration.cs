@@ -17,6 +17,7 @@ namespace ICT4Event
         private DBAccount dbaccount = new DBAccount();
         private  ADRegistreerLogin adRegistreerLogin = new ADRegistreerLogin();
        
+        private const string domainCon= "DC=server-pts45,DC=local";
 
         public Administration()
         {
@@ -41,7 +42,7 @@ namespace ICT4Event
         public void Add(Account Account)
         {
             dbaccount.Insert(Account);
-            adRegistreerLogin.CreateUserAccount("DC=SERVER-PTS45,DC=local", Account.Gebruiksersnaam, Account.Wachtwoord);
+            adRegistreerLogin.CreateUserAccount(domainCon, Account.Gebruiksersnaam, Account.Wachtwoord);
         }
         /// <summary>
         /// Een account wordt doorgestuurd naar dbaccount.Delete zodat dit account uit de database verwijderd kan worden
@@ -129,12 +130,11 @@ namespace ICT4Event
         /// <param name="email"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        //public bool Login(string email, string password)
-        //{
-        //    return dblogin.loginCheck(email, password);
-        //}
-
-
+        public bool Login(string email, string password)
+        {
+           // return dblogin.loginCheck(email, password);
+            return adRegistreerLogin.AuthenticateAD(email, password, domainCon);
+        }
     }
 
     public static class MessageBox

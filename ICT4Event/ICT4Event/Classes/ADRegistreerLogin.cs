@@ -48,7 +48,7 @@ namespace ICT4Event.Classes
         }
 
 
-        private bool AuthenticateAD(string userName, string password, string domain)
+        public bool AuthenticateAD(string userName, string password, string domain)
         {
             //string message = "";
             DirectoryEntry entry = new
@@ -60,7 +60,6 @@ namespace ICT4Event.Classes
                 search.Filter = "(SAMAccountName=" + userName + ")";
                 search.PropertiesToLoad.Add("cn");
                 SearchResult result = search.FindOne();
-
 
                 if (null == result)
                 {
