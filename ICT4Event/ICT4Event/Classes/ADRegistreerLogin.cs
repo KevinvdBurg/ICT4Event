@@ -6,12 +6,27 @@ using System.Web;
 namespace ICT4Event.Classes
 {
     using System.DirectoryServices;
+    using System.Security.Principal;
+    using System.DirectoryServices.AccountManagement;
 
     public class ADRegistreerLogin
     {
 
         public string CreateUserAccount(string ldapPath, string userName, string userPassword)
         {
+            PrincipalContext ctx = new PrincipalContext(ContextType.Domain, "pts45.local", ldapPath);
+            // create a user principal object
+            
+            UserPrincipal user = new UserPrincipal(ctx, userName, userPassword, true);
+
+            // force the user to change password at next logon
+            user.ExpirePasswordNow();
+
+            // save the user to the directory
+            user.Save();
+
+            return user.SamAccountName;
+            
             string oGUID = string.Empty;
             try
             {
@@ -50,33 +65,12 @@ namespace ICT4Event.Classes
 
         public bool AuthenticateAD(string userName, string password, string domain)
         {
-            //string message = "";
-            DirectoryEntry entry = new
-                DirectoryEntry("LDAP://" + domain, userName, password);
-            try
-            {
-                object obj = entry.NativeObject;
-                DirectorySearcher search = new DirectorySearcher(entry);
-                search.Filter = "(SAMAccountName=" + userName + ")";
-                search.PropertiesToLoad.Add("cn");
-                SearchResult result = search.FindOne();
 
-                if (null == result)
-                {
+            PrincipalContext pc = new PrincipalContext(ContextType.Domain, domain);
+            // validate the credentials 
+            bool validatedOnDomain = pc.ValidateCredentials(userName, password);
 
-                    return false;
-                }
-                //MessageBox.Show(" Gelukt!");
-
-
-            }
-            catch (Exception ex)
-            {
-                //MessageBox.Show(ex.Message);
-                return false;
-                //throw new Exception("Error authenticating user. " + ex.Message);
-            }
-            return true;
+            return validatedOnDomain;
         }
     }
 }

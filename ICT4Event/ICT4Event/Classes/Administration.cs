@@ -6,7 +6,7 @@ using System.Web;
 namespace ICT4Event
 {
     using System.Web.UI;
-    using System.Windows.Forms;
+    //using System.Windows.Forms;
 
     using ICT4Event.Classes;
 
@@ -16,8 +16,10 @@ namespace ICT4Event
         private DBLogin dblogin = new DBLogin();
         private DBAccount dbaccount = new DBAccount();
         private  ADRegistreerLogin adRegistreerLogin = new ADRegistreerLogin();
-       
-        private const string domainCon= "DC=server-pts45,DC=local";
+
+        private const string domain = "PTS45.local";
+        private const string domainCon = "DC=" + domain + ";";
+
 
         public Administration()
         {
@@ -41,8 +43,16 @@ namespace ICT4Event
         /// <param name="Account"></param>
         public void Add(Account Account)
         {
-            dbaccount.Insert(Account);
-            adRegistreerLogin.CreateUserAccount(domainCon, Account.Gebruiksersnaam, Account.Wachtwoord);
+            if (IsValidEmail(Account.Email))
+            {
+                dbaccount.Insert(Account);
+                adRegistreerLogin.CreateUserAccount(domainCon, Account.Gebruiksersnaam, Account.Wachtwoord);
+            }
+            else
+            {
+                Console.WriteLine("email is niet correct");
+            }
+            
         }
         /// <summary>
         /// Een account wordt doorgestuurd naar dbaccount.Delete zodat dit account uit de database verwijderd kan worden
@@ -130,10 +140,22 @@ namespace ICT4Event
         /// <param name="email"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public bool Login(string email, string password)
+        public bool Login(string userName, string password)
         {
-           // return dblogin.loginCheck(email, password);
-            return adRegistreerLogin.AuthenticateAD(email, password, domainCon);
+            return adRegistreerLogin.AuthenticateAD(userName, password, domain);
+        }
+
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 
