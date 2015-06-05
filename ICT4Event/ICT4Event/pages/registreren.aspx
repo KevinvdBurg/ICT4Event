@@ -3,9 +3,9 @@
     <h1>Gegevens</h1>
     <p>Gebruikersnaam: <asp:TextBox ID="regi_gebruikersnaam" runat="server"></asp:TextBox></p>
     
-    <p>Email: <asp:TextBox ID="regi_email" runat="server"></asp:TextBox></p>
+    <p>Email: <asp:TextBox ID="regi_email"  runat="server" TextMode="Email"></asp:TextBox></p>
     
-    <p>Her-Email: <asp:TextBox ID="regi_her_email" runat="server"></asp:TextBox></p>
+    <p>Her-Email: <asp:TextBox ID="regi_her_email" runat="server" TextMode="Email"></asp:TextBox></p>
     
     <p>Wachtwoord: <asp:TextBox ID="regi_wachtwoord" runat="server"></asp:TextBox></p>
     

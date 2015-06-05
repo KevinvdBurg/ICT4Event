@@ -8,11 +8,14 @@ namespace ICT4Event
     using System.Web.UI;
     using System.Windows.Forms;
 
+    using ICT4Event.Classes;
+
     public class Administration
     {
         private Database DB = new Database();
         private DBLogin dblogin = new DBLogin();
         private DBAccount dbaccount = new DBAccount();
+        private  ADRegistreerLogin adRegistreerLogin = new ADRegistreerLogin();
        
 
         public Administration()
@@ -38,6 +41,7 @@ namespace ICT4Event
         public void Add(Account Account)
         {
             dbaccount.Insert(Account);
+            adRegistreerLogin.CreateUserAccount("DC=SERVER-PTS45,DC=local", Account.Gebruiksersnaam, Account.Wachtwoord);
         }
         /// <summary>
         /// Een account wordt doorgestuurd naar dbaccount.Delete zodat dit account uit de database verwijderd kan worden

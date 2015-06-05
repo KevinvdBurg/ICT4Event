@@ -91,7 +91,7 @@ namespace ICT4Event
         bool resultaat = false;
         int geactiveerd = 0;
         //string sql = "INSERT INTO GEBRUIKER(RFID, EMAILADRES, WACHTWOORD, PLAATS, POSTCODE, HUISNUMMER, ISADMIN, VOORNAAM, ACHTERNAAM) VALUES (:RFID, :emailadres, :wachtwoord, :plaats, :postcode, :huisnummer, :isadmin, :voornaam, :achternaam)";
-        string sql = "INSERT INTO ACCOUNT(gebruikersnaam, email, activatiehash) VALUES(:gebruikersnaam, :email, :activatiehash)";
+        string sql = "INSERT INTO ACCOUNT(\"gebruikersnaam\", \"email\", \"activatiehash\") VALUES(:gebruikersnaam, :email, :activatiehash)";
 
         if (account.Geactiveerd)
         {
@@ -128,7 +128,8 @@ namespace ICT4Event
     public bool SelectGebruikersnaam(string gebruikersnaam)
     {
         bool resultaat = false;
-        string sql = "select * from account where \"gebruikersnaam\" = :gebruikersnaam";
+        int count;
+        string sql = "select \"gebruikersnaam\" as aantal from account where \"gebruikersnaam\" = :gebruikersnaam";
         try
         {
             Connect();
@@ -137,7 +138,7 @@ namespace ICT4Event
             OracleDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
-               resultaat = true;
+                resultaat = true;
             }
         }
         catch (OracleException e)

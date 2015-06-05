@@ -45,8 +45,5 @@ namespace ICT4Event.pages
         {
 
         }
-
-        
-    }
-   
+    }  
 }

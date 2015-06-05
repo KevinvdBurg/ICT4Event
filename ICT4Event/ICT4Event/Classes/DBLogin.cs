@@ -6,6 +6,7 @@ using System.Web;
 namespace ICT4Event
 {
     using System.Data.OracleClient;
+    using System.DirectoryServices;
 
     public class DBLogin:Database
     {
@@ -38,6 +39,10 @@ namespace ICT4Event
             }
             return resultaat;
         }
+
+
+       
+
 
         //public Account returnLoggedinAccount(string email)
         //{
