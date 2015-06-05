@@ -32,13 +32,19 @@ namespace ICT4Event
                 location.AddLocation(location);
                 Event newEvent = new Event(
                     location,
-                    Convert.ToInt32(tbNummer.Text),
+                    Convert.ToInt32(tbBezoekers.Text),
                     tbNaam.Text,
                     Convert.ToInt32(tbNummer.Text),
                     calDatumBegin.SelectedDate.ToString("dd-MMMM-yy"),
                     calDatumEind.SelectedDate.ToString("dd-MMMM-yy"));
                 administration.AddEvent(newEvent);
+                MessageBox.Show("Het event is aangemaakt!");
             }
+        }
+
+        protected void btnLaadEvent_Click1(object sender, EventArgs e)
+        {
+
         }
     }
 }

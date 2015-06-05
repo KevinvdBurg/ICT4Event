@@ -5,20 +5,29 @@ using System.Web;
 
 namespace ICT4Event
 {
+    using System.Web.UI;
     using System.Windows.Forms;
 
     public class Administration
     {
-        Database DB = new Database();
+        private Database DB = new Database();
+
         public Account currentAccount { get; set; }
 
         private DBLogin dblogin = new DBLogin();
+
         private DBPost dbpost = new DBPost();
+
         private DBAccount dbaccount = new DBAccount();
+
         private DBEvent dbevent = new DBEvent();
+
         private DBReserve dbreserve = new DBReserve();
+
         private DBAddress dbaddress = new DBAddress();
+
         private DBCampingspot dbCampingspot = new DBCampingspot();
+
         private DBItem dbItem = new DBItem();
 
         public Administration()
@@ -30,6 +39,7 @@ namespace ICT4Event
         {
             dbpost.LikePost(postid);
         }
+
         public void Add(Post Post, string Inhoud)
         {
             dbpost.InsertMessage(Post, Inhoud);
@@ -95,6 +105,7 @@ namespace ICT4Event
         {
             return dbpost.numberOfReplies(postid);
         }
+
         public string postText(int postid)
         {
             return dbpost.GetText(postid);
@@ -104,6 +115,7 @@ namespace ICT4Event
         {
             return dbpost.isBericht(postid);
         }
+
         public List<Post> ReturnAllReplies(int postid)
         {
             List<Post> resultaat = new List<Post>();
@@ -140,6 +152,7 @@ namespace ICT4Event
         {
             return dbpost.allMaps();
         }
+
         public List<Map> ReturnMaps(int mapid)
         {
             return dbpost.allMaps(mapid);
@@ -149,6 +162,7 @@ namespace ICT4Event
         {
             return dbpost.parentMapNaam(parentmapid);
         }
+
         /// <summary>
         /// Een Account wordt doorgestuurd naar dbAccount.Insert zodat het account aan de database toegevoegd kan worden
         /// </summary>
@@ -228,6 +242,7 @@ namespace ICT4Event
         {
             dbevent.DeleteMedia(Media);
         }
+
         /// <summary>
         /// Doorzoekt alle accounts in de database naar het account met een email die gelijk is aan Code
         /// </summary>
@@ -751,6 +766,5 @@ namespace ICT4Event
         {
             dbreserve.DeleteSpot(value);
         }
-
     }
 }

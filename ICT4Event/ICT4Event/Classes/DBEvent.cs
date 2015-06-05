@@ -139,7 +139,7 @@ namespace ICT4Event
         {
             Event resultaat = null;
 
-            string sql = "Select e.EVENTID, e.Naam, e.MAXPERSONEN, e.BEGINDATUM, e.EINDDATUM, l.LOCATIEID, l.HUISNUMMER, l.PLAATS, l.POSTCODE From Event e Inner Join Locatie l On e.LOCATIEID = l.LOCATIEID Where e.EventID = :EventID";
+            string sql = "Select \"e.ID\", \"e.naam\", \"e.maxBezoekers\", \"e.datumstart\", \"e.datumEinde\", \"l.ID\", \"l.nr\", \"l.plaats\", \"l.postcode\" From Event e Inner Join Locatie l On \"e.ID\" = \"l.ID\" Where \"e.ID\" = :EventID";
 
             int eventid = 0;
             string name = "";
@@ -252,7 +252,7 @@ namespace ICT4Event
         {
             List<Event> resultaat = new List<Event>();
             Event AddedEvent = null;
-            string sql = "Select e.EVENTID, e.Naam, e.MAXPERSONEN, e.BEGINDATUM, e.EINDDATUM, l.LOCATIEID, l.HUISNUMMER, l.PLAATS, l.POSTCODE From Event e Inner Join Locatie l On e.LOCATIEID = l.LOCATIEID";
+            string sql = "Select e.\"ID\", e.\"naam\", e.\"maxBezoekers\", e.\"datumstart\", e.\"datumEinde\", l.\"ID\", l.\"nr\", l.\"plaats\", l.\"postcode\" From Event e Inner Join Locatie l On e.\"locatie_id\" = l.\"ID\"";
 
             int eventid = 0;
             string name = "";
@@ -273,14 +273,14 @@ namespace ICT4Event
                 {
                     while (reader.Read())
                     {
-                        eventid = Convert.ToInt32(reader["EVENTID"]);
-                        name = Convert.ToString(reader["Naam"]);
-                        maxpers = Convert.ToInt32(reader["MAXPERSONEN"]);
-                        begindate = Convert.ToString(reader["BEGINDATUM"]);
-                        enddate = Convert.ToString(reader["EINDDATUM"]);
-                        nr = Convert.ToString(reader["HUISNUMMER"]);
-                        place = Convert.ToString(reader["PLAATS"]);
-                        zipcode = Convert.ToString(reader["POSTCODE"]);
+                        eventid = Convert.ToInt32(reader["ID"]);
+                        name = Convert.ToString(reader["naam"]);
+                        maxpers = Convert.ToInt32(reader["maxBezoekers"]);
+                        begindate = Convert.ToString(reader["datumstart"]);
+                        enddate = Convert.ToString(reader["datumEinde"]);
+                        nr = Convert.ToString(reader["nr"]);
+                        place = Convert.ToString(reader["plaats"]);
+                        zipcode = Convert.ToString(reader["postcode"]);
                         AddedEvent = new Event(new Location(new Address(place, nr, zipcode), name), maxpers, name, eventid, begindate, enddate);
                         resultaat.Add(AddedEvent);
                     }

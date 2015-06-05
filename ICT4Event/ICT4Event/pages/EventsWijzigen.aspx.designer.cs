@@ -10,7 +10,7 @@
 namespace ICT4Event {
     
     
-    public partial class Event_aanmaken {
+    public partial class EventsWijzigen {
         
         /// <summary>
         /// tbNaam control.
