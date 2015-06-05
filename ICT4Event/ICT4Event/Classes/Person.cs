@@ -36,10 +36,10 @@ namespace ICT4Event
             set;
         }
 
-        public void AddAddress(Address Address)
+        /*public void AddAddress(Address Address)
         {
             dbaddress.Insert(Address);
-        }
+        }*/
 
         public void DeleteAddress(Address Address)
         {

@@ -18,17 +18,17 @@ namespace ICT4Event
         {
             Administration administration = new Administration();
             bool resultaat = false;
-            string sql = "INSERT INTO EVENT (EVENTID, NAAM, MAXPERSONEN, BEGINDATUM, EINDDATUM, LOCATIEID) VALUES (:eventid, :naam, :maxpersonen, :begindatum, :einddatum, :locatieid)";
+            string sql = "INSERT INTO EVENT (\"ID\",\"naam\", \"maxBezoekers\", \"datumstart\", \"datumEinde\", \"locatie_id\") VALUES (:id, :naam, :maxbezoekers, :datumstart, :datumeinde, :locatie_id)";
             try
             {
                 Connect();
                 OracleCommand cmd = new OracleCommand(sql, connection);
-                cmd.Parameters.Add(new OracleParameter("eventid", Event.EventID));
+                cmd.Parameters.Add(new OracleParameter("id", Convert.ToInt32(Event.EventID)));
                 cmd.Parameters.Add(new OracleParameter("naam", Event.Name));
-                cmd.Parameters.Add(new OracleParameter("maxpersonen", Event.MaxPerson));
-                cmd.Parameters.Add(new OracleParameter("begindatum", Event.BeginTime));
-                cmd.Parameters.Add(new OracleParameter("einddatum", Event.EndTime));
-                cmd.Parameters.Add(new OracleParameter("locatieid", administration.FindAddressID(Event.Location.Address.ZipCode, Event.Location.Address.Number)));
+                cmd.Parameters.Add(new OracleParameter("maxbezoekers", Convert.ToInt32(Event.MaxPerson)));
+                cmd.Parameters.Add(new OracleParameter("datumstart", Event.BeginTime));
+                cmd.Parameters.Add(new OracleParameter("datumEinde", Event.EndTime));
+                cmd.Parameters.Add(new OracleParameter("locatie_id", Convert.ToInt32(administration.FindAddressID(Event.Location.Address.ZipCode, Event.Location.Address.Number))));
                 cmd.ExecuteNonQuery();
                 //OracleDataReader reader = cmd.ExecuteReader();
                 resultaat = true;

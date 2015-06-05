@@ -28,9 +28,9 @@ namespace ICT4Event
             this.Name = Name;
         }
 
-        public void AddAddress(Address address)
+        public void AddLocation(Location location)
         {
-            dbAddress.Insert(address);
+            dbAddress.Insert(location);
         }
 
         public void DeleteAddress(Address address)

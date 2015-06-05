@@ -64,6 +64,7 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\main.css" />
+    <Content Include="pages\Event aanmaken.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.aspx" />
     <Content Include="js\main.js" />
@@ -112,6 +113,13 @@
     <Compile Include="Classes\Message.cs" />
     <Compile Include="Classes\Person.cs" />
     <Compile Include="Classes\Post.cs" />
+    <Compile Include="pages\Event aanmaken.aspx.cs">
+      <DependentUpon>Event aanmaken.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Event aanmaken.aspx.designer.cs">
+      <DependentUpon>Event aanmaken.aspx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

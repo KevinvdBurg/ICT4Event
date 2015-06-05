@@ -15,17 +15,18 @@ namespace ICT4Event
         /// </summary>
         /// <param name="address"></param>
         /// <returns></returns>
-        public bool Insert(Address address)
+        public bool Insert(Location location)
         {
             bool resultaat = false;
-            string sql = "INSERT INTO LOCATIE (PLAATS, POSTCODE, HUISNUMMER) VALUES (:plaats, :postcode, :nr)";
+            string sql = "INSERT INTO LOCATIE (\"plaats\", \"postcode\", \"nr\", \"naam\") VALUES (:plaats, :postcode, :nr, :naam)";
             try
             {
                 Connect();
                 OracleCommand cmd = new OracleCommand(sql, connection);
-                cmd.Parameters.Add(new OracleParameter("plaats", address.City));
-                cmd.Parameters.Add(new OracleParameter("postcode", address.ZipCode));
-                cmd.Parameters.Add(new OracleParameter("nr", address.Number));
+                cmd.Parameters.Add(new OracleParameter("plaats", location.Address.City));
+                cmd.Parameters.Add(new OracleParameter("postcode", location.Address.ZipCode));
+                cmd.Parameters.Add(new OracleParameter("nr", location.Address.Number));
+                cmd.Parameters.Add(new OracleParameter("naam", location.Name));
                 cmd.ExecuteNonQuery();
                 //OracleDataReader reader = cmd.ExecuteReader();
                 resultaat = true;
@@ -131,7 +132,7 @@ namespace ICT4Event
         {
 
             string sql;
-            sql = "Select LOCATIEID From Locatie WHERE POSTCODE = :postcode AND HUISNUMMER = :huisnummer";
+            sql = "Select \"ID\" From LOCATIE WHERE \"postcode\" = :postcode AND \"nr\" = :huisnummer";
             int ADRESID = -1;
 
             try
@@ -145,7 +146,7 @@ namespace ICT4Event
                 {
                     while (reader.Read())
                     {
-                        ADRESID = Convert.ToInt32(reader["LOCATIEID"]);
+                        ADRESID = Convert.ToInt32(reader["ID"]);
                     }
                     return ADRESID;
                 }
