@@ -75,6 +75,7 @@
     <Content Include="js\vendor\npm.js" />
     <Content Include="pages\registreren.aspx" />
     <Content Include="pages\Reserve.aspx" />
+    <Content Include="pages\ReserveItem.aspx" />
     <Content Include="Posts.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -139,6 +140,13 @@
     </Compile>
     <Compile Include="pages\Reserve.aspx.designer.cs">
       <DependentUpon>Reserve.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\ReserveItem.aspx.cs">
+      <DependentUpon>ReserveItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\ReserveItem.aspx.designer.cs">
+      <DependentUpon>ReserveItem.aspx</DependentUpon>
     </Compile>
     <Compile Include="Posts.aspx.cs">
       <DependentUpon>Posts.aspx</DependentUpon>

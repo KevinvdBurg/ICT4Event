@@ -9,56 +9,76 @@ namespace ICT4Event
 
     public class DBCampingspot : Database
     {
-        /// <summary>
-        /// retourneert een lijst met alle kampeerplekken uit de database
-        /// </summary>
-        /// <returns></returns>
-        //public List<CampingSpot> SelectAllSpots()
-        //{
-        //    List<CampingSpot> resultaat = new List<CampingSpot>();
-        //    string sql =
-        //        "select kpc.maxpersonen, kpc.prijs, kpc.details, kp.kampeerplekid, kp.locatieid from kampeerplekcategorie kpc, kampeerplek kp where kampeerplekcategorieid in (select categorieid from kampeerplek)";
+      
+        public List<CampingSpot> FindCampingSpots()
+        {
+            List<CampingSpot> result = new List<CampingSpot>();
+            //string sql = "SELECT * FROM plek WHERE id NOT IN (SELECT plek_id FROM plek_reservering)";
+            string sql = "SELECT * FROM plek";
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand(sql, connection);
+                OracleDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int ID = Convert.ToInt32(reader["id"]);
+                        int LocationID = Convert.ToInt32(reader["locatie_id"]);
+                        string Number = Convert.ToString(reader["nummer"]);
+                        int Capticity = Convert.ToInt32(reader["capaciteit"]);
 
-        //    string details;
-        //    int maxpersons;
-        //    decimal price;
-        //    int campingspotid;
-        //    int locatieID;
+                        CampingSpot campingSpot = new CampingSpot(ID, LocationID, Number, Capticity);
+                        result.Add(campingSpot);
+                    }
+                }
+            }
+            catch (OracleException e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            finally
+            {
+                DisConnect();
+            }
+            return result;
+        }
 
-
-        //    string type = "";
-        //    try
-        //    {
-        //        Connect();
-        //        OracleCommand cmd = new OracleCommand(sql, connection);
-        //        OracleDataReader reader = cmd.ExecuteReader();
-        //        if (reader.HasRows)
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                maxpersons = Convert.ToInt32(reader["maxpersonen"]);
-        //                price = Convert.ToDecimal(reader["prijs"]);
-        //                details = Convert.ToString(reader["details"]);
-        //                campingspotid = Convert.ToInt32(reader["kampeerplekid"]);
-        //                locatieID = Convert.ToInt32(reader["locatieid"]);
-        //                CampingSpot campingSpot = new CampingSpot(
-        //                    new CategorySpots(maxpersons, details, price),
-        //                    locatieID,
-        //                    campingspotid);
-        //                resultaat.Add(campingSpot);
-
-        //            }
-        //        }
-        //    }
-        //    catch (OracleException e)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        DisConnect();
-        //    }
-        //    return resultaat;
-        //}
+        public bool FindFreeSpots(int ID)
+        {
+            string sql = "SELECT  \"plek_id\" FROM plek_reservering WHERE \"plek_id\" = :nummer";
+            bool result = false;
+            int number;
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand(sql, connection);
+                cmd.Parameters.Add((new OracleParameter("nummer", ID)));
+                OracleDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        number = Convert.ToInt32(reader["plek_id"]);
+                        if (number == ID)
+                        {
+                            result = true;
+                        }
+                    }
+                }
+            }
+            catch (OracleException e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            finally
+            {
+                DisConnect();
+            }
+            return result;
+        }
     }
 }

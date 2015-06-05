@@ -26,16 +26,26 @@ namespace ICT4Event
 
         public List<CampingSpot> FindAllFreeCampingSpots()
         {
-            List<CampingSpot> foundSpots = this.dbreserve.FindCampingSpots();
+            List<CampingSpot> foundSpots = dbCampingspot.FindCampingSpots();
             List<CampingSpot> freeSpots = new List<CampingSpot>();
             foreach (var campingSpot in foundSpots)
             {
-                if (!this.dbreserve.FindFreeSpots(campingSpot.ID))
+                if (!this.dbCampingspot.FindFreeSpots(campingSpot.ID))
                 {
                     freeSpots.Add(campingSpot);
                 }
             }
             return freeSpots;
+        }
+
+        public List<Item> FindAllFreeItems()
+        {
+            List<Item> foundItems = this.dbItem.SelectAllItems();
+            List<Item> freeItems = new List<Item>();
+            foreach (var foundItem in foundItems)
+            {
+                
+            }
         }
 
     }

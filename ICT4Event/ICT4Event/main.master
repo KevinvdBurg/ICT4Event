@@ -21,8 +21,8 @@
     </div>
     <div class="nav-reververingen">
         <ul class="sub-flex-container sub sub-reververingen">
-            <a href=""><li class="sub-flex-item">Reservering Maken</li></a>
-            <a href=""><li class="sub-flex-item">Reservering Wijzigen</li></a>
+            <a href=""><li class="sub-flex-item">Plek Reservering Maken</li></a>
+            <a href=""><li class="sub-flex-item">Item Reservering Maken</li></a>
             <a href=""><li class="sub-flex-item">Mijn Reservering</li></a>
         </ul>
     </div>
