@@ -10,18 +10,20 @@ namespace ICT4Event
     {
         public int GebruikerID { get; set; }
         public string Gebruiksersnaam { get; set; }
-        public string Hash { get; set; }
-        public bool Type { get; set; }
-        public bool Geactiveerd { get; set; }
+        public string Email { get; set; }
         public string Wachtwoord { get; set; }
-
-        public Account(string gebruiksersnaam, string hash, bool type, bool geactiveerd, string wachtwoord)
+        public bool Type { get; set; }
+        public string Hash { get; set; }
+        public bool Geactiveerd { get; set; }
+        
+        public Account(string gebruiksersnaam, string email, string wachtwoord, bool type, int hash, bool geactiveerd)
         {
-            this.Gebruiksersnaam = gebruiksersnaam;
-            this.Hash = hash;
+            this.Gebruiksersnaam = gebruiksersnaam.ToLower();
+            this.Email = email.ToLower();
+            this.Wachtwoord = wachtwoord;  
             this.Type = type;
             this.Geactiveerd = geactiveerd;
-            this.Wachtwoord = wachtwoord;    
+            this.Hash = Convert.ToString(hash);     
         }
 
         public Account(string gebruiksersnaam, bool type)

@@ -12,7 +12,7 @@ namespace ICT4Event.pages
         private Administration administration = new Administration();
         protected void Page_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(this, "hoi");           
+            //MessageBox.Show(this, "hoi");           
         }
 
         protected void btn_registeren_Click(object sender, EventArgs e)
@@ -23,18 +23,21 @@ namespace ICT4Event.pages
             string wachtwoord = regi_gebruikersnaam.Text;
             string herwachtwoord = regi_gebruikersnaam.Text;
 
-            bool suc = administration.FindGebruikersnaam();
-            if ()
+            bool suc = administration.FindGebruikersnaam(gebruikersnaam);
+            if (!suc)
             {
-                
+                MessageBox.Show(this, "Gebruikersnaam is al ingebruik");
             }
-            else if (email != heremail|| this.regi_wachtwoord.Text != this.regi_herwachtwoord.Text)
+            else if (email != heremail|| wachtwoord != herwachtwoord)
             {
-                MessageBox.Show(this, "er is iets foute gedaan");
+                MessageBox.Show(this, "Email of wachtwoord zijn niet correct");
             }
             else
             {
 
+                Account newAccount = new Account(gebruikersnaam, email, wachtwoord, false, this.GetHashCode(), false);
+                this.administration.Add(newAccount);
+                MessageBox.Show(this, "Alles ok!");
             }
         }
 
