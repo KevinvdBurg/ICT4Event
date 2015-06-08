@@ -29,7 +29,10 @@ namespace ICT4Event
         }
         protected void btnLaadEvent_Click1(object sender, EventArgs e)
         {
-
+            Event eventje = new Event();
+            eventje = (administration.FindEvent(ddlEvents.SelectedItem.Text));
+            tbNaam.Text = eventje.Name;
+            tbAdres.Text = eventje.Location.Address.ToString();
         }
     }
 }

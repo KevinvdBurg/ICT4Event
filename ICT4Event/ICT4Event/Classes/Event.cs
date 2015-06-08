@@ -40,5 +40,10 @@ namespace ICT4Event
             this.EndTime = EndTime;
         }
 
+        public Event()
+        {
+            
+        }
+
     }
 }
