@@ -18,10 +18,10 @@ namespace ICT4Event.pages
         protected void btn_registeren_Click(object sender, EventArgs e)
         {
             string gebruikersnaam = regi_gebruikersnaam.Text;
-            string email = regi_gebruikersnaam.Text;
-            string heremail = regi_gebruikersnaam.Text;
-            string wachtwoord = regi_gebruikersnaam.Text;
-            string herwachtwoord = regi_gebruikersnaam.Text;
+            string email = regi_email.Text;
+            string heremail = regi_email.Text;
+            string wachtwoord = regi_wachtwoord.Text;
+            string herwachtwoord = regi_wachtwoord.Text;
 
             bool suc = administration.FindGebruikersnaam(gebruikersnaam);
             if (!suc)
@@ -37,6 +37,7 @@ namespace ICT4Event.pages
 
                 Account newAccount = new Account(gebruikersnaam, email, wachtwoord, false, this.GetHashCode(), false);
                 this.administration.Add(newAccount);
+                
                 MessageBox.Show(this, "Alles ok!");
             }
         }

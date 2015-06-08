@@ -8,60 +8,37 @@ namespace ICT4Event.Classes
     using System.DirectoryServices;
     using System.Security.Principal;
     using System.DirectoryServices.AccountManagement;
+    using System.Drawing.Printing;
 
     public class ADRegistreerLogin
     {
 
-        public string CreateUserAccount(string ldapPath, string userName, string userPassword)
+
+        public string CreateUserAccount(string ldapPath, string userName, string userPassword, string userEmail)
         {
-            PrincipalContext ctx = new PrincipalContext(ContextType.Domain, "pts45.local", ldapPath);
-            // create a user principal object
-            
-            UserPrincipal user = new UserPrincipal(ctx, userName, userPassword, true);
 
-            // force the user to change password at next logon
-            user.ExpirePasswordNow();
-
-            // save the user to the directory
-            user.Save();
-
-            return user.SamAccountName;
-            
-            string oGUID = string.Empty;
+            Console.WriteLine(ldapPath);
             try
             {
-                oGUID = string.Empty;
-                string connectionPrefix = "LDAP://" + "CN=Users," + ldapPath;
-                DirectoryEntry dirEntry = new DirectoryEntry(connectionPrefix, "Administrator", "Admin123");
-                DirectoryEntry newUser = dirEntry.Children.Add
-                    ("CN=" + userName, "User");
-                newUser.Properties["samAccountName"].Value = userName;
-                newUser.CommitChanges();
-                oGUID = newUser.Guid.ToString();
+                PrincipalContext ctx = new PrincipalContext(ContextType.Domain, "pts45.local", ldapPath, "Administrator", "Admin123");
 
-                newUser.Invoke("SetPassword", new object[] { userPassword });
-                newUser.CommitChanges();
+                UserPrincipal usr = new UserPrincipal(ctx);
+                usr.Name = userName;
+                usr.EmailAddress = userEmail;
+                usr.SetPassword(userPassword);
+                usr.Save();
 
-
-                newUser.Properties["userAccountControl"].Value = 0x200;
-                newUser.CommitChanges();
-
-                dirEntry.Close();
-                newUser.Close();
-
-                //MessageBox.Show(" gelukt!");
+                usr.Dispose();
+                ctx.Dispose();
+                return usr.SamAccountName;
             }
-            catch (System.DirectoryServices.DirectoryServicesCOMException E)
+            catch (Exception e)
             {
-                //MessageBox.Show(E.Message);
+                Console.WriteLine(e.Message);
+                throw;
             }
-            catch (Exception ex)
-            {
-                //MessageBox.Show(ex.Message);
-            }
-            return oGUID;
         }
-
+       
 
         public bool AuthenticateAD(string userName, string password, string domain)
         {
@@ -71,6 +48,7 @@ namespace ICT4Event.Classes
             bool validatedOnDomain = pc.ValidateCredentials(userName, password);
 
             return validatedOnDomain;
+
         }
     }
 }

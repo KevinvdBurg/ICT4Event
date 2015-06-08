@@ -18,8 +18,7 @@ namespace ICT4Event
         private  ADRegistreerLogin adRegistreerLogin = new ADRegistreerLogin();
 
         private const string domain = "PTS45.local";
-        private const string domainCon = "DC=" + domain + ";";
-
+        private const string domainCon = "CN='Users',DC='" + domain + "'";
 
         public Administration()
         {
@@ -43,15 +42,16 @@ namespace ICT4Event
         /// <param name="Account"></param>
         public void Add(Account Account)
         {
-            if (IsValidEmail(Account.Email))
-            {
-                dbaccount.Insert(Account);
-                adRegistreerLogin.CreateUserAccount(domainCon, Account.Gebruiksersnaam, Account.Wachtwoord);
-            }
-            else
-            {
-                Console.WriteLine("email is niet correct");
-            }
+            //if (IsValidEmail(Account.Email))
+           // {
+                //dbaccount.Insert(Account);
+                
+adRegistreerLogin.CreateUserAccount(domainCon, Account.Gebruiksersnaam, Account.Wachtwoord, Account.Email);
+           // }
+            //else
+           // {
+            //    Console.WriteLine("email is niet correct");
+           // }
             
         }
         /// <summary>
