@@ -28,6 +28,10 @@ namespace ICT4Event
             this.Name = Name;
         }
 
+        public void UpdateLocation(Location location)
+        {
+            dbAddress.Update(location);
+        }
         public void AddLocation(Location location)
         {
             dbAddress.Insert(location);
@@ -41,11 +45,6 @@ namespace ICT4Event
         public void FindAddress(string zipcode, string housenumber)
         {
             dbAddress.Select(zipcode, housenumber);
-        }
-
-        public virtual void UpdateAddress(Address address)
-        {
-            throw new System.NotImplementedException();
         }
 
     }

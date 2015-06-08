@@ -18,7 +18,8 @@ namespace ICT4Event
         {
             Administration administration = new Administration();
             bool resultaat = false;
-            string sql = "INSERT INTO EVENT (\"ID\",\"naam\", \"maxBezoekers\", \"datumstart\", \"datumEinde\", \"locatie_id\") VALUES (:id, :naam, :maxbezoekers, :datumstart, :datumeinde, :locatie_id)";
+            string sql =
+                "INSERT INTO EVENT (\"ID\",\"naam\", \"maxBezoekers\", \"datumstart\", \"datumEinde\", \"locatie_id\") VALUES (:id, :naam, :maxbezoekers, :datumstart, :datumeinde, :locatie_id)";
             try
             {
                 Connect();
@@ -28,7 +29,11 @@ namespace ICT4Event
                 cmd.Parameters.Add(new OracleParameter("maxbezoekers", Convert.ToInt32(Event.MaxPerson)));
                 cmd.Parameters.Add(new OracleParameter("datumstart", Event.BeginTime));
                 cmd.Parameters.Add(new OracleParameter("datumEinde", Event.EndTime));
-                cmd.Parameters.Add(new OracleParameter("locatie_id", Convert.ToInt32(administration.FindAddressID(Event.Location.Address.ZipCode, Event.Location.Address.Number))));
+                cmd.Parameters.Add(
+                    new OracleParameter(
+                        "locatie_id",
+                        Convert.ToInt32(
+                            administration.FindAddressID(Event.Location.Address.ZipCode, Event.Location.Address.Number))));
                 cmd.ExecuteNonQuery();
                 //OracleDataReader reader = cmd.ExecuteReader();
                 resultaat = true;
@@ -75,6 +80,7 @@ namespace ICT4Event
             }
             return result;
         }
+
         /// <summary>
         /// Returned the selected Event by name
         /// retouneert het geselecteerde event op naam
@@ -85,7 +91,8 @@ namespace ICT4Event
         {
             Event resultaat = null;
 
-            string sql = "Select e.EVENTID, e.Naam, e.MAXPERSONEN, e.BEGINDATUM, e.EINDDATUM, l.LOCATIEID, l.HUISNUMMER, l.PLAATS, l.POSTCODE From Event e Inner Join Locatie l On e.LOCATIEID = l.LOCATIEID Where e.Naam = :name";
+            string sql =
+                "Select e.\"ID\", e.\"naam\", e.\"maxBezoekers\", e.\"datumstart\", e.\"datumEinde\", l.\"ID\", l.\"nr\", l.\"plaats\", l.\"postcode\" From Event e Inner Join Locatie l On e.\"locatie_id\" = l.\"ID\" Where e.\"naam\" = :name";
 
             int eventid = 0;
             string name = "";
@@ -101,22 +108,28 @@ namespace ICT4Event
             {
                 Connect();
                 OracleCommand cmd = new OracleCommand(sql, connection);
-                cmd.Parameters.Add(new OracleParameter("Naam", name));
+                cmd.Parameters.Add(new OracleParameter("name", EventName));
                 OracleDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        eventid = Convert.ToInt32(reader["EVENTID"]);
-                        name = Convert.ToString(reader["Naam"]);
-                        maxpers = Convert.ToInt32(reader["MAXPERSONEN"]);
-                        begindate = Convert.ToString(reader["BEGINDATUM"]);
-                        enddate = Convert.ToString(reader["EINDDATUM"]);
-                        nr = Convert.ToString(reader["HUISNUMMER"]);
-                        place = Convert.ToString(reader["PLAATS"]);
-                        zipcode = Convert.ToString(reader["POSTCODE"]);
+                        eventid = Convert.ToInt32(reader["ID"]);
+                        name = Convert.ToString(reader["naam"]);
+                        maxpers = Convert.ToInt32(reader["maxBezoekers"]);
+                        begindate = Convert.ToString(reader["datumstart"]);
+                        enddate = Convert.ToString(reader["datumEinde"]);
+                        nr = Convert.ToString(reader["nr"]);
+                        place = Convert.ToString(reader["plaats"]);
+                        zipcode = Convert.ToString(reader["postcode"]);
                     }
-                    resultaat = new Event(new Location(new Address(place, nr, zipcode), name), maxpers, name, eventid, begindate, enddate);
+                    resultaat = new Event(
+                        new Location(new Address(place, nr, zipcode), name),
+                        maxpers,
+                        name,
+                        eventid,
+                        begindate,
+                        enddate);
                 }
             }
             catch (OracleException e)
@@ -139,7 +152,8 @@ namespace ICT4Event
         {
             Event resultaat = null;
 
-            string sql = "Select \"e.ID\", \"e.naam\", \"e.maxBezoekers\", \"e.datumstart\", \"e.datumEinde\", \"l.ID\", \"l.nr\", \"l.plaats\", \"l.postcode\" From Event e Inner Join Locatie l On \"e.ID\" = \"l.ID\" Where \"e.ID\" = :EventID";
+            string sql =
+                "Select \"e.ID\", \"e.naam\", \"e.maxBezoekers\", \"e.datumstart\", \"e.datumEinde\", \"l.ID\", \"l.nr\", \"l.plaats\", \"l.postcode\" From Event e Inner Join Locatie l On \"e.ID\" = \"l.ID\" Where \"e.ID\" = :EventID";
 
             int eventid = 0;
             string name = "";
@@ -170,7 +184,13 @@ namespace ICT4Event
                         place = Convert.ToString(reader["PLAATS"]);
                         zipcode = Convert.ToString(reader["POSTCODE"]);
                     }
-                    resultaat = new Event(new Location(new Address(place, nr, zipcode), name), maxpers, name, eventid, begindate, enddate);
+                    resultaat = new Event(
+                        new Location(new Address(place, nr, zipcode), name),
+                        maxpers,
+                        name,
+                        eventid,
+                        begindate,
+                        enddate);
                 }
             }
             catch (OracleException e)
@@ -183,6 +203,7 @@ namespace ICT4Event
             }
             return resultaat;
         }
+
         /// <summary>
         /// Returned all Events in a list
         /// retouneert een lijst van events waar een account heen gaat
@@ -193,7 +214,8 @@ namespace ICT4Event
             Administration administration = new Administration();
             List<Event> resultaat = new List<Event>();
             Event AddedEvent = null;
-            string sql = "Select e.EVENTID, e.Naam, e.MAXPERSONEN, e.BEGINDATUM, e.EINDDATUM, l.LOCATIEID, l.HUISNUMMER, l.PLAATS, l.POSTCODE From Event e Inner Join Locatie l On e.LOCATIEID = l.LOCATIEID Inner Join GebruikerEvent ge ON ge.EVENTID = e.EVENTID  where ge.GEBRUIKERID = :AccountID";
+            string sql =
+                "Select e.EVENTID, e.Naam, e.MAXPERSONEN, e.BEGINDATUM, e.EINDDATUM, l.LOCATIEID, l.HUISNUMMER, l.PLAATS, l.POSTCODE From Event e Inner Join Locatie l On e.LOCATIEID = l.LOCATIEID Inner Join GebruikerEvent ge ON ge.EVENTID = e.EVENTID  where ge.GEBRUIKERID = :AccountID";
 
             int eventid = 0;
             string name = "";
@@ -227,7 +249,13 @@ namespace ICT4Event
                         nr = Convert.ToString(reader["HUISNUMMER"]);
                         place = Convert.ToString(reader["PLAATS"]);
                         zipcode = Convert.ToString(reader["POSTCODE"]);
-                        AddedEvent = new Event(new Location(new Address(place, nr, zipcode), name), maxpers, name, eventid, begindate, enddate);
+                        AddedEvent = new Event(
+                            new Location(new Address(place, nr, zipcode), name),
+                            maxpers,
+                            name,
+                            eventid,
+                            begindate,
+                            enddate);
                         resultaat.Add(AddedEvent);
                     }
                     return resultaat;
@@ -252,7 +280,8 @@ namespace ICT4Event
         {
             List<Event> resultaat = new List<Event>();
             Event AddedEvent = null;
-            string sql = "Select e.\"ID\", e.\"naam\", e.\"maxBezoekers\", e.\"datumstart\", e.\"datumEinde\", l.\"ID\", l.\"nr\", l.\"plaats\", l.\"postcode\" From Event e Inner Join Locatie l On e.\"locatie_id\" = l.\"ID\"";
+            string sql =
+                "Select e.\"ID\", e.\"naam\", e.\"maxBezoekers\", e.\"datumstart\", e.\"datumEinde\", l.\"ID\", l.\"nr\", l.\"plaats\", l.\"postcode\" From Event e Inner Join Locatie l On e.\"locatie_id\" = l.\"ID\"";
 
             int eventid = 0;
             string name = "";
@@ -281,7 +310,13 @@ namespace ICT4Event
                         nr = Convert.ToString(reader["nr"]);
                         place = Convert.ToString(reader["plaats"]);
                         zipcode = Convert.ToString(reader["postcode"]);
-                        AddedEvent = new Event(new Location(new Address(place, nr, zipcode), name), maxpers, name, eventid, begindate, enddate);
+                        AddedEvent = new Event(
+                            new Location(new Address(place, nr, zipcode), name),
+                            maxpers,
+                            name,
+                            eventid,
+                            begindate,
+                            enddate);
                         resultaat.Add(AddedEvent);
                     }
                     return resultaat;
@@ -306,7 +341,8 @@ namespace ICT4Event
         public List<Media> SelectAllMedia()
         {
             List<Media> resultaat = new List<Media>();
-            string sql = "Select p.postID,p.AANTALREPORTS,bt.INHOUD, bd.BESTANDSLOCATIE FROM post p LEFT JOIN BESTAND bd ON p.POSTID = bd.POSTID LEFT JOIN BERICHT bt ON p.POSTID = bt.POSTID  WHERE AANTALREPORTS >= 5";
+            string sql =
+                "Select p.postID,p.AANTALREPORTS,bt.INHOUD, bd.BESTANDSLOCATIE FROM post p LEFT JOIN BESTAND bd ON p.POSTID = bd.POSTID LEFT JOIN BERICHT bt ON p.POSTID = bt.POSTID  WHERE AANTALREPORTS >= 5";
 
             try
             {
@@ -347,7 +383,8 @@ namespace ICT4Event
         public List<AccountEvent> SelectAllPresent(int EventID)
         {
             List<AccountEvent> resultaat = new List<AccountEvent>();
-            string sql = "Select g.GEBRUIKERID, g.Achternaam, kpr.KAMPEERPLEKID, kpr.DATUMIN, kpr.DATUMUIT From GebruikerEvent ge Inner Join Event e ON e.EventID = ge.eventID Inner join Gebruiker g ON g.GebruikerID = ge.GEBRUIKERID inner Join Kampeerplekreservering kpr ON kpr.GEBRUIKERID = g.GEBRUIKERID WHERE ge.aanwezig = 1 AND e.EVENTID = :eventID";
+            string sql =
+                "Select g.GEBRUIKERID, g.Achternaam, kpr.KAMPEERPLEKID, kpr.DATUMIN, kpr.DATUMUIT From GebruikerEvent ge Inner Join Event e ON e.EventID = ge.eventID Inner join Gebruiker g ON g.GebruikerID = ge.GEBRUIKERID inner Join Kampeerplekreservering kpr ON kpr.GEBRUIKERID = g.GEBRUIKERID WHERE ge.aanwezig = 1 AND e.EVENTID = :eventID";
             try
             {
                 Connect();
@@ -363,7 +400,14 @@ namespace ICT4Event
                         string DATUMIN = Convert.ToString(reader["DATUMIN"]);
                         string DATUMUIT = Convert.ToString(reader["DATUMUIT"]);
                         int GEBRUIKERID = Convert.ToInt32(reader["GEBRUIKERID"]);
-                        AccountEvent tempAccountEvent = new AccountEvent(true, GEBRUIKERID, EventID, KAMPEERPLEKID, DATUMIN, DATUMUIT, Achternaam);
+                        AccountEvent tempAccountEvent = new AccountEvent(
+                            true,
+                            GEBRUIKERID,
+                            EventID,
+                            KAMPEERPLEKID,
+                            DATUMIN,
+                            DATUMUIT,
+                            Achternaam);
                         resultaat.Add(tempAccountEvent);
                     }
                     return resultaat;
@@ -388,7 +432,8 @@ namespace ICT4Event
         public Media SelectMedia(string value)
         {
             Media resultaat = null;
-            string sql = "Select p.postID,p.AANTALREPORTS,bt.INHOUD, bd.BESTANDSLOCATIE, gb.achternaam FROM post p LEFT JOIN BESTAND bd ON p.POSTID = bd.POSTID LEFT JOIN BERICHT bt ON p.POSTID = bt.POSTID  inner join gebruiker gb ON p.GebruikerID = gb.GEBRUIKERID WHERE p.POSTID = :postID";
+            string sql =
+                "Select p.postID,p.AANTALREPORTS,bt.INHOUD, bd.BESTANDSLOCATIE, gb.achternaam FROM post p LEFT JOIN BESTAND bd ON p.POSTID = bd.POSTID LEFT JOIN BERICHT bt ON p.POSTID = bt.POSTID  inner join gebruiker gb ON p.GebruikerID = gb.GEBRUIKERID WHERE p.POSTID = :postID";
             try
             {
                 Connect();
@@ -462,16 +507,13 @@ namespace ICT4Event
         /// <param name="oldzip"></param>
         /// <param name="oldhuisnummer"></param>
         /// <returns></returns>
-        public bool UpdateEvent(Event Event, string oldzip, int oldhuisnummer)
+        public bool UpdateEvent(Event Event)
         {
             Administration administration = new Administration();
-            int locationID = administration.FindAddressID(oldzip, Convert.ToString(oldhuisnummer));
-
             bool resultaat = false;
             string sql;
             string sql2;
-            sql = "UPDATE EVENT SET NAAM = :name, MAXPERSONEN = :maxbezoeker WHERE EVENTID = :EventID";
-            sql2 = "UPDATE LOCATIE SET PLAATS = :locationName, POSTCODE = :zipCode, HUISNUMMER = :huisnummer WHERE LocatieID = :LocatieID";
+            sql = "UPDATE EVENT SET \"naam\" = :name, \"maxBezoekers\" = :maxbezoeker, \"datumstart\"= :datumstart, \"datumEinde\" = :datumeinde WHERE \"ID\" = :EventID";
 
 
             try
@@ -481,6 +523,8 @@ namespace ICT4Event
                 cmd.Parameters.Add(new OracleParameter("name", Event.Name));
                 cmd.Parameters.Add(new OracleParameter("maxbezoeker", Event.MaxPerson));
                 cmd.Parameters.Add(new OracleParameter("EventID", Event.EventID));
+                cmd.Parameters.Add(new OracleParameter("datumstart", Event.BeginTime));
+                cmd.Parameters.Add(new OracleParameter("datumeinde", Event.EndTime));
                 cmd.ExecuteNonQuery();
                 resultaat = true;
             }
@@ -492,29 +536,7 @@ namespace ICT4Event
             {
                 DisConnect();
             }
-
-            try
-            {
-                Connect();
-                OracleCommand cmd = new OracleCommand(sql2, connection);
-                cmd.Parameters.Add(new OracleParameter("locationName", Event.Location.Name));
-                cmd.Parameters.Add(new OracleParameter("zipCode", Event.Location.Address.ZipCode));
-                cmd.Parameters.Add(new OracleParameter("huisnummer", Event.Location.Address.Number));
-                cmd.Parameters.Add(new OracleParameter("LocatieID", locationID));
-                cmd.ExecuteNonQuery();
-                resultaat = true;
-            }
-            catch (OracleException e)
-            {
-                throw;
-            }
-            finally
-            {
-                DisConnect();
-            }
-
             return resultaat;
-
         }
     }
 }

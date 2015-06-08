@@ -9,7 +9,7 @@
     <p>Postcode: <asp:TextBox ID="tbPostcode" runat="server"></asp:TextBox></p>
     <p>Huisnummer: <asp:TextBox ID="tbHuisnummer" runat="server"></asp:TextBox></p>
     <p>Max Bezoekers:<asp:TextBox ID="tbBezoekers" runat="server"></asp:TextBox> </p>
-    <p><asp:Button ID="btnEvent" runat="server" Text="Maak event"/></p>
+    <p><asp:Button ID="btnEvent" runat="server" Text="Update event" OnClick="btnEvent_Click"/></p>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content_2" runat="server">
     <br/>

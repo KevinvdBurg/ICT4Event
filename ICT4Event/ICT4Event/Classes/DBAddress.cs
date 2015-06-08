@@ -44,6 +44,38 @@ namespace ICT4Event
             return resultaat;
         }
 
+        public bool Update(Location location)
+        {
+            Administration administration = new Administration();
+            int locatieid = administration.FindAddressID(location.Address.ZipCode, location.Address.Number);
+            bool resultaat = false;
+            string sql = "UPDATE LOCATIE SET \"plaats\" = :plaats, \"postcode\" = :postcode, \"nr\" = :nr , \"naam\" = :naam WHERE \"ID\" = :locatieid";
+            try
+            {
+                Connect();
+                OracleCommand cmd = new OracleCommand(sql, connection);
+                cmd.Parameters.Add(new OracleParameter("plaats", location.Address.City));
+                cmd.Parameters.Add(new OracleParameter("postcode", location.Address.ZipCode));
+                cmd.Parameters.Add(new OracleParameter("nr", location.Address.Number));
+                cmd.Parameters.Add(new OracleParameter("naam", location.Name));
+                cmd.Parameters.Add(new OracleParameter("locatieid", locatieid));
+                cmd.ExecuteNonQuery();
+                //OracleDataReader reader = cmd.ExecuteReader();
+                resultaat = true;
+            }
+            catch (OracleException e)
+            {
+
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            finally
+            {
+                DisConnect();
+            }
+            return resultaat;
+        }
+
         /// <summary>
         /// Verwijderd het gegeven adres uit de database
         /// </summary>

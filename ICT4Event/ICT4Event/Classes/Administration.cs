@@ -744,9 +744,9 @@ namespace ICT4Event
         /// <param name="tempEvent"></param>
         /// <param name="Oldzip"></param>
         /// <param name="huisnummer"></param>
-        public void UpdateEvent(Event tempEvent, string Oldzip, int huisnummer)
+        public void UpdateEvent(Event tempEvent)
         {
-            dbevent.UpdateEvent(tempEvent, Oldzip, huisnummer);
+            dbevent.UpdateEvent(tempEvent);
         }
 
         /// <summary>
