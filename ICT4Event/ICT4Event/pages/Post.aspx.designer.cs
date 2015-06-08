@@ -13,6 +13,15 @@ namespace ICT4Event.pages {
     public partial class Post {
         
         /// <summary>
+        /// btnReturn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReturn;
+        
+        /// <summary>
         /// lbCategorie control.
         /// </summary>
         /// <remarks>
@@ -31,13 +40,13 @@ namespace ICT4Event.pages {
         protected global::System.Web.UI.WebControls.ListBox lbItems;
         
         /// <summary>
-        /// Image1 control.
+        /// btnDownload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::System.Web.UI.WebControls.Button btnDownload;
         
         /// <summary>
         /// tbInhoud control.
