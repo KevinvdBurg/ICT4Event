@@ -18,7 +18,7 @@ namespace ICT4Event
         private  ADRegistreerLogin adRegistreerLogin = new ADRegistreerLogin();
 
         private const string domain = "PTS45.local";
-        private const string domainCon = "CN='Users',DC='" + domain + "'";
+        private const string domainCon = "OU=Domain Users,DC=PTS45,DC=local";
 
         public Administration()
         {
@@ -46,13 +46,14 @@ namespace ICT4Event
            // {
                 //dbaccount.Insert(Account);
                 
-adRegistreerLogin.CreateUserAccount(domainCon, Account.Gebruiksersnaam, Account.Wachtwoord, Account.Email);
-           // }
+                adRegistreerLogin.CreateUserAccount(domainCon, Account.Gebruiksersnaam, Account.Wachtwoord, Account.Email);
+                //adRegistreerLogin.CU("Administrator", "admin123");
+            // }
             //else
-           // {
+            // {
             //    Console.WriteLine("email is niet correct");
-           // }
-            
+            // }
+
         }
         /// <summary>
         /// Een account wordt doorgestuurd naar dbaccount.Delete zodat dit account uit de database verwijderd kan worden

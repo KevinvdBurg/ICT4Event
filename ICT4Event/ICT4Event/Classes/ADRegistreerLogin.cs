@@ -20,11 +20,14 @@ namespace ICT4Event.Classes
             Console.WriteLine(ldapPath);
             try
             {
+
                 PrincipalContext ctx = new PrincipalContext(ContextType.Domain, "pts45.local", ldapPath, "Administrator", "Admin123");
 
                 UserPrincipal usr = new UserPrincipal(ctx);
-                usr.Name = userName;
+                usr.GivenName = userName;
+
                 usr.EmailAddress = userEmail;
+
                 usr.SetPassword(userPassword);
                 usr.Save();
 
@@ -38,7 +41,7 @@ namespace ICT4Event.Classes
                 throw;
             }
         }
-       
+
 
         public bool AuthenticateAD(string userName, string password, string domain)
         {
