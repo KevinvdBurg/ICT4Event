@@ -18,7 +18,7 @@ namespace ICT4Event
         private  ADRegistreerLogin adRegistreerLogin = new ADRegistreerLogin();
 
         private const string domain = "PTS45.local";
-        private const string domainCon = "OU=Domain Users,DC=PTS45,DC=local";
+        private const string domainCon = "CN=Users,DC=pts45,DC=local";
 
         public Administration()
         {

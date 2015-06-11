@@ -16,15 +16,14 @@ namespace ICT4Event.Classes
 
         public string CreateUserAccount(string ldapPath, string userName, string userPassword, string userEmail)
         {
-
             Console.WriteLine(ldapPath);
             try
             {
 
                 PrincipalContext ctx = new PrincipalContext(ContextType.Domain, "pts45.local", ldapPath, "Administrator", "Admin123");
-
+                //UserPrincipal usr = UserPrincipal.FindByIdentity(ctx, IdentityType.SamAccountName, "Guest");
                 UserPrincipal usr = new UserPrincipal(ctx);
-                usr.GivenName = userName;
+                usr.SamAccountName = userName;
 
                 usr.EmailAddress = userEmail;
 
