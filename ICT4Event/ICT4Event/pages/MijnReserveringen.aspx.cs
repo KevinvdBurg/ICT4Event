@@ -5,13 +5,16 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace lastfm
+namespace ICT4Event.pages
 {
-    public partial class master : System.Web.UI.MasterPage
+    public partial class MijnReserveringen : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+               
+            }
         }
     }
 }

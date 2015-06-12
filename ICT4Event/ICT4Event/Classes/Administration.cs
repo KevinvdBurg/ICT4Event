@@ -46,7 +46,12 @@ namespace ICT4Event
             {
                 
             }
+            return freeItems;
         }
 
+        public string FindInfoSpot(int id)
+        {
+            dbCampingspot.FindInfo(id);
+        }
     }
 }

@@ -73,6 +73,7 @@
     <Content Include="js\vendor\jquery-2.1.4.js" />
     <Content Include="js\vendor\modernizr-2.8.3-respond-1.4.2.min.js" />
     <Content Include="js\vendor\npm.js" />
+    <Content Include="pages\MijnReserveringen.aspx" />
     <Content Include="pages\registreren.aspx" />
     <Content Include="pages\Reserve.aspx" />
     <Content Include="pages\ReserveItem.aspx" />
@@ -126,6 +127,13 @@
     </Compile>
     <Compile Include="master.Master.designer.cs">
       <DependentUpon>master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="pages\MijnReserveringen.aspx.cs">
+      <DependentUpon>MijnReserveringen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\MijnReserveringen.aspx.designer.cs">
+      <DependentUpon>MijnReserveringen.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\registreren.aspx.cs">
       <DependentUpon>registreren.aspx</DependentUpon>

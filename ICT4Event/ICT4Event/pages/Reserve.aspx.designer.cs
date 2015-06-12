@@ -85,6 +85,15 @@ namespace ICT4Event.pages {
         protected global::System.Web.UI.WebControls.DropDownList ddlSpot;
         
         /// <summary>
+        /// tbInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbInfo;
+        
+        /// <summary>
         /// btnAnulleren control.
         /// </summary>
         /// <remarks>

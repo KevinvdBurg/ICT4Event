@@ -10,6 +10,7 @@ namespace ICT4Event.pages
     
     public partial class Reserve : System.Web.UI.Page
     {
+        Administration administration = new Administration();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -19,8 +20,8 @@ namespace ICT4Event.pages
                 {
                     ddlSpot.Items.Add(Convert.ToString(item.ID));
                 }
-                
             }
+            tbInfo.Text = administration.FindInfoSpot(ddlSpot.SelectedItem.Value);
         }
 
         protected void btnReserve_Click(object sender, EventArgs e)
@@ -46,6 +47,7 @@ namespace ICT4Event.pages
                     tbCity.Text,
                     tbBank.Text);
             }
+
         }
     }
 }
