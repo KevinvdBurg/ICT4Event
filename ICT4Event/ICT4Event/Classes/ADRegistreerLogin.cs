@@ -24,7 +24,6 @@ namespace ICT4Event.Classes
                 //UserPrincipal usr = UserPrincipal.FindByIdentity(ctx, IdentityType.SamAccountName, "Guest");
                 UserPrincipal usr = new UserPrincipal(ctx);
                 usr.SamAccountName = userName;
-
                 usr.EmailAddress = userEmail;
 
                 usr.SetPassword(userPassword);
@@ -32,7 +31,8 @@ namespace ICT4Event.Classes
 
                 usr.Dispose();
                 ctx.Dispose();
-                return usr.SamAccountName;
+                return userName;
+
             }
             catch (Exception e)
             {

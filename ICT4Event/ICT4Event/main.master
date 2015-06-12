@@ -3,11 +3,11 @@
     Gebruiker
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="menu_bar_top" runat="server">
-    <li class="flex-item" id="i-home"><a href="#"> Home</a></li>
+    <li class="flex-item" id="i-home"><a href="/index.aspx"> Home</a></li>
    
     <li class="flex-item" id="i-post"><a href="#">Post</a></li>
                     
-    <li class="flex-item" id="i-reververingen"><a href="#">Reververingen</a></li>
+    <li class="flex-item" id="i-reververingen"><a href="/pages/registreren.aspx">Reververingen</a></li>
 
     <li class="flex-item" id="i-opties"><a href="#">Opties</a></li>
 </asp:Content>
@@ -30,7 +30,7 @@
     <div class="nav-opties">
         <ul class="sub-flex-container sub sub-opties">
             <li class="sub-flex-item"><asp:DropDownList ID="dropevent_main" runat="server"></asp:DropDownList></li>
-            <li class="sub-flex-item"><a href="#">Inloggen</a></li>
+            <li class="sub-flex-item"><a href="/pages/inloggen.aspx">Inloggen</a></li>
             <li class="sub-flex-item"><a href="#">Registeren</a></li>
         </ul>
     </div>

@@ -29,6 +29,7 @@ namespace ICT4Event.pages
             else
             {
                 this.administration.Login(username, password);
+                MessageBox.Show(this, "Inloggen gelukt!");   
             }
             
         }

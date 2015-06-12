@@ -17,5 +17,4 @@
     <h1>Activeren</h1>
     <p>Activerings code: <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></p>
     <p><asp:Button ID="btn_actieveren" runat="server" Text="Activeren" OnClick="btn_actieveren_Click" /></p>
-
 </asp:Content>
