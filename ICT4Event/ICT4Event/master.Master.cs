@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace lastfm
+namespace ICT4Event
 {
     public partial class master : System.Web.UI.MasterPage
     {
