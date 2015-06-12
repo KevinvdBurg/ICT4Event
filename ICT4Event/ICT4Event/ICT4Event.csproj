@@ -101,6 +101,7 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Keys.cs" />
     <Compile Include="main.master.cs">
       <DependentUpon>main.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
