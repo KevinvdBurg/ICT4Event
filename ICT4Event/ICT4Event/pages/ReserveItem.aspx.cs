@@ -14,7 +14,7 @@ namespace ICT4Event.pages
             if (!IsPostBack)
             {
                  Administration administration = new Administration();
-                /*foreach (var item in administration.FindAllFreeItems())
+                foreach (var item in administration.FindAllFreeItems())
                 {
 
                 }
