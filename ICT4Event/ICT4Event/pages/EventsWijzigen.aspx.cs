@@ -34,7 +34,7 @@ namespace ICT4Event
             Event eventje = new Event();
             eventje = (administration.FindEvent(ddlEvents.SelectedItem.Text));
             tbNaam.Text = eventje.Name;
-            tbAdres.Text = eventje.Location.Address.City.ToString();
+            tbAdres.Text = eventje.Location.Address.Street.ToString();
             tbNummer.Text = eventje.EventID.ToString();
             tbBezoekers.Text = eventje.MaxPerson.ToString();
             tbHuisnummer.Text = eventje.Location.Address.Number.ToString();
@@ -56,8 +56,8 @@ namespace ICT4Event
             }
             else
             {
-                Address adres = new Address(tbStad.Text, tbHuisnummer.Text, tbPostcode.Text);
-                Location location = new Location(adres, tbNaam.Text);
+                Address adres = new Address(tbStad.Text, tbHuisnummer.Text, tbPostcode.Text, tbAdres.Text);
+                Location location = new Location(adres, tbLocatienaam.Text);
                 location.UpdateLocation(location);
                 Event newEvent = new Event(
                     location,

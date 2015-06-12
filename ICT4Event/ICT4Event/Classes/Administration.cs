@@ -248,6 +248,7 @@ namespace ICT4Event
         /// </summary>
         /// <param name="Code"></param>
         /// <returns></returns>
+        
         public Account FindAccount(string Code)
         {
             Account foundAccount = dbaccount.Select(Code);
@@ -263,7 +264,7 @@ namespace ICT4Event
             }
 
         }
-
+        
         /// <summary>
         /// Geeft een lijst terug met alle bekende accounts uit de database
         /// </summary>

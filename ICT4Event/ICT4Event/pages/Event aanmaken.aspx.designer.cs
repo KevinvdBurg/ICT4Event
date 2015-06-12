@@ -94,24 +94,6 @@ namespace ICT4Event {
         protected global::System.Web.UI.WebControls.Button btnEvent;
         
         /// <summary>
-        /// ddlEvents control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEvents;
-        
-        /// <summary>
-        /// btnLaadEvent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLaadEvent;
-        
-        /// <summary>
         /// calDatumBegin control.
         /// </summary>
         /// <remarks>

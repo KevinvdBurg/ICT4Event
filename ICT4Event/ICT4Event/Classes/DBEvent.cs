@@ -92,7 +92,7 @@ namespace ICT4Event
             Event resultaat = null;
 
             string sql =
-                "Select e.\"ID\", e.\"naam\", e.\"maxBezoekers\", e.\"datumstart\", e.\"datumEinde\", l.\"ID\", l.\"nr\", l.\"plaats\", l.\"postcode\" From Event e Inner Join Locatie l On e.\"locatie_id\" = l.\"ID\" Where e.\"naam\" = :name";
+                "Select e.\"ID\", e.\"naam\", e.\"maxBezoekers\", e.\"datumstart\", e.\"datumEinde\", l.\"ID\", l.\"naam\" as naam_1, l.\"nr\", l.\"plaats\", l.\"postcode\", l.\"straat\" From Event e Inner Join Locatie l On e.\"locatie_id\" = l.\"ID\" Where e.\"naam\" = :name";
 
             int eventid = 0;
             string name = "";
@@ -103,6 +103,8 @@ namespace ICT4Event
             string place = "";
             string zipcode = "";
             string country = "";
+            string locationname = "";
+            string straat = "";
 
             try
             {
@@ -116,15 +118,17 @@ namespace ICT4Event
                     {
                         eventid = Convert.ToInt32(reader["ID"]);
                         name = Convert.ToString(reader["naam"]);
+                        locationname = Convert.ToString(reader["naam_1"]);
                         maxpers = Convert.ToInt32(reader["maxBezoekers"]);
                         begindate = Convert.ToString(reader["datumstart"]);
                         enddate = Convert.ToString(reader["datumEinde"]);
                         nr = Convert.ToString(reader["nr"]);
                         place = Convert.ToString(reader["plaats"]);
                         zipcode = Convert.ToString(reader["postcode"]);
+                        straat = Convert.ToString(reader["straat"]);
                     }
                     resultaat = new Event(
-                        new Location(new Address(place, nr, zipcode), name),
+                        new Location(new Address(place, nr, zipcode, straat), locationname),
                         maxpers,
                         name,
                         eventid,
@@ -153,7 +157,7 @@ namespace ICT4Event
             Event resultaat = null;
 
             string sql =
-                "Select \"e.ID\", \"e.naam\", \"e.maxBezoekers\", \"e.datumstart\", \"e.datumEinde\", \"l.ID\", \"l.nr\", \"l.plaats\", \"l.postcode\" From Event e Inner Join Locatie l On \"e.ID\" = \"l.ID\" Where \"e.ID\" = :EventID";
+                "Select \"e.ID\", \"e.naam\", \"e.maxBezoekers\", \"e.datumstart\", \"e.datumEinde\", \"l.ID\", \"l.nr\", \"l.plaats\", \"l.postcode\", \"l.straat\" From Event e Inner Join Locatie l On \"e.ID\" = \"l.ID\" Where \"e.ID\" = :EventID";
 
             int eventid = 0;
             string name = "";
@@ -164,6 +168,7 @@ namespace ICT4Event
             string place = "";
             string zipcode = "";
             string country = "";
+            string straat = "";
 
             try
             {
@@ -183,9 +188,10 @@ namespace ICT4Event
                         nr = Convert.ToString(reader["HUISNUMMER"]);
                         place = Convert.ToString(reader["PLAATS"]);
                         zipcode = Convert.ToString(reader["POSTCODE"]);
+                        straat = Convert.ToString(reader["straat"]);
                     }
                     resultaat = new Event(
-                        new Location(new Address(place, nr, zipcode), name),
+                        new Location(new Address(place, nr, zipcode, straat), name),
                         maxpers,
                         name,
                         eventid,
@@ -209,6 +215,7 @@ namespace ICT4Event
         /// retouneert een lijst van events waar een account heen gaat
         /// </summary>
         /// <returns></returns>
+        /*
         public List<Event> SelectAllperAccount(Account account)
         {
             Administration administration = new Administration();
@@ -271,6 +278,7 @@ namespace ICT4Event
             }
             return resultaat;
         }
+         */
 
         /// <summary>
         /// retouneerd een lijst van alle events uit de database
@@ -281,7 +289,7 @@ namespace ICT4Event
             List<Event> resultaat = new List<Event>();
             Event AddedEvent = null;
             string sql =
-                "Select e.\"ID\", e.\"naam\", e.\"maxBezoekers\", e.\"datumstart\", e.\"datumEinde\", l.\"ID\", l.\"nr\", l.\"plaats\", l.\"postcode\" From Event e Inner Join Locatie l On e.\"locatie_id\" = l.\"ID\"";
+                "Select e.\"ID\", e.\"naam\", e.\"maxBezoekers\", e.\"datumstart\", e.\"datumEinde\", l.\"ID\", l.\"nr\", l.\"plaats\", l.\"postcode\", l.\"straat\" From Event e Inner Join Locatie l On e.\"locatie_id\" = l.\"ID\"";
 
             int eventid = 0;
             string name = "";
@@ -292,6 +300,7 @@ namespace ICT4Event
             string place = "";
             string zipcode = "";
             string country = "";
+            string straat = "";
 
             try
             {
@@ -310,8 +319,9 @@ namespace ICT4Event
                         nr = Convert.ToString(reader["nr"]);
                         place = Convert.ToString(reader["plaats"]);
                         zipcode = Convert.ToString(reader["postcode"]);
+                        straat = Convert.ToString(reader["straat"]);
                         AddedEvent = new Event(
-                            new Location(new Address(place, nr, zipcode), name),
+                            new Location(new Address(place, nr, zipcode, straat), name),
                             maxpers,
                             name,
                             eventid,

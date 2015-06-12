@@ -253,6 +253,7 @@ namespace ICT4Event
         }
 
         //haalt alle plekken op
+        
         public List<ReserveSpot> SelectAllSpots()
         {
             List<ReserveSpot> resultaat = new List<ReserveSpot>();
@@ -323,7 +324,7 @@ namespace ICT4Event
             return resultaat;
         }
 
-
+        
         // kijkt of een reservering betaaldis
         internal List<string> Check(int reserveringID)
         {
@@ -391,6 +392,7 @@ namespace ICT4Event
             return resultaat;
         }
         //haalt alle reserveringen op
+        
         public List<ReserveItem> SelectAllItems()
         {
             List<ReserveItem> resultaat = new List<ReserveItem>();
@@ -468,7 +470,7 @@ namespace ICT4Event
             return resultaat;
         }
 
-
+        
         //verwijdered een verhuur
         public bool DeleteItem(int value)
         {

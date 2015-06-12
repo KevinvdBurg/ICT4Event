@@ -25,7 +25,17 @@ namespace ICT4Event
             set;
         }
 
+        public string Street { get; set; }
 
+
+
+        public Address(string City, string Number, string ZipCode, string Street)
+        {
+            this.City = City;
+            this.Number = Number;
+            this.ZipCode = ZipCode;
+            this.Street = Street;
+        }
 
         public Address(string City, string Number, string ZipCode)
         {

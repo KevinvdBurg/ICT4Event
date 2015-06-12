@@ -18,7 +18,7 @@ namespace ICT4Event
         public bool Insert(Location location)
         {
             bool resultaat = false;
-            string sql = "INSERT INTO LOCATIE (\"plaats\", \"postcode\", \"nr\", \"naam\") VALUES (:plaats, :postcode, :nr, :naam)";
+            string sql = "INSERT INTO LOCATIE (\"plaats\", \"postcode\", \"nr\", \"naam\", \"straat\") VALUES (:plaats, :postcode, :nr, :naam, :straat)";
             try
             {
                 Connect();
@@ -27,6 +27,7 @@ namespace ICT4Event
                 cmd.Parameters.Add(new OracleParameter("postcode", location.Address.ZipCode));
                 cmd.Parameters.Add(new OracleParameter("nr", location.Address.Number));
                 cmd.Parameters.Add(new OracleParameter("naam", location.Name));
+                cmd.Parameters.Add(new OracleParameter("straat", location.Address.Street));
                 cmd.ExecuteNonQuery();
                 //OracleDataReader reader = cmd.ExecuteReader();
                 resultaat = true;
@@ -49,7 +50,7 @@ namespace ICT4Event
             Administration administration = new Administration();
             int locatieid = administration.FindAddressID(location.Address.ZipCode, location.Address.Number);
             bool resultaat = false;
-            string sql = "UPDATE LOCATIE SET \"plaats\" = :plaats, \"postcode\" = :postcode, \"nr\" = :nr , \"naam\" = :naam WHERE \"ID\" = :locatieid";
+            string sql = "UPDATE LOCATIE SET \"plaats\" = :plaats, \"postcode\" = :postcode, \"nr\" = :nr , \"naam\" = :naam , \"straat\" = :straat WHERE \"ID\" = :locatieid";
             try
             {
                 Connect();
@@ -59,6 +60,7 @@ namespace ICT4Event
                 cmd.Parameters.Add(new OracleParameter("nr", location.Address.Number));
                 cmd.Parameters.Add(new OracleParameter("naam", location.Name));
                 cmd.Parameters.Add(new OracleParameter("locatieid", locatieid));
+                cmd.Parameters.Add(new OracleParameter("straat", location.Address.Street));
                 cmd.ExecuteNonQuery();
                 //OracleDataReader reader = cmd.ExecuteReader();
                 resultaat = true;
@@ -123,6 +125,7 @@ namespace ICT4Event
             string POSTCODE = "";
             string HUISNUMMER = "";
             string COUNTRY = "";
+            string straat = "";
 
             try
             {
@@ -137,10 +140,11 @@ namespace ICT4Event
                         PLAATS = Convert.ToString(reader["PLAATS"]);
                         POSTCODE = Convert.ToString(reader["POSTCODE"]);
                         HUISNUMMER = Convert.ToString(reader["HUISNUMMER"]);
+                        straat = Convert.ToString(reader["straat"]);
 
                     }
 
-                    resultaat = new Address(PLAATS, HUISNUMMER, POSTCODE);
+                    resultaat = new Address(PLAATS, HUISNUMMER, POSTCODE, straat);
                 }
             }
             catch (OracleException e)

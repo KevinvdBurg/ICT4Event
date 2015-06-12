@@ -27,8 +27,8 @@ namespace ICT4Event
             }
             else
             {
-                Address adres = new Address(tbStad.Text, tbHuisnummer.Text, tbPostcode.Text);
-                Location location = new Location(adres, tbNaam.Text);
+                Address adres = new Address(tbStad.Text, tbHuisnummer.Text, tbPostcode.Text, tbAdres.Text);
+                Location location = new Location(adres, tbLocatienaam.Text);
                 location.AddLocation(location);
                 Event newEvent = new Event(
                     location,
