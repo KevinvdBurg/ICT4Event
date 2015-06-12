@@ -5,9 +5,11 @@ using System.Web;
 
 namespace ICT4Event
 {
-    public class Keys
+    public class MyKeys
     {
         public static readonly string key_accountID = "accountID";
-        public static readonly string key_naam = "naam";
+        public static readonly string key_username = "username";
+        public static readonly string key_email = "email";
+
     }
 }

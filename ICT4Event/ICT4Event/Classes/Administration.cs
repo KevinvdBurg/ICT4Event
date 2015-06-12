@@ -148,6 +148,11 @@ namespace ICT4Event
                 return false;
             }
         }
+
+        public Account GetDetails(string username)
+        {
+            return dbaccount.Select(username);
+        }
     }
 
     public static class MessageBox

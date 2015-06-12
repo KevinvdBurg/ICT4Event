@@ -121,8 +121,34 @@ namespace ICT4Event
         return resultaat;
     }
 
-	public  void Select()
+	public Account Select(string username)
 	{
+        Account resultaat = null;
+        string sql = "select \"id\", \"gebruikersnaam\", \"email\" as aantal from account where \"gebruikersnaam\" = :gebruikersnaam";
+        try
+        {
+            Connect();
+            OracleCommand cmd = new OracleCommand(sql, connection);
+            cmd.Parameters.Add(new OracleParameter("gebruikersnaam", username));
+            OracleDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                Account returnedAccount = new Account(
+                    Convert.ToInt32(reader["id"]),
+                    Convert.ToString(reader["gebruikersnaam"]),
+                    Convert.ToString(reader["email"]));
+                resultaat = returnedAccount;
+            }
+        }
+        catch (OracleException e)
+        {
+            throw;
+        }
+        finally
+        {
+            DisConnect();
+        }
+        return resultaat;
 	}
 
     public bool SelectGebruikersnaam(string gebruikersnaam)

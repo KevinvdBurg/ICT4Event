@@ -8,6 +8,9 @@ using System.Web.UI.WebControls;
 namespace ICT4Event.pages
 {
     using System.Text.RegularExpressions;
+    using System.Windows.Forms;
+
+    using MessageBox = ICT4Event.MessageBox;
 
     public partial class inloggen : System.Web.UI.Page
     {
@@ -29,6 +32,12 @@ namespace ICT4Event.pages
             else
             {
                 this.administration.Login(username, password);
+                Account detailsAccount = this.administration.GetDetails(username);
+
+                Session[MyKeys.key_accountID] = detailsAccount.GebruikerID;
+                Session[MyKeys.key_email] = detailsAccount.Email;
+                Session[MyKeys.key_username] = detailsAccount.Gebruiksersnaam;
+
                 MessageBox.Show(this, "Inloggen gelukt!");   
             }
             

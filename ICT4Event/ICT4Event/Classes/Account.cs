@@ -31,9 +31,17 @@ namespace ICT4Event
             this.Gebruiksersnaam = gebruiksersnaam;
             this.Type = type;
         }
+
+        public Account(int gebruikersID, string gebruiksersnaam, string email)
+        {
+            this.GebruikerID = gebruikersID;
+            this.Email = email;
+            this.Gebruiksersnaam = gebruiksersnaam;
+        }
+
         public Account()
         {
-
+            
         }
     }
 }
