@@ -83,7 +83,8 @@ namespace ICT4Event
 
         public string FindInfo(int id)
         {
-            string sql = "SELECT \"
+            string sql = " ";
+            return sql;
         }
     }
 }

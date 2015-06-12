@@ -15,13 +15,12 @@ namespace ICT4Event.pages
         {
             if (!IsPostBack)
             {
-                Administration administration = new Administration();
                 foreach (var item in administration.FindAllFreeCampingSpots())
                 {
                     ddlSpot.Items.Add(Convert.ToString(item.ID));
                 }
             }
-            tbInfo.Text = administration.FindInfoSpot(ddlSpot.SelectedItem.Value);
+            tbInfo.Text = administration.FindInfoSpot(Convert.ToInt32(ddlSpot.SelectedItem.Value));
         }
 
         protected void btnReserve_Click(object sender, EventArgs e)

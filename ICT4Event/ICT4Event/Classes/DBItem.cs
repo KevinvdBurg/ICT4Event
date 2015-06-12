@@ -9,7 +9,7 @@ namespace ICT4Event
 
     public class DBItem : Database
     {
-        public List<Item> SelectAllItems()
+        /*public List<Item> SelectAllItems()
         {
             List<CampingSpot> result = new List<CampingSpot>();
             //string sql = "SELECT * FROM plek WHERE id NOT IN (SELECT plek_id FROM plek_reservering)";
@@ -33,7 +33,7 @@ namespace ICT4Event
                     }
                 }
             }
-
+        */
 
             //public int ItemID (stringnaam)
             //{
@@ -68,7 +68,4 @@ namespace ICT4Event
 
             //}
         }
-
-
     }
-}

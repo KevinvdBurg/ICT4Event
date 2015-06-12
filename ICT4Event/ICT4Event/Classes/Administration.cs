@@ -38,7 +38,7 @@ namespace ICT4Event
             return freeSpots;
         }
 
-        public List<Item> FindAllFreeItems()
+        /*public List<Item> FindAllFreeItems()
         {
             List<Item> foundItems = this.dbItem.SelectAllItems();
             List<Item> freeItems = new List<Item>();
@@ -48,10 +48,10 @@ namespace ICT4Event
             }
             return freeItems;
         }
-
+        */
         public string FindInfoSpot(int id)
         {
-            dbCampingspot.FindInfo(id);
+            return dbCampingspot.FindInfo(id);
         }
     }
 }
