@@ -13,5 +13,16 @@ namespace ICT4Event
         {
 
         }
+
+        protected void btn_Uitloggen_Click(object sender, EventArgs e)
+        {
+            Uitloggen();
+        }
+        public void Uitloggen()
+        {
+            this.Session.Clear();
+            this.Session.Abandon();
+            this.Session.RemoveAll();
+        }
     }
 }

@@ -31,17 +31,24 @@ namespace ICT4Event.pages
             }
             else
             {
-                this.administration.Login(username, password);
-                Account detailsAccount = this.administration.GetDetails(username);
+                string logincheck = this.administration.LoginCheck(username, password);
+                if (logincheck == "Succes")
+                {
+                    this.administration.Login(username, password);
+                    Account detailsAccount = this.administration.GetDetails(username);
 
-                this.Session[MyKeys.key_accountID] = detailsAccount.GebruikerID;
-                this.Session[MyKeys.key_email] = detailsAccount.Email;
-                this.Session[MyKeys.key_username] = detailsAccount.Gebruiksersnaam;
+                    this.Session[MyKeys.key_accountID] = detailsAccount.GebruikerID;
+                    this.Session[MyKeys.key_email] = detailsAccount.Email;
+                    this.Session[MyKeys.key_username] = detailsAccount.Gebruiksersnaam;
 
-                MessageBox.Show(this, "Inloggen gelukt!");   
-                Response.Redirect("/index.aspx");
+                    MessageBox.Show(this, "Inloggen gelukt!");
+                    Response.Redirect("/index.aspx");
+                }
+                else
+                {
+                    MessageBox.Show(this.Page, logincheck);
+                }
             }
-            
         }
     }
 }

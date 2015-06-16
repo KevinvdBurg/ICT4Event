@@ -13,5 +13,11 @@ namespace ICT4Event
         {
 
         }
+        public void Uitloggen()
+        {
+            this.Session.Clear();
+            this.Session.Abandon();
+            this.Session.RemoveAll();
+        }
     }
 }

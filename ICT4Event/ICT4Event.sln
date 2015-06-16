@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICT4Event", "ICT4Event\ICT4Event.csproj", "{17DCEB21-30B2-473E-9CF3-68BD33D89D41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICT4EventTests", "ICT4EventTests\ICT4EventTests.csproj", "{0D1A4680-6944-4893-AC0E-8AB0816BB5A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,12 @@ Global
 		{17DCEB21-30B2-473E-9CF3-68BD33D89D41}.Release|Any CPU.Build.0 = Release|Any CPU
 		{17DCEB21-30B2-473E-9CF3-68BD33D89D41}.Release|x86.ActiveCfg = Release|x86
 		{17DCEB21-30B2-473E-9CF3-68BD33D89D41}.Release|x86.Build.0 = Release|x86
+		{0D1A4680-6944-4893-AC0E-8AB0816BB5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D1A4680-6944-4893-AC0E-8AB0816BB5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D1A4680-6944-4893-AC0E-8AB0816BB5A0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0D1A4680-6944-4893-AC0E-8AB0816BB5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D1A4680-6944-4893-AC0E-8AB0816BB5A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D1A4680-6944-4893-AC0E-8AB0816BB5A0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

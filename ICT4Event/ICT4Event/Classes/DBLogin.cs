@@ -11,9 +11,9 @@ namespace ICT4Event
     public class DBLogin:Database
     {
 
-        public bool loginCheck(string email, string password)
+        public string loginCheck(string email, string password)
         {
-            bool resultaat = false;
+            string resultaat = "Geen Connectie";
             string sql;
             sql = "select * from gebruiker where emailadres = :email and wachtwoord = :password";
 
@@ -26,7 +26,15 @@ namespace ICT4Event
                 OracleDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
-                    resultaat = true;
+                    int geactiveerd = Convert.ToInt32(reader["geactiveerd"]);
+                    if (geactiveerd == 0)
+                    {
+                        resultaat = "Activeer eerst uw account";
+                    }
+                    else
+                    {
+                        resultaat = "true";
+                    }
                 }
             }
             catch (OracleException e)
@@ -39,10 +47,6 @@ namespace ICT4Event
             }
             return resultaat;
         }
-
-
-       
-
 
         //public Account returnLoggedinAccount(string email)
         //{

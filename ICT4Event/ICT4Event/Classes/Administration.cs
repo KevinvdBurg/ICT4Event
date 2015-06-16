@@ -27,17 +27,6 @@ namespace ICT4Event
         }
 
         /// <summary>
-        /// set the current account to the given email
-        /// Zet de account.email gelijk aan het gegeven email
-        /// </summary>
-        /// <param name="email"></param>
-
-        //public void setCurrentAccount(string email)
-        //{
-        //    this.currentAccount = dblogin.returnLoggedinAccount(email);
-        //}
-
-        /// <summary>
         /// Een Account wordt doorgestuurd naar dbAccount.Insert zodat het account aan de database toegevoegd kan worden
         /// </summary>
         /// <param name="Account"></param>
@@ -46,15 +35,6 @@ namespace ICT4Event
             dbaccount.Insert(Account);
             adRegistreerLogin.CreateUserAccount(domainCon, Account.Gebruiksersnaam, Account.Wachtwoord, Account.Email);
         }
-
-        /// <summary>
-        /// Een account wordt doorgestuurd naar dbaccount.Delete zodat dit account uit de database verwijderd kan worden
-        /// </summary>
-        /// <param name="Account"></param>
-        //public void Delete(Account Account)
-        //{
-        //    dbaccount.Delete(Account);
-        //}
 
         /// <summary>
         /// The find gebruikersnaam.
@@ -78,54 +58,19 @@ namespace ICT4Event
                 return false;
             }
         }
+        public bool FindEmail(string email)
+        {
+            bool gevonden = dbaccount.SelectEmail(email.ToLower());
 
-        /// <summary>
-        /// Doorzoekt de database naar een account met een passend email en retouneert vervolgens het accountid
-        /// </summary>
-        /// <param name="email"></param>
-        /// <returns></returns>
-        //public int FindAccountID(string email)
-        //{
-        //    int foundAccountID = dbaccount.FindAccountID(email);
-
-        //    if (foundAccountID != null)
-        //    {
-        //        return foundAccountID;
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show(this,"Account niet gevonden");
-        //        return Convert.ToInt32(null);
-        //    }
-        //}
-
-        /// <summary>
-        /// Update het email van het account
-        /// </summary>
-        /// <param name="Account"></param>
-        /// <param name="oldemail"></param>
-        //public void Update(Account Account, string oldemail)
-        //{
-        //    dbaccount.Update(Account, oldemail);
-        //}
-
-        /// <summary>
-        /// Koppelt bij het inchecken een RFID aan een account
-        /// </summary>
-        /// <param name="email"></param>
-        /// <param name="rfid"></param>
-        //public void ChainRFID(string email, string rfid)
-        //{
-        //    bool SuccesChain = dbaccount.ChainRFID(email, rfid);
-        //    if (SuccesChain)
-        //    {
-        //        MessageBox.Show(this,"Koppeling Gelukt");
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show(this,"Koppeling Mislukt");
-        //    }
-        //}
+            if (gevonden == false)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         /// <summary>
         /// De gebruiker wordt aangemeld
@@ -136,6 +81,10 @@ namespace ICT4Event
         public bool Login(string userName, string password)
         {
             return adRegistreerLogin.AuthenticateAD(userName, password, domain);
+        }
+        public string LoginCheck(string username, string password)
+        {
+            return this.dblogin.loginCheck(username, password);
         }
 
         bool IsValidEmail(string email)
@@ -158,12 +107,11 @@ namespace ICT4Event
 
         public void SendEmail(Account account)
         {
-
             string to = account.Email;
             string from = "noreply@ict4events.bb";
             MailMessage message = new MailMessage(from, to);
             message.Subject = "You Activation Key";
-            message.Body = @"Dear," + account.Gebruiksersnaam + Environment.NewLine + ",Your activation key is: "
+            message.Body = @"Dear " + account.Gebruiksersnaam + Environment.NewLine + "Your activation key is: "
                            + Environment.NewLine + account.Hash;
             SmtpClient client = new SmtpClient("smtp.ict4events.bb");
             client.UseDefaultCredentials = true;
@@ -187,7 +135,8 @@ namespace ICT4Event
                Page.GetType(),
                "MessageBox",
                "<script language='javascript'>alert('" + Message + "');</script>"
-            );
+
+               );
         }
     }
 }

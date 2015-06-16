@@ -10,8 +10,8 @@ namespace ICT4Event
     public class Database
     {
         protected OracleConnection connection = new OracleConnection();
-        protected string connectionString = "DATA SOURCE=//localhost:1521/xe;PASSWORD=hallo;USER ID=hallo";
-        //protected string connectionString = "DATA SOURCE=//ict4events.bb:1521/xe;PASSWORD=hallo;USER ID=hallo";
+        //protected string connectionString = "DATA SOURCE=//localhost:1521/xe;PASSWORD=hallo;USER ID=hallo";
+        protected string connectionString = "DATA SOURCE=//ict4events.bb:1521/xe;PASSWORD=hallo;USER ID=hallo";
         public Database()
         {
 

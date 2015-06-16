@@ -226,6 +226,34 @@ namespace ICT4Event
             return resultaat;
         }
 
+        public bool SelectEmail(string email)
+        {
+            bool resultaat = false;
+            int count;
+            string sql = "select \"email\" as aantal from account where \"email\" = :email";
+            try
+            {
+                Connect();
+                OracleCommand cmd = new OracleCommand(sql, connection);
+                cmd.Parameters.Add(new OracleParameter("email", email));
+                OracleDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    resultaat = true;
+                }
+            }
+            catch (OracleException e)
+            {
+                throw;
+            }
+            finally
+            {
+                DisConnect();
+            }
+
+            return resultaat;
+        }
+
         // internal Account Select(string email)
         // {
         // Account resultaat = null;
@@ -313,5 +341,6 @@ namespace ICT4Event
         // }
         // return accountID;
         // }
+        
     }
 }
