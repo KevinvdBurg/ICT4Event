@@ -34,11 +34,12 @@ namespace ICT4Event.pages
                 this.administration.Login(username, password);
                 Account detailsAccount = this.administration.GetDetails(username);
 
-                Session[MyKeys.key_accountID] = detailsAccount.GebruikerID;
-                Session[MyKeys.key_email] = detailsAccount.Email;
-                Session[MyKeys.key_username] = detailsAccount.Gebruiksersnaam;
+                this.Session[MyKeys.key_accountID] = detailsAccount.GebruikerID;
+                this.Session[MyKeys.key_email] = detailsAccount.Email;
+                this.Session[MyKeys.key_username] = detailsAccount.Gebruiksersnaam;
 
                 MessageBox.Show(this, "Inloggen gelukt!");   
+                Response.Redirect("/index.aspx");
             }
             
         }
