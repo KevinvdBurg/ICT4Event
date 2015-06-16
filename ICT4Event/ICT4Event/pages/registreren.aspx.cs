@@ -23,23 +23,28 @@ namespace ICT4Event.pages
             string wachtwoord = regi_wachtwoord.Text;
             string herwachtwoord = regi_wachtwoord.Text;
 
-            bool suc = administration.FindGebruikersnaam(gebruikersnaam);
-            if (!suc)
-            {
-                MessageBox.Show(this, "Gebruikersnaam is al ingebruik");
-            }
-            else if (email != heremail|| wachtwoord != herwachtwoord)
-            {
-                MessageBox.Show(this, "Email of wachtwoord zijn niet correct");
-            }
-            else
-            {
+            //bool suc = administration.FindGebruikersnaam(gebruikersnaam);
+            //if (!suc)
+            //{
+            //    MessageBox.Show(this, "Gebruikersnaam is al ingebruik");
+            //}
+            //else if (email != heremail|| wachtwoord != herwachtwoord)
+            //{
+            //    MessageBox.Show(this, "Email of wachtwoord zijn niet correct");
+            //}
+            //else
+            //{
+                Guid g = Guid.NewGuid();
+                string GuidString = Convert.ToBase64String(g.ToByteArray());
+                GuidString = GuidString.Replace("=", "");
+                GuidString = GuidString.Replace("+", "");
 
-                Account newAccount = new Account(gebruikersnaam, email, wachtwoord, false, this.GetHashCode(), false);
-                this.administration.Add(newAccount);
+                Account newAccount = new Account(gebruikersnaam, email, wachtwoord, false, GuidString, false);
+                //this.administration.Add(newAccount);
+                this.administration.SendEmail(newAccount);
                 
-                MessageBox.Show(this, "Alles ok!");
-            }
+                MessageBox.Show(this, "Alles ok!?");
+            //}
         }
 
         protected void btn_actieveren_Click(object sender, EventArgs e)

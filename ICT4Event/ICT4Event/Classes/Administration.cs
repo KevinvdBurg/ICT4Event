@@ -5,6 +5,7 @@ using System.Web;
 
 namespace ICT4Event
 {
+    using System.Net.Mail;
     using System.Web.UI;
     //using System.Windows.Forms;
 
@@ -45,6 +46,7 @@ namespace ICT4Event
             dbaccount.Insert(Account);
             adRegistreerLogin.CreateUserAccount(domainCon, Account.Gebruiksersnaam, Account.Wachtwoord, Account.Email);
         }
+
         /// <summary>
         /// Een account wordt doorgestuurd naar dbaccount.Delete zodat dit account uit de database verwijderd kan worden
         /// </summary>
@@ -152,6 +154,28 @@ namespace ICT4Event
         public Account GetDetails(string username)
         {
             return dbaccount.Select(username);
+        }
+
+        public void SendEmail(Account account)
+        {
+
+            string to = account.Email;
+            string from = "noreply@ict4events.bb";
+            MailMessage message = new MailMessage(from, to);
+            message.Subject = "You Activation Key";
+            message.Body = @"Dear," + account.Gebruiksersnaam + Environment.NewLine + ",Your activation key is: "
+                           + Environment.NewLine + account.Hash;
+            SmtpClient client = new SmtpClient("smtp.ict4events.bb");
+            client.UseDefaultCredentials = true;
+
+            try
+            {
+                client.Send(message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception caught in CreateTestMessage2(): {0}", ex.ToString());
+            }
         }
     }
 

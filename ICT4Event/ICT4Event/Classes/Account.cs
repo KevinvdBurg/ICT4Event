@@ -16,7 +16,7 @@ namespace ICT4Event
         public string Hash { get; set; }
         public bool Geactiveerd { get; set; }
         
-        public Account(string gebruiksersnaam, string email, string wachtwoord, bool type, int hash, bool geactiveerd)
+        public Account(string gebruiksersnaam, string email, string wachtwoord, bool type, string hash, bool geactiveerd)
         {
             this.Gebruiksersnaam = gebruiksersnaam.ToLower();
             this.Email = email.ToLower();
