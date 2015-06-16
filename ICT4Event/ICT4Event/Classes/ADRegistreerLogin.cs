@@ -85,10 +85,5 @@ namespace ICT4Event.Classes
 
             return validatedOnDomain;
         }
-
-        public Account GetAccount()
-        {
-            return new Account();
-        }
     }
 }

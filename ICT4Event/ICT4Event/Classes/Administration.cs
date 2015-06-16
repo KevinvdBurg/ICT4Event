@@ -125,6 +125,11 @@ namespace ICT4Event
                 Console.WriteLine("Exception caught in CreateTestMessage2(): {0}", ex.ToString());
             }
         }
+
+        public bool ActivateAccount(string hash)
+        {
+            return this.dbaccount.ActivateAccount(hash);
+        }
     }
 
     public static class MessageBox

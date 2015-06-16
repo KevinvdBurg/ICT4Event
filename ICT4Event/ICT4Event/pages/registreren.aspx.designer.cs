@@ -67,13 +67,13 @@ namespace ICT4Event.pages {
         protected global::System.Web.UI.WebControls.Button btn_registeren;
         
         /// <summary>
-        /// TextBox1 control.
+        /// tbActivatiecode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox tbActivatiecode;
         
         /// <summary>
         /// btn_actieveren control.

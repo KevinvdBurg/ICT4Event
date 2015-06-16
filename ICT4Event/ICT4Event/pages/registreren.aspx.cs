@@ -53,7 +53,15 @@ namespace ICT4Event.pages
 
         protected void btn_actieveren_Click(object sender, EventArgs e)
         {
-
+            if (this.administration.ActivateAccount(tbActivatiecode.Text))
+            {
+                MessageBox.Show(this.Page, "Account is geactiveerd");
+                Response.Redirect("/inloggen.aspx");
+            }
+            else
+            {
+                MessageBox.Show(this.Page, "Activatie code is niet gevonden");
+            }
         }
     }  
 }
