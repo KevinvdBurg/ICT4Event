@@ -10,7 +10,7 @@
 namespace ICT4Event.pages {
     
     
-    public partial class registreren {
+    public partial class Registreren {
         
         /// <summary>
         /// regi_gebruikersnaam control.

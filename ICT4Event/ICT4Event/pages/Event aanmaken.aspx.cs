@@ -1,50 +1,95 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Event aanmaken.aspx.cs" company="ICT4EVENTS.">
+//   ICT4EVENTS.
+// </copyright>
+// <summary>
+//   The event_aanmaken.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace ICT4Event
 {
+    using System;
+    using System.Web.UI;
     using System.Windows.Forms;
 
-    public partial class Event_aanmaken : System.Web.UI.Page
+    /// <summary>
+    /// The Event_aanmaken.
+    /// </summary>
+    public partial class Event_aanmaken : Page
     {
+        /// <summary>
+        /// The administration.
+        /// </summary>
+        private readonly Administration administration = new Administration();
+
+        /// <summary>
+        /// The page_ load.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            
         }
-        Administration administration = new Administration();
+
+        /// <summary>
+        /// The btn event_ click.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
         protected void btnEvent_Click(object sender, EventArgs e)
         {
-            if (tbNaam.Text == String.Empty && tbAdres.Text == String.Empty && tbBezoekers.Text == String.Empty
-                && tbHuisnummer.Text == String.Empty && tbLocatienaam.Text == String.Empty
-                && tbNummer.Text == String.Empty && tbPostcode.Text == String.Empty && tbStad.Text == String.Empty
-                && calDatumBegin.SelectedDate.ToString("dd-MMMM-yy") == String.Empty && calDatumEind.SelectedDate.ToString("dd-MMMM-yy") == String.Empty)
+            ////Checken of alles in is gevuld.
+            if (this.tbNaam.Text == string.Empty && this.tbAdres.Text == string.Empty
+                && this.tbBezoekers.Text == string.Empty && this.tbHuisnummer.Text == string.Empty
+                && this.tbLocatienaam.Text == string.Empty && this.tbNummer.Text == string.Empty
+                && this.tbPostcode.Text == string.Empty && this.tbStad.Text == string.Empty
+                && this.calDatumBegin.SelectedDate.ToString("dd-MMMM-yy") == string.Empty
+                && this.calDatumEind.SelectedDate.ToString("dd-MMMM-yy") == string.Empty)
             {
                 MessageBox.Show("Alle velden moeten ingevuld zijn.");
             }
             else
             {
-                Address adres = new Address(tbStad.Text, tbHuisnummer.Text, tbPostcode.Text, tbAdres.Text);
-                Location location = new Location(adres, tbLocatienaam.Text);
+                //// Maak een nieuw adres aan en Event en vul ze in de DB.
+                var adres = new Address(
+                    this.tbStad.Text, 
+                    this.tbHuisnummer.Text, 
+                    this.tbPostcode.Text, 
+                    this.tbAdres.Text);
+                var location = new Location(adres, this.tbLocatienaam.Text);
                 location.AddLocation(location);
-                Event newEvent = new Event(
-                    location,
-                    Convert.ToInt32(tbBezoekers.Text),
-                    tbNaam.Text,
-                    Convert.ToInt32(tbNummer.Text),
-                    calDatumBegin.SelectedDate.ToString("dd-MMMM-yy"),
-                    calDatumEind.SelectedDate.ToString("dd-MMMM-yy"));
-                administration.AddEvent(newEvent);
+                var newEvent = new Event(
+                    location, 
+                    Convert.ToInt32(this.tbBezoekers.Text), 
+                    this.tbNaam.Text, 
+                    Convert.ToInt32(this.tbNummer.Text), 
+                    this.calDatumBegin.SelectedDate.ToString("dd-MMMM-yy"), 
+                    this.calDatumEind.SelectedDate.ToString("dd-MMMM-yy"));
+                this.administration.AddEvent(newEvent);
                 MessageBox.Show("Het event is aangemaakt!");
             }
         }
 
+        /// <summary>
+        /// The btn laad event_ click 1.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
         protected void btnLaadEvent_Click1(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -10,7 +10,7 @@
 namespace ICT4Event {
     
     
-    public partial class master {
+    public partial class Master {
         
         /// <summary>
         /// Subtitle control.

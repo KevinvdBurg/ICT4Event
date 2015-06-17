@@ -1,48 +1,82 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="ICT4Event.admin" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="ICT4Event.Admin" %>
+<%@ Import Namespace="System.Web.DynamicData" %>
+<%@ Import Namespace="System.Web.UI" %>
+<%@ Import Namespace="System.Web.UI.WebControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
+<%@ Import Namespace="System.Web.UI.WebControls.WebParts" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Subtitle" runat="server">
     Admin
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="menu_bar_top" runat="server">
-    <li class="flex-item" id="i-incheck"><a href="#">Incheck</a></li>
-   
-    <li class="flex-item" id="i-account"><a href="#">Account</a></li>
-                    
-    <li class="flex-item" id="i-reververingen"><a href="#">Reververingen</a></li>
+    <li class="flex-item" id="i-incheck">
+        <a href="#">Incheck</a>
+    </li>
 
-    <li class="flex-item" id="i-event"><a href="#">Event</a></li>
+    <li class="flex-item" id="i-account">
+        <a href="#">Account</a>
+    </li>
 
-    <li class="flex-item" id="i-opties"><a href="#">Opties</a></li>
+    <li class="flex-item" id="i-reververingen">
+        <a href="#">Reververingen</a>
+    </li>
+
+    <li class="flex-item" id="i-event">
+        <a href="#">Event</a>
+    </li>
+
+    <li class="flex-item" id="i-opties">
+        <a href="#">Opties</a>
+    </li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="menu_bar_sub" runat="server">
     <div class="nav-account">
         <ul class="sub-flex-container sub sub-account">
-            <a href=""><li class="sub-flex-item">Alle Account</li></a>
-            <a href=""><li class="sub-flex-item">Account Wijzigen</li></a>
+            <a href="">
+                <li class="sub-flex-item">Alle Account</li>
+            </a>
+            <a href="">
+                <li class="sub-flex-item">Account Wijzigen</li>
+            </a>
         </ul>
     </div>
     <div class="nav-reververingen">
         <ul class="sub-flex-container sub sub-reververingen">
-            <a href=""><li class="sub-flex-item">Alle Reservering</li></a>
-            <a href=""><li class="sub-flex-item">Reservering Wijzigen</li></a>
+            <a href="">
+                <li class="sub-flex-item">Alle Reservering</li>
+            </a>
+            <a href="">
+                <li class="sub-flex-item">Reservering Wijzigen</li>
+            </a>
         </ul>
     </div>
     <div class="nav-event">
         <ul class="sub-flex-container sub sub-event">
-            <a href=""><li class="sub-flex-item">Alle Event</li></a>
-            <a href=""><li class="sub-flex-item">Event Maken</li></a>
-            <a href=""><li class="sub-flex-item">Event Wijzigen</li></a>
+            <a href="">
+                <li class="sub-flex-item">Alle Event</li>
+            </a>
+            <a href="">
+                <li class="sub-flex-item">Event Maken</li>
+            </a>
+            <a href="">
+                <li class="sub-flex-item">Event Wijzigen</li>
+            </a>
         </ul>
     </div>
 
     <div class="nav-opties">
         <ul class="sub-flex-container sub sub-opties">
-            <li class="sub-flex-item"><asp:DropDownList ID="dropevent_main" runat="server"></asp:DropDownList></li>
-            <li class="sub-flex-item"><a href="#">Uitloggen</a></li>
+            <li class="sub-flex-item">
+                <asp:DropDownList ID="dropevent_main" runat="server"></asp:DropDownList>
+            </li>
+            <li class="sub-flex-item">
+                <a href="#">Uitloggen</a>
+            </li>
         </ul>
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="content_left" runat="server">
-     <asp:ContentPlaceHolder ID="content_1" runat="server"></asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="content_1" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenct_right" runat="server">
     <asp:ContentPlaceHolder ID="content_2" runat="server"></asp:ContentPlaceHolder>

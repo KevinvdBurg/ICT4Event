@@ -1,79 +1,126 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="EventsWijzigen.aspx.cs" company="ICT4EVENTS.">
+//   ICT4EVENTS.
+// </copyright>
+// <summary>
+//   The events wijzigen.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace ICT4Event
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Web.UI;
     using System.Windows.Forms;
 
-    public partial class EventsWijzigen : System.Web.UI.Page
+    /// <summary>
+    /// The events wijzigen.
+    /// </summary>
+    public partial class EventsWijzigen : Page
     {
-        Administration administration = new Administration();
+        /// <summary>
+        /// The administration.
+        /// </summary>
+        private readonly Administration administration = new Administration();
+
+        /// <summary>
+        /// Dropdownlist vullen met events uit de DB.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!this.IsPostBack)
             {
-                List<Event> events = new List<Event>();
-                events = administration.FindEventAll();
-                foreach (Event eventje in events)
+                var events = new List<Event>();
+                events = this.administration.FindEventAll();
+                foreach (var eventje in events)
                 {
-                    ddlEvents.Items.Add(eventje.Name);
+                    this.ddlEvents.Items.Add(eventje.Name);
                 }
-                 /*
+
+                /*
                 ddlEvents.DataSource = null;
                 ddlEvents.DataSource = administration.FindEventAll();
                 ddlEvents.DataTextField = "Name";
                  */
             }
         }
+
+        /// <summary>
+        /// Vul de textboxen met informatie uit de DB.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
         protected void btnLaadEvent_Click1(object sender, EventArgs e)
         {
-            Event eventje = new Event();
-            eventje = (administration.FindEvent(ddlEvents.SelectedItem.Text));
-            tbNaam.Text = eventje.Name;
-            tbAdres.Text = eventje.Location.Address.Street.ToString();
-            tbNummer.Text = eventje.EventID.ToString();
-            tbBezoekers.Text = eventje.MaxPerson.ToString();
-            tbHuisnummer.Text = eventje.Location.Address.Number.ToString();
-            tbLocatienaam.Text = eventje.Location.Name.ToString();
-            tbPostcode.Text = eventje.Location.Address.ZipCode.ToString();
-            tbStad.Text = eventje.Location.Address.City.ToString();
-            calDatumBegin.SelectedDate = Convert.ToDateTime(eventje.BeginTime.ToString());
-            calDatumEind.SelectedDate = Convert.ToDateTime(eventje.EndTime);
+            var eventje = new Event();
+            eventje = this.administration.FindEvent(this.ddlEvents.SelectedItem.Text);
+            this.tbNaam.Text = eventje.Name;
+            this.tbAdres.Text = eventje.Location.Address.Street;
+            this.tbNummer.Text = eventje.EventID.ToString();
+            this.tbBezoekers.Text = eventje.MaxPerson.ToString();
+            this.tbHuisnummer.Text = eventje.Location.Address.Number;
+            this.tbLocatienaam.Text = eventje.Location.Name;
+            this.tbPostcode.Text = eventje.Location.Address.ZipCode;
+            this.tbStad.Text = eventje.Location.Address.City;
+            this.calDatumBegin.SelectedDate = Convert.ToDateTime(eventje.BeginTime);
+            this.calDatumEind.SelectedDate = Convert.ToDateTime(eventje.EndTime);
         }
 
+        /// <summary>
+        /// Update het event in de DB met de ingevulde informatie..
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
         protected void btnEvent_Click(object sender, EventArgs e)
         {
-            if (tbNaam.Text == String.Empty && tbAdres.Text == String.Empty && tbBezoekers.Text == String.Empty
-                && tbHuisnummer.Text == String.Empty && tbLocatienaam.Text == String.Empty
-                && tbNummer.Text == String.Empty && tbPostcode.Text == String.Empty && tbStad.Text == String.Empty
-                && calDatumBegin.SelectedDate.ToString("dd-MMMM-yy") == String.Empty && calDatumEind.SelectedDate.ToString("dd-MMMM-yy") == String.Empty)
+            if (this.tbNaam.Text == string.Empty && this.tbAdres.Text == string.Empty
+                && this.tbBezoekers.Text == string.Empty && this.tbHuisnummer.Text == string.Empty
+                && this.tbLocatienaam.Text == string.Empty && this.tbNummer.Text == string.Empty
+                && this.tbPostcode.Text == string.Empty && this.tbStad.Text == string.Empty
+                && this.calDatumBegin.SelectedDate.ToString("dd-MMMM-yy") == string.Empty
+                && this.calDatumEind.SelectedDate.ToString("dd-MMMM-yy") == string.Empty)
             {
                 MessageBox.Show("Alle velden moeten ingevuld zijn.");
             }
             else
             {
-                Address adres = new Address(tbStad.Text, tbHuisnummer.Text, tbPostcode.Text, tbAdres.Text);
-                Location location = new Location(adres, tbLocatienaam.Text);
+                var adres = new Address(
+                    this.tbStad.Text, 
+                    this.tbHuisnummer.Text, 
+                    this.tbPostcode.Text, 
+                    this.tbAdres.Text);
+                var location = new Location(adres, this.tbLocatienaam.Text);
                 location.UpdateLocation(location);
-                Event newEvent = new Event(
-                    location,
-                    Convert.ToInt32(tbBezoekers.Text),
-                    tbNaam.Text,
-                    Convert.ToInt32(tbNummer.Text),
-                    calDatumBegin.SelectedDate.ToString("dd-MMMM-yy"),
-                    calDatumEind.SelectedDate.ToString("dd-MMMM-yy"));
-                administration.UpdateEvent(newEvent);
+                var newEvent = new Event(
+                    location, 
+                    Convert.ToInt32(this.tbBezoekers.Text), 
+                    this.tbNaam.Text, 
+                    Convert.ToInt32(this.tbNummer.Text), 
+                    this.calDatumBegin.SelectedDate.ToString("dd-MMMM-yy"), 
+                    this.calDatumEind.SelectedDate.ToString("dd-MMMM-yy"));
+                this.administration.UpdateEvent(newEvent);
                 MessageBox.Show("Het event is aangepast!");
-                ddlEvents.Items.Clear();
-                List<Event> events = new List<Event>();
-                events = administration.FindEventAll();
-                foreach (Event eventje in events)
+                this.ddlEvents.Items.Clear();
+                var events = new List<Event>();
+                events = this.administration.FindEventAll();
+                foreach (var eventje in events)
                 {
-                    ddlEvents.Items.Add(eventje.Name);
+                    this.ddlEvents.Items.Add(eventje.Name);
                 }
             }
         }

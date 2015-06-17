@@ -11,7 +11,7 @@ namespace ICT4Event
 {
 
 
-    public partial class index1
+    public partial class Index1
     {
     }
 }
