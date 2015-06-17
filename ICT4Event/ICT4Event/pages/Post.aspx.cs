@@ -18,8 +18,7 @@ namespace ICT4Event.pages
             //Je kan eerst kiezen uit berichten en bestanden
             if (!IsPostBack)
             {
-                lbCategorie.Items.Add("bericht");
-                lbCategorie.Items.Add("bestand");
+                StartPosition();
             }
             
         }
@@ -28,7 +27,9 @@ namespace ICT4Event.pages
         {
             //Eerst lb clearen
             lbItems.Items.Clear();
-
+            tbInhoud.Visible = false;
+            tbComments.Visible = false;
+            btnDownload.Visible = false;
             //refill lbCategorie indien van toepassing
             /*bericht: show berichten
              * categorie: haal categorieid op
@@ -37,54 +38,46 @@ namespace ICT4Event.pages
 
             //Als er op berichten word geklikt laat hij gewoon berichten zien
             //Als er op bestand word geklikt worden er categorieën getoond, of bestanden zonder categorie
-            if (lbCategorie.SelectedValue == "bestand")
-            {
-                isBericht = false;
-                lbCategorie.Items.Clear();
-                tbInhoud.Visible = false;
-                foreach (var s in ad.MainCategories())
-                {
-                    lbCategorie.Items.Add(s);
-                }
-            }
-            else if (lbCategorie.SelectedValue == "bericht")
-            {
-                isBericht = true;
-                foreach (String s in ad.Posts())
-                {
-                    lbItems.Items.Add((s));
-                }
-                lbItems.Items.Add("Bericht1");
-                lbItems.Items.Add("Bericht2");
-            }
 
-            else if(lbCategorie.SelectedValue != "bestand" && lbCategorie.SelectedValue != "bericht")
+
+            lblMap.Text = lbCategorie.SelectedValue;
+            string catnaam = lbCategorie.SelectedValue;
+            foreach (String s in ad.CategoryFilesList(catnaam))
             {
-                isBericht = false;
-                string catnaam = lbCategorie.SelectedValue;
-                foreach (String s in ad.CategoryFilesList(catnaam))
-                {
-                    lbItems.Items.Add(s);
-                }
-                lbCategorie.Items.Clear();
-                foreach (var s in ad.SubCategories(catnaam))
-                {
-                    lbCategorie.Items.Add(s);   
-                }
+                lbItems.Items.Add(s);
             }
+            lbCategorie.Items.Clear();
+            foreach (var s in ad.SubCategories(catnaam))
+            {
+                lbCategorie.Items.Add(s);
+            }
+            foreach (var s in ad.CategoryMessages(catnaam))
+            {
+                lbItems.Items.Add(s);
+            }
+            
             
             
         }
 
         protected void lbItems_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (isBericht)
+            if (!lbItems.SelectedValue.Contains("."))
             {
-                tbInhoud.Text = "Inhoud van bericht1";
-                tbInhoud.Visible = true;  
+                tbInhoud.Text = ad.postTekst(lbItems.SelectedValue);
+                foreach (string s in ad.GetComments(lbItems.SelectedValue))
+                {
+                    tbComments.Text += s + Environment.NewLine;
+                }
+                
+                tbComments.Visible = true;
+                tbInhoud.Visible = true;
+                btnDownload.Visible = false;
             }
             else
             {
+                tbComments.Visible = false;
+                tbInhoud.Visible = false;
                 btnDownload.Visible = true;
             }
             
@@ -92,12 +85,81 @@ namespace ICT4Event.pages
 
         protected void btnReturn_Click(object sender, EventArgs e)
         {
-            lbCategorie.Items.Clear();
-            lbItems.Items.Clear();
+            lblMap.Text = "Home";
+            StartPosition();
+        }
+
+
+        private void StartPosition()
+        {
+            Clear();
+
+            foreach (var s in ad.MainCategories())
+            {
+                lbCategorie.Items.Add(s);
+            }
+            foreach (var s in ad.Posts())
+            {
+                lbItems.Items.Add(s);
+            }
+
+            lbItems.Items.Add(ad.testContains());
+        }
+
+        private void Clear()
+        {
+            tbComments.Visible = false;
             tbInhoud.Visible = false;
             btnDownload.Visible = false;
-            lbCategorie.Items.Add("bericht");
-            lbCategorie.Items.Add("bestand");
+            lbCategorie.Items.Clear();
+            lbItems.Items.Clear();
+        }
+
+        protected void btnNewPost_Click(object sender, EventArgs e)
+        {
+            btnSavePost.Visible = true;
+            tbNewTitle.Visible = true;
+            tbNewContent.Visible = true;
+            Label2.Visible = true;
+            Label3.Visible = true;
+        }
+
+        protected void btnSavePost_Click(object sender, EventArgs e)
+        {
+            //Kijken of een Post is geselecteerd DUS EEN REPLY
+            if (lbItems.SelectedIndex != -1)
+            {
+                 ad.InsertReply(1, tbNewContent.Text, lbItems.SelectedValue);
+                
+            }
+            else
+            {
+                //Mainpost
+                if (lblMap.Text == "Home")
+                {
+                    ad.InsertMainMessage(1, tbNewTitle.Text, tbNewContent.Text);
+                }
+                //Post in een categorie
+                else
+                {
+                    ad.InsertCatMessage(1,tbNewTitle.Text,tbNewContent.Text, lblMap.Text);
+                }
+            }
+           
+            btnSavePost.Visible = false;
+            tbNewTitle.Visible = false;
+            tbNewTitle.Text = "";
+            tbNewContent.Visible = false;
+            tbNewContent.Text = "";
+            Label2.Visible = false;
+            Label3.Visible = false;
+        }
+
+        protected void btnComment_Click(object sender, EventArgs e)
+        {
+            btnSavePost.Visible = true;
+            tbNewContent.Visible = true;
+            Label2.Visible = true;
         }
     }
 }
