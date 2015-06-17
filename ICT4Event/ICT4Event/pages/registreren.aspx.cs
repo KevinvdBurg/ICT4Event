@@ -12,6 +12,8 @@ namespace ICT4Event.pages
     using System;
     using System.Web.UI;
 
+    using ICT4Event.Classes;
+
     /// <summary>
     /// The registreren.
     /// </summary>

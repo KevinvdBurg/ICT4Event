@@ -10,8 +10,10 @@
 namespace ICT4Event.Classes
 {
     using System;
+    using System.Collections.Generic;
     using System.DirectoryServices;
     using System.DirectoryServices.AccountManagement;
+    using System.Text;
 
     /// <summary>
     /// The ad registreer login.
@@ -119,6 +121,31 @@ namespace ICT4Event.Classes
 
             return null;
         }
+
+        public List<string> FindUserGroup(string username)
+        {
+            List<string> groupList = new List<string>();
+            try
+            {
+                var ctx = new PrincipalContext(ContextType.Domain, "pts45.local", "Administrator", "Admin123");
+                UserPrincipal user = UserPrincipal.FindByIdentity(ctx, IdentityType.SamAccountName, username);
+                if (user != null)
+                {
+                    foreach (var group in user.GetGroups())
+                    {
+                        groupList.Add(@group.Name);
+                        Console.WriteLine(@group.Name);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            return groupList;
+        }
+       
 
         /// <summary>
         /// The authenticate ad.

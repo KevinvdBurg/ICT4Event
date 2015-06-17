@@ -10,6 +10,7 @@
 namespace ICT4Event
 {
     using System;
+    using System.Collections.Generic;
     using System.Net.Mail;
     using System.Web.UI;
 
@@ -221,28 +222,10 @@ namespace ICT4Event
         {
             return this.dbaccount.ActivateAccount(hash);
         }
-    }
 
-    /// <summary>
-    /// The message box.
-    /// </summary>
-    public static class MessageBox
-    {
-        /// <summary>
-        /// The show.
-        /// </summary>
-        /// <param name="page">
-        /// The page.
-        /// </param>
-        /// <param name="message">
-        /// The message.
-        /// </param>
-        public static void Show(this Page page, string message)
+        public List<string> GetAccountGroups(string username)
         {
-            page.ClientScript.RegisterStartupScript(
-                page.GetType(), 
-                "MessageBox", 
-                "<script language='javascript'>alert('" + message + "');</script>");
-        }
+            return this.adRegistreerLogin.FindUserGroup(username);
+        } 
     }
 }

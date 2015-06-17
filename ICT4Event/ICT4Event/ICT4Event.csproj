@@ -75,9 +75,8 @@
     <Content Include="js\vendor\jquery-2.1.4.js" />
     <Content Include="js\vendor\modernizr-2.8.3-respond-1.4.2.min.js" />
     <Content Include="js\vendor\npm.js" />
-    <Content Include="pages\inloggen.aspx" />
     <Content Include="pages\registreren.aspx" />
-    <Content Include="Posts.aspx" />
+    <Content Include="pages\Posts.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +93,7 @@
     <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\DBAccount.cs" />
     <Compile Include="Classes\DBLogin.cs" />
+    <Compile Include="Classes\Messagebox.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -116,13 +116,6 @@
     <Compile Include="master.Master.designer.cs">
       <DependentUpon>master.Master</DependentUpon>
     </Compile>
-    <Compile Include="pages\inloggen.aspx.cs">
-      <DependentUpon>inloggen.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\inloggen.aspx.designer.cs">
-      <DependentUpon>inloggen.aspx</DependentUpon>
-    </Compile>
     <Compile Include="pages\registreren.aspx.cs">
       <DependentUpon>registreren.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -130,11 +123,11 @@
     <Compile Include="pages\registreren.aspx.designer.cs">
       <DependentUpon>registreren.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Posts.aspx.cs">
+    <Compile Include="pages\Posts.aspx.cs">
       <DependentUpon>Posts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Posts.aspx.designer.cs">
+    <Compile Include="pages\Posts.aspx.designer.cs">
       <DependentUpon>Posts.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
