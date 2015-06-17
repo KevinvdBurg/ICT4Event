@@ -22,11 +22,14 @@ namespace ICT4Event
         /// </summary>
         protected OracleConnection Connection = new OracleConnection();
 
-        // protected string connectionString = "DATA SOURCE=//localhost:1521/xe;PASSWORD=hallo;USER ID=hallo";
         /// <summary>
         /// The connection string.
         /// </summary>
-        protected string ConnectionString = "DATA SOURCE=//ict4events.bb:1521/xe;PASSWORD=hallo;USER ID=hallo";
+        //Locaal
+        //protected string ConnectionString = "DATA SOURCE=//ict4events.bb:1521/xe;PASSWORD=hallo;USER ID=hallo";
+        
+        //Server
+        protected string ConnectionString = "DATA SOURCE=//localhost:1521/xe;PASSWORD=hallo;USER ID=hallo";
 
         /// <summary>
         /// The connect.

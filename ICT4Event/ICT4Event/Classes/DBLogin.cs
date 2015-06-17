@@ -20,7 +20,7 @@ namespace ICT4Event
         /// <summary>
         /// The login check.
         /// </summary>
-        /// <param name="email">
+        /// <param name="username">
         /// The email.
         /// </param>
         /// <param name="password">
@@ -29,34 +29,35 @@ namespace ICT4Event
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        public string LoginCheck(string email, string password)
+        public bool LoginActivatieCheck(string username)
         {
-            var resultaat = "Geen Connectie";
+            bool resultaat = false;
             string sql;
-            sql = "select * from gebruiker where emailadres = :email and wachtwoord = :password";
+            sql = "select * from ACCOUNT where \"gebruikersnaam\" = :username";
 
             try
             {
                 this.Connect();
                 var cmd = new OracleCommand(sql, this.Connection);
-                cmd.Parameters.Add(new OracleParameter("email", email));
-                cmd.Parameters.Add(new OracleParameter("password", password));
+                cmd.Parameters.Add(new OracleParameter("username", username));
                 var reader = cmd.ExecuteReader();
+                
                 if (reader.HasRows)
                 {
-                    var geactiveerd = Convert.ToInt32(reader["geactiveerd"]);
-                    if (geactiveerd == 0)
+                    while (reader.Read())
                     {
-                        resultaat = "Activeer eerst uw account";
+                        int geactiveerd = Convert.ToInt32(reader["geactiveerd"]);
+                        if (geactiveerd != 0)
+                        {
+                            resultaat = true;
+                        }
                     }
-                    else
-                    {
-                        resultaat = "true";
-                    }
+                    
                 }
             }
             catch (OracleException e)
             {
+                throw e;
             }
             finally
             {

@@ -31,22 +31,29 @@ namespace ICT4Event
             }
             else
             {
-                var logincheck = this.administration.LoginCheck(username, password);
-                if (logincheck == "Succes")
+                if (this.administration.LoginCheck(username))
                 {
-                    this.administration.Login(username, password);
-                    var detailsAccount = this.administration.GetDetails(username);
 
-                    this.Session[MyKeys.KeyAccountId] = detailsAccount.GebruikerId;
-                    this.Session[MyKeys.KeyEmail] = detailsAccount.Email;
-                    this.Session[MyKeys.KeyUsername] = detailsAccount.Gebruiksersnaam;
+                    if (this.administration.Login(username, password))
+                    {
+                        var detailsAccount = this.administration.GetDetails(username);
 
-                    this.Show("Inloggen gelukt!");
-                    this.Response.Redirect("/index.aspx");
+                        this.Session[MyKeys.KeyAccountId] = detailsAccount.GebruikerId;
+                        this.Session[MyKeys.KeyEmail] = detailsAccount.Email;
+                        this.Session[MyKeys.KeyUsername] = detailsAccount.Gebruiksersnaam;
+
+                        this.Page.Show("Inloggen gelukt!");
+                        this.Response.Redirect("/index.aspx");
+                    }
+                    else
+                    {
+                        this.Page.Show("Wachtwoord incorrect");
+                    }
+                    
                 }
                 else
                 {
-                    this.Page.Show(logincheck);
+                    this.Page.Show("Een geactiveerd account gevonden");
                 }
             }
         }

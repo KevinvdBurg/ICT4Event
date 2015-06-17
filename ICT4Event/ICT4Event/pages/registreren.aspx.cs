@@ -95,7 +95,7 @@ namespace ICT4Event.pages
             if (this.administration.ActivateAccount(this.tbActivatiecode.Text))
             {
                 this.Page.Show("Account is geactiveerd");
-                this.Response.Redirect("/inloggen.aspx");
+                this.Response.Redirect("/index.aspx");
             }
             else
             {

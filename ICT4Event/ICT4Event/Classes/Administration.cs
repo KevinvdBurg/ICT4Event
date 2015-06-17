@@ -23,11 +23,6 @@ namespace ICT4Event
     /// </summary>
     public class Administration
     {
-        /// <summary>
-        /// The domain.
-        /// </summary>
-        private const string Domain = "PTS45.local";
-
         // private const string domainCon = "CN=Users,DC=pts45,DC=local";
         /// <summary>
         /// The domain con.
@@ -126,7 +121,7 @@ namespace ICT4Event
         /// </returns>
         public bool Login(string userName, string password)
         {
-            return this.adRegistreerLogin.AuthenticateAd(userName, password, Domain);
+            return this.adRegistreerLogin.AuthenticateAd(userName.ToLower(), password);
         }
 
         /// <summary>
@@ -141,9 +136,9 @@ namespace ICT4Event
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        public string LoginCheck(string username, string password)
+        public bool LoginCheck(string username)
         {
-            return this.dblogin.LoginCheck(username, password);
+            return this.dblogin.LoginActivatieCheck(username.ToLower());
         }
 
         /// <summary>
@@ -179,7 +174,7 @@ namespace ICT4Event
         /// </returns>
         public Account GetDetails(string username)
         {
-            return this.dbaccount.Select(username);
+            return this.dbaccount.Select(username.ToLower());
         }
 
         /// <summary>

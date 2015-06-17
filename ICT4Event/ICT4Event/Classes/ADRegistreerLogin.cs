@@ -50,8 +50,8 @@ namespace ICT4Event.Classes
                 usr.SamAccountName = userName;
                 usr.UserPrincipalName = userName;
                 usr.EmailAddress = userEmail;
-
                 usr.SetPassword(userPassword);
+                usr.UnlockAccount();
                 usr.Save();
 
                 this.AddUserToGroup(userName, "Web-Gebruiker", ctx);
@@ -122,6 +122,19 @@ namespace ICT4Event.Classes
             return null;
         }
 
+        //public bool CheckIdentity(string username, string password)
+        //{
+        //    var ctx = new PrincipalContext(ContextType.Domain, "pts45.local", "Administrator", "Admin123");
+        //    using (ctx)
+        //    {
+        //        // validate the credentials
+        //        bool isValid = ctx.ValidateCredentials(username, password);
+        //    }
+
+        //    return 
+        //}
+            
+
         public List<string> FindUserGroup(string username)
         {
             List<string> groupList = new List<string>();
@@ -162,14 +175,23 @@ namespace ICT4Event.Classes
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public bool AuthenticateAd(string userName, string password, string domain)
+        public bool AuthenticateAd(string userName, string password)
         {
-            var pc = new PrincipalContext(ContextType.Domain, domain);
-
-            // validate the credentials 
-            var validatedOnDomain = pc.ValidateCredentials(userName, password);
-
-            return validatedOnDomain;
+            try
+            {
+                var ctx = new PrincipalContext(ContextType.Domain, "pts45.local", "Administrator", "Admin123");
+                using (ctx)
+                {
+                    var validatedOnDomain = ctx.ValidateCredentials(userName, password);
+                    return validatedOnDomain;
+                }                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+           
         }
     }
 }

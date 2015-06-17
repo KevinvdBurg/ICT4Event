@@ -77,7 +77,7 @@ namespace ICT4Event
         {
             Account resultaat = null;
             var sql =
-                "select \"id\", \"gebruikersnaam\", \"email\" as aantal from account where \"gebruikersnaam\" = :gebruikersnaam";
+                "select \"ID\", \"gebruikersnaam\", \"email\" from account where \"gebruikersnaam\" = :gebruikersnaam";
             try
             {
                 this.Connect();
@@ -86,11 +86,14 @@ namespace ICT4Event
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
-                    var returnedAccount = new Account(
-                        Convert.ToInt32(reader["id"]), 
-                        Convert.ToString(reader["gebruikersnaam"]), 
-                        Convert.ToString(reader["email"]));
-                    resultaat = returnedAccount;
+                    while (reader.Read())
+                    {
+                        var returnedAccount = new Account(
+                           Convert.ToInt32(reader["ID"]),
+                           Convert.ToString(reader["gebruikersnaam"]),
+                           Convert.ToString(reader["email"]));
+                        resultaat = returnedAccount;
+                    }
                 }
             }
             catch (OracleException e)

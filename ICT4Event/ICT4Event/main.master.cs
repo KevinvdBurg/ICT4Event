@@ -64,6 +64,7 @@ namespace ICT4Event
                 {
                     MessageBox.Show(this.Page, "Web-Admin");
                 }
+
                 else
                 {
                     MessageBox.Show(this.Page, "Web-Gebruiker");
