@@ -62,6 +62,8 @@ namespace ICT4Event.pages
 
         protected void lbItems_SelectedIndexChanged(object sender, EventArgs e)
         {
+            tbComments.Text = "";
+     
             if (!lbItems.SelectedValue.Contains("."))
             {
                 tbInhoud.Text = ad.postTekst(lbItems.SelectedValue);
