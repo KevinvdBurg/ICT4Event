@@ -10,7 +10,7 @@
 namespace ICT4Event {
     
     
-    public partial class main {
+    public partial class Main {
         
         /// <summary>
         /// dropevent_main control.

@@ -10,7 +10,7 @@
 namespace ICT4Event.pages {
     
     
-    public partial class inloggen {
+    public partial class Inloggen {
         
         /// <summary>
         /// inlog_gebruikersnaam control.

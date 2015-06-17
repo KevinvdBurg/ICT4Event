@@ -8,12 +8,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ICT4Event.Tests
 {
     [TestClass()]
-    public class DBAccountTests
+    public class DbAccountTests
     {
         [TestMethod()]
         public void SelectEmailTest()
         {
-            DBAccount dbAccount = new DBAccount();
+            DbAccount dbAccount = new DbAccount();
             bool result = dbAccount.SelectEmail("bas@bas.nl");
             Assert.IsTrue(result);
         }

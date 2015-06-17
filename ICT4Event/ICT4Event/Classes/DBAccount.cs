@@ -1,36 +1,21 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="DBAccount.cs" company="">
-//   
+// <copyright file="DBAccount.cs" company="ICT4EVENTS.">
+//   ICT4EVENTS.
 // </copyright>
 // <summary>
 //   The db account.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 namespace ICT4Event
 {
+    using System;
     using System.Data.OracleClient;
-    using System.Text.RegularExpressions;
 
     /// <summary>
-    /// The db account.
+    ///     The db account.
     /// </summary>
-    public class DBAccount : Database
+    public class DbAccount : Database
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DBAccount"/> class.
-        /// </summary>
-        public DBAccount()
-        {
-        }
-
         /// <summary>
         /// The insert.
         /// </summary>
@@ -42,11 +27,11 @@ namespace ICT4Event
         /// </returns>
         public bool Insert(Account account)
         {
-            bool resultaat = false;
-            int geactiveerd = 0;
+            var resultaat = false;
+            var geactiveerd = 0;
 
             // string sql = "INSERT INTO GEBRUIKER(RFID, EMAILADRES, WACHTWOORD, PLAATS, POSTCODE, HUISNUMMER, ISADMIN, VOORNAAM, ACHTERNAAM) VALUES (:RFID, :emailadres, :wachtwoord, :plaats, :postcode, :huisnummer, :isadmin, :voornaam, :achternaam)";
-            string sql =
+            var sql =
                 "INSERT INTO ACCOUNT(\"gebruikersnaam\", \"email\", \"activatiehash\") VALUES(:gebruikersnaam, :email, :activatiehash)";
 
             if (account.Geactiveerd)
@@ -56,8 +41,8 @@ namespace ICT4Event
 
             try
             {
-                Connect();
-                OracleCommand cmd = new OracleCommand(sql, connection);
+                this.Connect();
+                var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("gebruikersnaam", account.Gebruiksersnaam));
                 cmd.Parameters.Add(new OracleParameter("email", account.Email));
                 cmd.Parameters.Add(new OracleParameter("activatiehash", account.Hash));
@@ -73,7 +58,7 @@ namespace ICT4Event
             }
             finally
             {
-                DisConnect();
+                this.DisConnect();
             }
 
             return resultaat;
@@ -91,17 +76,17 @@ namespace ICT4Event
         public Account Select(string username)
         {
             Account resultaat = null;
-            string sql =
+            var sql =
                 "select \"id\", \"gebruikersnaam\", \"email\" as aantal from account where \"gebruikersnaam\" = :gebruikersnaam";
             try
             {
-                Connect();
-                OracleCommand cmd = new OracleCommand(sql, connection);
+                this.Connect();
+                var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("gebruikersnaam", username));
-                OracleDataReader reader = cmd.ExecuteReader();
+                var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
-                    Account returnedAccount = new Account(
+                    var returnedAccount = new Account(
                         Convert.ToInt32(reader["id"]), 
                         Convert.ToString(reader["gebruikersnaam"]), 
                         Convert.ToString(reader["email"]));
@@ -114,7 +99,7 @@ namespace ICT4Event
             }
             finally
             {
-                DisConnect();
+                this.DisConnect();
             }
 
             return resultaat;
@@ -131,15 +116,15 @@ namespace ICT4Event
         /// </returns>
         public bool SelectGebruikersnaam(string gebruikersnaam)
         {
-            bool resultaat = false;
+            var resultaat = false;
             int count;
-            string sql = "select \"gebruikersnaam\" as aantal from account where \"gebruikersnaam\" = :gebruikersnaam";
+            var sql = "select \"gebruikersnaam\" as aantal from account where \"gebruikersnaam\" = :gebruikersnaam";
             try
             {
-                Connect();
-                OracleCommand cmd = new OracleCommand(sql, connection);
+                this.Connect();
+                var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("gebruikersnaam", gebruikersnaam));
-                OracleDataReader reader = cmd.ExecuteReader();
+                var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
                     resultaat = true;
@@ -151,22 +136,31 @@ namespace ICT4Event
             }
             finally
             {
-                DisConnect();
+                this.DisConnect();
             }
 
             return resultaat;
         }
 
+        /// <summary>
+        /// The select email.
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool SelectEmail(string email)
         {
-            bool resultaat = false;
-            string sql = "select \"email\" as aantal from account where \"email\" = :email";
+            var resultaat = false;
+            var sql = "select \"email\" as aantal from account where \"email\" = :email";
             try
             {
-                Connect();
-                OracleCommand cmd = new OracleCommand(sql, connection);
+                this.Connect();
+                var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("email", email));
-                OracleDataReader reader = cmd.ExecuteReader();
+                var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
                     resultaat = true;
@@ -178,19 +172,29 @@ namespace ICT4Event
             }
             finally
             {
-                DisConnect();
+                this.DisConnect();
             }
+
             return resultaat;
         }
 
+        /// <summary>
+        /// The activate account.
+        /// </summary>
+        /// <param name="hash">
+        /// The hash.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool ActivateAccount(string hash)
         {
-            bool resultaat = false;
-            string sql = "Update ACCOUNT SET \"geactiveerd\" = 1 WHERE \"activatiehash\" = :hash ";
+            var resultaat = false;
+            var sql = "Update ACCOUNT SET \"geactiveerd\" = 1 WHERE \"activatiehash\" = :hash ";
             try
             {
-                Connect();
-                OracleCommand cmd = new OracleCommand(sql, connection);
+                this.Connect();
+                var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("hash", hash));
                 cmd.ExecuteNonQuery();
                 resultaat = true;
@@ -201,8 +205,9 @@ namespace ICT4Event
             }
             finally
             {
-                DisConnect();
+                this.DisConnect();
             }
+
             return resultaat;
         }
     }

@@ -1,18 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="master.Master.cs" company="ICT4EVENTS.">
+//   ICT4EVENTS.
+// </copyright>
+// <summary>
+//   The master.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace ICT4Event
 {
-    public partial class master : System.Web.UI.MasterPage
+    using System;
+    using System.Web.UI;
+
+    /// <summary>
+    /// The master.
+    /// </summary>
+    public partial class Master : MasterPage
     {
+        /// <summary>
+        /// The page_ load.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
+
+        /// <summary>
+        /// The uitloggen.
+        /// </summary>
         public void Uitloggen()
         {
             this.Session.Clear();

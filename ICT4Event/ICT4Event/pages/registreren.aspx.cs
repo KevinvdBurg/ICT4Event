@@ -1,67 +1,104 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="registreren.aspx.cs" company="ICT4EVENTS.">
+//   ICT4EVENTS.
+// </copyright>
+// <summary>
+//   The registreren.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace ICT4Event.pages
 {
-    using System.Runtime.CompilerServices;
+    using System;
+    using System.Web.UI;
 
-    public partial class registreren : System.Web.UI.Page
+    /// <summary>
+    /// The registreren.
+    /// </summary>
+    public partial class Registreren : Page
     {
-        private Administration administration = new Administration();
+        /// <summary>
+        /// The administration.
+        /// </summary>
+        private readonly Administration administration = new Administration();
+
+        /// <summary>
+        /// The page_ load.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            //MessageBox.Show(this, "hoi");           
+            // MessageBox.Show(this, "hoi");           
         }
 
-        protected void btn_registeren_Click(object sender, EventArgs e)
+        /// <summary>
+        /// The btn_registeren_ click.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        protected void BtnRegisterenClick(object sender, EventArgs e)
         {
-            string gebruikersnaam = regi_gebruikersnaam.Text;
-            string email = regi_email.Text;
-            string heremail = regi_email.Text;
-            string wachtwoord = regi_wachtwoord.Text;
-            string herwachtwoord = regi_wachtwoord.Text;
+            var gebruikersnaam = this.regi_gebruikersnaam.Text;
+            var email = this.regi_email.Text;
+            var heremail = this.regi_email.Text;
+            var wachtwoord = this.regi_wachtwoord.Text;
+            var herwachtwoord = this.regi_wachtwoord.Text;
 
-            if (!administration.FindGebruikersnaam(gebruikersnaam))
+            if (!this.administration.FindGebruikersnaam(gebruikersnaam))
             {
-                MessageBox.Show(this, "Gebruikersnaam is al ingebruik");
+                this.Show("Gebruikersnaam is al ingebruik");
             }
-            else if (email != heremail|| wachtwoord != herwachtwoord)
+            else if (email != heremail || wachtwoord != herwachtwoord)
             {
-                MessageBox.Show(this, "Email of wachtwoord zijn niet correct");
+                this.Show("Email of wachtwoord zijn niet correct");
             }
-            else if (!administration.FindEmail(email))
+            else if (!this.administration.FindEmail(email))
             {
-                MessageBox.Show(this, "Email is al ingebruik");
+                this.Show("Email is al ingebruik");
             }
             else
             {
-                Guid g = Guid.NewGuid();
-                string GuidString = Convert.ToBase64String(g.ToByteArray());
-                GuidString = GuidString.Replace("=", "");
-                GuidString = GuidString.Replace("+", "");
+                var g = Guid.NewGuid();
+                var guidString = Convert.ToBase64String(g.ToByteArray());
+                guidString = guidString.Replace("=", string.Empty);
+                guidString = guidString.Replace("+", string.Empty);
 
-                Account newAccount = new Account(gebruikersnaam, email, wachtwoord, false, GuidString, false);
+                var newAccount = new Account(gebruikersnaam, email, wachtwoord, false, guidString, false);
                 this.administration.Add(newAccount);
                 this.administration.SendEmail(newAccount);
-                MessageBox.Show(this, "Alles ok!?");
+                this.Show("Alles ok!?");
             }
         }
 
-        protected void btn_actieveren_Click(object sender, EventArgs e)
+        /// <summary>
+        /// The btn_actieveren_ click.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        protected void BtnActieverenClick(object sender, EventArgs e)
         {
-            if (this.administration.ActivateAccount(tbActivatiecode.Text))
+            if (this.administration.ActivateAccount(this.tbActivatiecode.Text))
             {
-                MessageBox.Show(this.Page, "Account is geactiveerd");
-                Response.Redirect("/inloggen.aspx");
+                this.Page.Show("Account is geactiveerd");
+                this.Response.Redirect("/inloggen.aspx");
             }
             else
             {
-                MessageBox.Show(this.Page, "Activatie code is niet gevonden");
+                this.Page.Show("Activatie code is niet gevonden");
             }
         }
-    }  
+    }
 }

@@ -1,52 +1,77 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="inloggen.aspx.cs" company="ICT4EVENTS.">
+//   ICT4EVENTS.
+// </copyright>
+// <summary>
+//   The inloggen.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace ICT4Event.pages
 {
+    using System;
     using System.Text.RegularExpressions;
-    using System.Windows.Forms;
+    using System.Web.UI;
 
-    using MessageBox = ICT4Event.MessageBox;
-
-    public partial class inloggen : System.Web.UI.Page
+    /// <summary>
+    /// The inloggen.
+    /// </summary>
+    public partial class Inloggen : Page
     {
-        private Administration administration = new Administration();
+        /// <summary>
+        /// The administration.
+        /// </summary>
+        private readonly Administration administration = new Administration();
+
+        /// <summary>
+        /// The page_ load.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
-        protected void btn_inloggen_Click(object sender, EventArgs e)
+        /// <summary>
+        /// The btn_inloggen_ click.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        protected void BtnInloggenClick(object sender, EventArgs e)
         {
-            string username = Regex.Replace(Convert.ToString(inlog_gebruikersnaam.Text), @"\s+", "");
-            string password = Regex.Replace(Convert.ToString(inlog_wachtwoord.Text), @"\s+", "");
+            var username = Regex.Replace(Convert.ToString(this.inlog_gebruikersnaam.Text), @"\s+", string.Empty);
+            var password = Regex.Replace(Convert.ToString(this.inlog_wachtwoord.Text), @"\s+", string.Empty);
 
-            if (username == "" || password == "")
+            if (username == string.Empty || password == string.Empty)
             {
-                MessageBox.Show(this, "vul gegevens in!");   
+                this.Show("vul gegevens in!");
             }
             else
             {
-                string logincheck = this.administration.LoginCheck(username, password);
+                var logincheck = this.administration.LoginCheck(username, password);
                 if (logincheck == "Succes")
                 {
                     this.administration.Login(username, password);
-                    Account detailsAccount = this.administration.GetDetails(username);
+                    var detailsAccount = this.administration.GetDetails(username);
 
-                    this.Session[MyKeys.key_accountID] = detailsAccount.GebruikerID;
-                    this.Session[MyKeys.key_email] = detailsAccount.Email;
-                    this.Session[MyKeys.key_username] = detailsAccount.Gebruiksersnaam;
+                    this.Session[MyKeys.KeyAccountId] = detailsAccount.GebruikerId;
+                    this.Session[MyKeys.KeyEmail] = detailsAccount.Email;
+                    this.Session[MyKeys.KeyUsername] = detailsAccount.Gebruiksersnaam;
 
-                    MessageBox.Show(this, "Inloggen gelukt!");
-                    Response.Redirect("/index.aspx");
+                    this.Show("Inloggen gelukt!");
+                    this.Response.Redirect("/index.aspx");
                 }
                 else
                 {
-                    MessageBox.Show(this.Page, logincheck);
+                    this.Page.Show(logincheck);
                 }
             }
         }
