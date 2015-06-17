@@ -51,7 +51,17 @@ namespace ICT4Event
         */
         public string FindInfoSpot(int id)
         {
-            return dbCampingspot.FindInfo(id);
+            return this.dbCampingspot.FindInfo(id);
+        }
+
+        public int NewPerson(Person person)
+        {
+            return this.dbreserve.NewPerson(person);
+        }
+
+        public void NewReservation()
+        {
+            this.dbreserve.
         }
     }
 }
