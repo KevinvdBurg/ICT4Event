@@ -30,9 +30,10 @@ namespace ICT4Event.pages
             {
                  newPerson = new Person(
                     this.tbFirstName.Text,
+                    this.tbInsertion.Text,
                     this.tbLastName.Text,
                     this.tbStreet.Text,
-                    Convert.ToInt32(this.tbHouseNumber.Text),
+                    this.tbHouseNumber.Text,
                     this.tbCity.Text,
                     this.tbBank.Text);
             }
@@ -40,15 +41,14 @@ namespace ICT4Event.pages
             {
                  newPerson = new Person(
                     this.tbFirstName.Text,
-                    this.tbInsertion.Text,
                     this.tbLastName.Text,
                     this.tbStreet.Text,
-                    Convert.ToInt32(this.tbHouseNumber.Text),
+                    this.tbHouseNumber.Text,
                     this.tbCity.Text,
                     this.tbBank.Text);
             }
 
-            int id = this.administration.NewPerson(newPerson);
+            this.administration.NewPerson(newPerson);
             
             this.administration.NewReservation();
         }

@@ -54,14 +54,14 @@ namespace ICT4Event
             return this.dbCampingspot.FindInfo(id);
         }
 
-        public int NewPerson(Person person)
+        public void NewPerson(Person person)
         {
-            return this.dbreserve.NewPerson(person);
+            this.dbreserve.NewPerson(person);
         }
 
         public void NewReservation()
         {
-            this.dbreserve.
+            
         }
     }
 }

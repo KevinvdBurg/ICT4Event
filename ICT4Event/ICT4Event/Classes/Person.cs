@@ -7,7 +7,7 @@ namespace ICT4Event
 {
     public class Person
     {
-        public Person(string firstName, string insertion, string lastName, string street, int houseNumber, string city, string bankNumber)
+        public Person(string firstName, string insertion, string lastName, string street, string houseNumber, string city, string bankNumber)
         {
             this.FirstName = firstName;
             this.Insertion = insertion;
@@ -18,7 +18,7 @@ namespace ICT4Event
             this.Banknumber = bankNumber;
         }
 
-        public Person(string firstName, string lastName, string street, int houseNumber, string city, string bankNumber)
+        public Person(string firstName, string lastName, string street, string houseNumber, string city, string bankNumber)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -28,7 +28,7 @@ namespace ICT4Event
             this.Banknumber = bankNumber;
         }
 
-        public Person(int personID, string firstName, string insertion, string lastName, string street, int houseNumber, string city, string bankNumber)
+        public Person(int personID, string firstName, string insertion, string lastName, string street, string houseNumber, string city, string bankNumber)
         {
             this.FirstName = firstName;
             this.Insertion = insertion;
@@ -40,7 +40,7 @@ namespace ICT4Event
             this.PersonID = personID;
         }
 
-        public Person(int personID, string firstName, string lastName, string street, int houseNumber, string city, string bankNumber)
+        public Person(int personID, string firstName, string lastName, string street, string houseNumber, string city, string bankNumber)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -61,7 +61,7 @@ namespace ICT4Event
 
         public string Street { get; set; }
 
-        public int HouseNumber { get; set; }
+        public string HouseNumber { get; set; }
 
         public string City { get; set; }
 

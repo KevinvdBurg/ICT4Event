@@ -5,17 +5,50 @@ using System.Web;
 
 namespace ICT4Event
 {
+    using System.Data;
     using System.Data.OracleClient;
     using System.Net.Sockets;
     using System.Text.RegularExpressions;
+    using System.Xml.Linq;
 
     public class DBReserve : Database
     {
-        public int NewPerson(Person person)
+        public void NewPerson(Person person)
         {
-            int result = -1;
+            int id = 0;
+            string voornaam = person.FirstName;
+            string achternaam = person.LastName;
+            string straat = person.Street;
+            string huis = person.HouseNumber;
+            string woon = person.City;
+            string bank = person.Banknumber;
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand("REGISTREERHOOFDBOEKER", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("P_Voornaam", voornaam);
+                cmd.Parameters.Add("P_Tussenvoegsel", person.Insertion);
+                cmd.Parameters.Add("P_Achternaam", achternaam);
+                cmd.Parameters.Add("P_Straat", straat);
+                cmd.Parameters.Add("P_Huisnr", huis);
+                cmd.Parameters.Add("P_Woonplaats", woon);
+                cmd.Parameters.Add("P_Banknr", bank);
+                cmd.Parameters.Add("P_ID", OracleType.Int32).Direction = ParameterDirection.Output;
 
-            return result;
+                
+
+
+            }
+            catch (OracleException e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            finally
+            {
+                this.DisConnect();
+            }
         }
 
 
