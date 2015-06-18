@@ -145,6 +145,12 @@ namespace ICT4Event
             return resultaat;
         }
 
+        public bool Update(string gebruikersnaam, string email)
+        {
+
+            return true;
+        }
+
         /// <summary>
         /// The select email.
         /// </summary>
@@ -199,6 +205,31 @@ namespace ICT4Event
                 this.Connect();
                 var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("hash", hash));
+                cmd.ExecuteNonQuery();
+                resultaat = true;
+            }
+            catch (OracleException e)
+            {
+                Console.WriteLine("Activatie code niet gevonden: " + e.Message);
+            }
+            finally
+            {
+                this.DisConnect();
+            }
+
+            return resultaat;
+        }
+
+        public bool UpdateUserAccount(int id, string email)
+        {
+            var resultaat = false;
+            var sql = "UPDATE ACCOUNT SET \"email\"=:email WHERE \"ID\" = :id";
+            try
+            {
+                this.Connect();
+                var cmd = new OracleCommand(sql, this.Connection);
+                cmd.Parameters.Add(new OracleParameter("id", id));
+                cmd.Parameters.Add(new OracleParameter("email", email));
                 cmd.ExecuteNonQuery();
                 resultaat = true;
             }

@@ -14,6 +14,7 @@ namespace ICT4Event.Classes
     using System.DirectoryServices;
     using System.DirectoryServices.AccountManagement;
     using System.Text;
+    using System.Web.UI;
 
     /// <summary>
     /// The ad registreer login.
@@ -51,7 +52,9 @@ namespace ICT4Event.Classes
                 usr.UserPrincipalName = userName;
                 usr.EmailAddress = userEmail;
                 usr.SetPassword(userPassword);
+                usr.Enabled = true;
                 usr.UnlockAccount();
+
                 usr.Save();
 
                 this.AddUserToGroup(userName, "Web-Gebruiker", ctx);
@@ -64,6 +67,20 @@ namespace ICT4Event.Classes
                 Console.WriteLine(e.Message);
                 throw;
             }
+        }
+
+        public bool EditUserAccount(string userName, string userPassword, string userEmail)
+        {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            return true;
         }
 
         /// <summary>
@@ -192,6 +209,28 @@ namespace ICT4Event.Classes
                 throw;
             }
            
+        }
+
+        public bool UpdateUserAccount(string username, string email, string wachtwoord)
+        {
+            bool resultaat = false;
+            try
+            {
+                UserPrincipal user = FindByIdentity(username);
+                user.SetPassword(wachtwoord);
+                user.EmailAddress = email;
+
+                user.Save();
+
+                user.Dispose();
+                resultaat = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            return resultaat;
         }
     }
 }

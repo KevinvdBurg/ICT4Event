@@ -11,7 +11,9 @@ namespace ICT4Event
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Net.Mail;
+    using System.Text.RegularExpressions;
     using System.Web.UI;
 
     using ICT4Event.Classes;
@@ -193,7 +195,6 @@ namespace ICT4Event
                            + Environment.NewLine + account.Hash;
             var client = new SmtpClient("smtp.ict4events.bb");
             client.UseDefaultCredentials = true;
-
             try
             {
                 client.Send(message);
@@ -221,6 +222,24 @@ namespace ICT4Event
         public List<string> GetAccountGroups(string username)
         {
             return this.adRegistreerLogin.FindUserGroup(username);
-        } 
+        }
+
+        public bool IsValid(string email)
+        {
+            string pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
+            return Regex.IsMatch(email, pattern);
+        }
+
+
+        public bool UpdateAccountAD(string username, string email, string wachtwoord)
+        {
+            return this.adRegistreerLogin.UpdateUserAccount(username, email, wachtwoord);
+            
+        }
+
+        public bool UpdateAccountDB(int id, string email)
+        {
+            return this.dbaccount.UpdateUserAccount(id, email);
+        }
     }
 }
