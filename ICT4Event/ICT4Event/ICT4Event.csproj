@@ -89,7 +89,6 @@
     <Compile Include="admin.master.designer.cs">
       <DependentUpon>admin.master</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Classes\Account.cs" />
     <Compile Include="Classes\Administration.cs" />
     <Compile Include="Classes\ADRegistreerLogin.cs" />
@@ -97,7 +96,6 @@
     <Compile Include="Classes\DBAccount.cs" />
     <Compile Include="Classes\DBLogin.cs" />
     <Compile Include="Classes\Messagebox.cs" />
-=======
     <Compile Include="Classes\Address.cs" />
     <Compile Include="Classes\Administration.cs" />
     <Compile Include="Classes\Database.cs" />
@@ -119,7 +117,6 @@
     <Compile Include="pages\Event aanmaken.aspx.designer.cs">
       <DependentUpon>Event aanmaken.aspx</DependentUpon>
     </Compile>
->>>>>>> origin/Event-aanmaken
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
