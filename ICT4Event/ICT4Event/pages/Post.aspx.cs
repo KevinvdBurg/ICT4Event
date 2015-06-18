@@ -45,7 +45,7 @@ namespace ICT4Event.pages
             string catnaam = lbCategorie.SelectedValue;
             foreach (String s in ad.CategoryFilesList(catnaam))
             {
-                lbItems.Items.Add(s);
+                lbItems.Items.Add(ad.testContains(s));
             }
             lbCategorie.Items.Clear();
             foreach (var s in ad.SubCategories(catnaam))
@@ -54,7 +54,7 @@ namespace ICT4Event.pages
             }
             foreach (var s in ad.CategoryMessages(catnaam))
             {
-                lbItems.Items.Add(s);
+                lbItems.Items.Add(ad.testContains(s));
             }
             
             
@@ -103,10 +103,10 @@ namespace ICT4Event.pages
             }
             foreach (var s in ad.Posts())
             {
-                lbItems.Items.Add(s);
+                lbItems.Items.Add(ad.testContains(s));
             }
 
-            lbItems.Items.Add(ad.testContains());
+            //lbItems.Items.Add(ad.testContains());
         }
 
         private void Clear()
@@ -120,7 +120,7 @@ namespace ICT4Event.pages
 
         protected void btnNewPost_Click(object sender, EventArgs e)
         {
-            //ftptj.UploadFileToFtp("C:\\Users\\ASUS\\Desktop\\Hoi.txt", "Administrator", "Admin123");
+            //SME De Valkenhof 2014ftptj.UploadFileToFtp("C:\\Users\\ASUS\\Desktop\\Hoi.txt", "Administrator", "Admin123");
             btnSavePost.Visible = true;
             tbNewTitle.Visible = true;
             tbNewContent.Visible = true;

@@ -44,7 +44,7 @@ namespace ICT4Event.Classes
             return db.GetComments(db.GetMessageID(titel));
         }
 
-        public string testContains()
+        public string testContains(string str)
         {
             string s = "/Jij/ e/n ik/01 - Mooier dan ik dacht.mp3";
             string s2 = "hallo";
@@ -58,11 +58,11 @@ namespace ICT4Event.Classes
                 }
                 return s;
             }*/
-            while (s.IndexOf("/") != -1)
+            while (str.IndexOf("/") != -1)
             {
-                s = s.Substring(s.IndexOf("/")+1);
+                str = str.Substring(str.IndexOf("/")+1);
             }
-            return s;
+            return str;
             
 
         }
