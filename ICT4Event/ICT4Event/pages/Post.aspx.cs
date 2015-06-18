@@ -12,6 +12,7 @@ namespace ICT4Event.pages
     {
         private Administration ad = new Administration();
         private bool isBericht;
+        private Ftpverbinding ftptj = new Ftpverbinding();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,7 +41,7 @@ namespace ICT4Event.pages
             //Als er op bestand word geklikt worden er categorieën getoond, of bestanden zonder categorie
 
 
-            lblMap.Text = lbCategorie.SelectedValue;
+            lblMap.Text += lbCategorie.SelectedValue + "\\";
             string catnaam = lbCategorie.SelectedValue;
             foreach (String s in ad.CategoryFilesList(catnaam))
             {
@@ -87,7 +88,7 @@ namespace ICT4Event.pages
 
         protected void btnReturn_Click(object sender, EventArgs e)
         {
-            lblMap.Text = "Home";
+            lblMap.Text = "Home\\";
             StartPosition();
         }
 
@@ -119,6 +120,7 @@ namespace ICT4Event.pages
 
         protected void btnNewPost_Click(object sender, EventArgs e)
         {
+            //ftptj.UploadFileToFtp("C:\\Users\\ASUS\\Desktop\\Hoi.txt", "Administrator", "Admin123");
             btnSavePost.Visible = true;
             tbNewTitle.Visible = true;
             tbNewContent.Visible = true;
@@ -137,7 +139,7 @@ namespace ICT4Event.pages
             else
             {
                 //Mainpost
-                if (lblMap.Text == "Home")
+                if (lblMap.Text == "Home\\")
                 {
                     ad.InsertMainMessage(1, tbNewTitle.Text, tbNewContent.Text);
                 }
@@ -162,6 +164,16 @@ namespace ICT4Event.pages
             btnSavePost.Visible = true;
             tbNewContent.Visible = true;
             Label2.Visible = true;
+        }
+
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/pages/Upload.aspx");
+        }
+
+        protected void btnDownload_Click(object sender, EventArgs e)
+        {
+            ftptj.DownloadFtpFile(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), lbItems.SelectedValue, lblMap.Text);
         }
     }
 }

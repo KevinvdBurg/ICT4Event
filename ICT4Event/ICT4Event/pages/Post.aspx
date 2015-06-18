@@ -3,7 +3,7 @@
     <p>
         <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" Text="Home" />
         <asp:Label ID="Label1" runat="server" Text="Huidige map:"></asp:Label>
-        <asp:Label ID="lblMap" runat="server" Text="Home"></asp:Label>
+        <asp:Label ID="lblMap" runat="server" Text="Home\\"></asp:Label>
     </p>
     <p>
     
@@ -12,10 +12,11 @@
     </p>
     
    
-    <asp:Button ID="btnDownload" runat="server" Text="Download" Visible="False" />
+    <asp:Button ID="btnDownload" runat="server" Text="Download" Visible="False" OnClick="btnDownload_Click" />
     <p>
         <asp:Button ID="btnNewPost" runat="server" Text="Nieuw Post" OnClick="btnNewPost_Click" />
         <asp:Button ID="btnComment" runat="server" OnClick="btnComment_Click" Text="Commentaar" Width="85px" />
+        <asp:Button ID="btnUpload" runat="server" OnClick="btnUpload_Click" Text="Upload" />
     </p>
     <p>
         <asp:TextBox ID="tbNewTitle" runat="server" Visible="False"></asp:TextBox>

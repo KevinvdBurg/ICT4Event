@@ -76,6 +76,7 @@
     <Content Include="js\vendor\npm.js" />
     <Content Include="pages\Post.aspx" />
     <Content Include="pages\registreren.aspx" />
+    <Content Include="pages\Upload.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +90,7 @@
     <Compile Include="Classes\Administration.cs" />
     <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\DBPost.cs" />
+    <Compile Include="Classes\Ftpverbinding.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -129,6 +131,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Upload.aspx.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Upload.aspx.designer.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
