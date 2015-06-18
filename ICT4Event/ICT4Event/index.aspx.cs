@@ -42,8 +42,7 @@ namespace ICT4Event
                         this.Session[MyKeys.KeyEmail] = detailsAccount.Email;
                         this.Session[MyKeys.KeyUsername] = detailsAccount.Gebruiksersnaam;
 
-                        this.Page.Show("Inloggen gelukt!");
-                        this.Response.Redirect("/index.aspx");
+                        this.Response.Redirect("/pages/wijziggegevens.aspx");
                     }
                     else
                     {
@@ -56,6 +55,11 @@ namespace ICT4Event
                     this.Page.Show("Een geactiveerd account gevonden");
                 }
             }
+        }
+
+        protected void btn_to_registeren_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/pages/wijziggegevens.aspx");
         }
     }
 }

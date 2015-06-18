@@ -59,9 +59,13 @@ namespace ICT4Event.pages
             {
                 this.Show("Gebruikersnaam is al ingebruik");
             }
-            else if (email != heremail || wachtwoord != herwachtwoord || wachtwoord.Length > 5 || this.administration.IsValid(email))
+            else if (email != heremail || !this.administration.IsValid(email))
             {
-                this.Show("Email of wachtwoord zijn niet correct");
+                this.Show("Email is incorrect");
+            }
+            else if (wachtwoord != herwachtwoord || wachtwoord.Length < 5)
+            {
+                this.Show("Wachtwoord is incorrect");
             }
             else if (!this.administration.FindEmail(email))
             {

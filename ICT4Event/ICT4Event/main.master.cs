@@ -63,16 +63,35 @@ namespace ICT4Event
                 if (admin)
                 {
                     MessageBox.Show(this.Page, "Web-Admin");
-
                 }
-
                 else
                 {
-                    MessageBox.Show(this.Page, "Web-Gebruiker");
-
+                    //MessageBox.Show(this.Page, "Web-Gebruiker");
+                    this.Page.Show(Session[MyKeys.KeyUsername] + " - " + Session[MyKeys.KeyEmail] + " - " + Session[MyKeys.KeyAccountId]);
                     //Response.Redirect("to user page");
                 }
+                btn_inuitlog.Text = "Uitloggen";
             }
+        }
+
+        protected void btn_inuitlog_Click(object sender, EventArgs e)
+        {
+            string value = Session[MyKeys.KeyAccountId] + string.Empty;
+            if (string.IsNullOrEmpty(value))
+            {
+                Response.Redirect("/index.aspx");
+            }
+            else
+            {
+                this.Uitloggen();
+            }
+        }
+
+        public void Uitloggen()
+        {
+            this.Session.Clear();
+            this.Session.Abandon();
+            this.Session.RemoveAll();
         }
     }
 }

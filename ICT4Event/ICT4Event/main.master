@@ -58,9 +58,11 @@
             <li class="sub-flex-item">
                 <asp:DropDownList ID="dropevent_main" runat="server"></asp:DropDownList>
             </li>
+
             <li class="sub-flex-item">
-                <a href="/pages/inloggen.aspx">Inloggen</a>
+                <asp:LinkButton ID="btn_inuitlog" runat="server" OnClick="btn_inuitlog_Click">Inloggen</asp:LinkButton>
             </li>
+            
             <li class="sub-flex-item">
                 <a href="#">Registeren</a>
             </li>

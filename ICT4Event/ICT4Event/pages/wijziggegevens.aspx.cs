@@ -36,26 +36,38 @@ namespace ICT4Event.pages
 
             if (email != "" || wachtwoord != "")
             {
-                if (email != "" && administration.IsValid(email) && email == heremail)
+                if (administration.IsValid(email) && email == heremail)
                 {
                     updateemail = email;
                 }
                 else
                 {
                     this.Page.Show("Email komt niet overeen of is niet valide");
+                    return;
                 }
                     
-                if (wachtwoord != "" && wachtwoord == herwachtwoord && wachtwoord.Length > 5)
+                if (wachtwoord == herwachtwoord && wachtwoord.Length > 5)
                 {
                     updatewachtwoord = wachtwoord;
                 }
                 else
                 {
                     this.Page.Show("Wachtwoord is niet complex genoeg of komen niet overeen");
+                    return;
+                }
+                if (administration.UpdateAccountDB(Convert.ToInt32(Session[MyKeys.KeyAccountId]), updateemail))
+                {
+                    this.Page.Show("DB Gelukt");
+                }
+                if (administration.UpdateAccountAD(Convert.ToString(Session[MyKeys.KeyUsername]), updateemail, updatewachtwoord))
+                {
+                    this.Page.Show("AD Gelukt");
                 }
 
-                bool AD = administration.UpdateAccountAD(Convert.ToString(Session[MyKeys.KeyUsername]), email, wachtwoord);
-                bool DB = administration.UpdateAccountDB(Convert.ToInt32(MyKeys.KeyAccountId), email);
+                var detailsAccount = this.administration.GetDetails(Convert.ToString(Session[MyKeys.KeyUsername]));
+                this.Session[MyKeys.KeyAccountId] = detailsAccount.GebruikerId;
+                this.Session[MyKeys.KeyEmail] = detailsAccount.Email;
+                
             }
             else
             {

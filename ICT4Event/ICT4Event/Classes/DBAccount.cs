@@ -235,7 +235,7 @@ namespace ICT4Event
             }
             catch (OracleException e)
             {
-                Console.WriteLine("Activatie code niet gevonden: " + e.Message);
+                Console.WriteLine("Account niet gevonden: " + e.Message);
             }
             finally
             {

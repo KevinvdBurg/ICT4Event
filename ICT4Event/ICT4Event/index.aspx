@@ -6,7 +6,7 @@
     <p>Wachtwoord: <asp:TextBox ID="inlog_wachtwoord" runat="server"></asp:TextBox>
     </p>
     <asp:Button ID="btn_inloggen" runat="server" Text="Button" OnClick="BtnInloggenClick"/>
-    <p class="alert-link"><a href="pages/registreren.aspx">Registeren</a></p>
+    <asp:LinkButton ID="btn_to_registeren" runat="server" OnClick="btn_to_registeren_Click">Registeren</asp:LinkButton>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
