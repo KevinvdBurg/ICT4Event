@@ -66,6 +66,8 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\main.css" />
+    <Content Include="pages\EventsWijzigen.aspx" />
+    <Content Include="pages\Event aanmaken.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.aspx" />
     <Content Include="js\main.js" />
@@ -87,6 +89,7 @@
     <Compile Include="admin.master.designer.cs">
       <DependentUpon>admin.master</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Classes\Account.cs" />
     <Compile Include="Classes\Administration.cs" />
     <Compile Include="Classes\ADRegistreerLogin.cs" />
@@ -94,6 +97,29 @@
     <Compile Include="Classes\DBAccount.cs" />
     <Compile Include="Classes\DBLogin.cs" />
     <Compile Include="Classes\Messagebox.cs" />
+=======
+    <Compile Include="Classes\Address.cs" />
+    <Compile Include="Classes\Administration.cs" />
+    <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\DBAddress.cs" />
+    <Compile Include="Classes\DBEvent.cs" />
+    <Compile Include="Classes\Event.cs" />
+    <Compile Include="Classes\Location.cs" />
+    <Compile Include="pages\EventsWijzigen.aspx.cs">
+      <DependentUpon>EventsWijzigen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\EventsWijzigen.aspx.designer.cs">
+      <DependentUpon>EventsWijzigen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Event aanmaken.aspx.cs">
+      <DependentUpon>Event aanmaken.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Event aanmaken.aspx.designer.cs">
+      <DependentUpon>Event aanmaken.aspx</DependentUpon>
+    </Compile>
+>>>>>>> origin/Event-aanmaken
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

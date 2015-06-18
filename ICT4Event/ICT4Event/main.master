@@ -10,7 +10,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="menu_bar_top" runat="server">
     <li class="flex-item" id="i-home">
+<<<<<<< HEAD
         <a href="/index.aspx"> Home</a>
+=======
+        <a href="#"> Home</a>
+>>>>>>> origin/Event-aanmaken
     </li>
 
     <li class="flex-item" id="i-post">
@@ -18,7 +22,11 @@
     </li>
 
     <li class="flex-item" id="i-reververingen">
+<<<<<<< HEAD
         <a href="/pages/registreren.aspx">Reververingen</a>
+=======
+        <a href="#">Reververingen</a>
+>>>>>>> origin/Event-aanmaken
     </li>
 
     <li class="flex-item" id="i-opties">
@@ -58,11 +66,17 @@
             <li class="sub-flex-item">
                 <asp:DropDownList ID="dropevent_main" runat="server"></asp:DropDownList>
             </li>
+<<<<<<< HEAD
 
             <li class="sub-flex-item">
                 <asp:LinkButton ID="btn_inuitlog" runat="server" OnClick="btn_inuitlog_Click">Inloggen</asp:LinkButton>
             </li>
             
+=======
+            <li class="sub-flex-item">
+                <a href="#">Inloggen</a>
+            </li>
+>>>>>>> origin/Event-aanmaken
             <li class="sub-flex-item">
                 <a href="#">Registeren</a>
             </li>

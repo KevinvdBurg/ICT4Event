@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="master.Master.cs" company="ICT4EVENTS.">
+// <copyright file="Posts.aspx.cs" company="ICT4EVENTS.">
 //   ICT4EVENTS.
 // </copyright>
 // <summary>
-//   The master.
+//   The posts.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -13,9 +13,9 @@ namespace ICT4Event
     using System.Web.UI;
 
     /// <summary>
-    /// The master.
+    /// The posts.
     /// </summary>
-    public partial class Master : MasterPage
+    public class Posts : Page
     {
         /// <summary>
         /// The page_ load.
@@ -28,19 +28,6 @@ namespace ICT4Event
         /// </param>
         protected void Page_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-        }
-
-        /// <summary>
-        /// The uitloggen.
-        /// </summary>
-        public void Uitloggen()
-        {
-            this.Session.Clear();
-            this.Session.Abandon();
-            this.Session.RemoveAll();
-=======
->>>>>>> origin/Event-aanmaken
         }
     }
 }

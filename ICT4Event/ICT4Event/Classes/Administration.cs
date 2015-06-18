@@ -11,6 +11,7 @@ namespace ICT4Event
 {
     using System;
     using System.Collections.Generic;
+<<<<<<< HEAD
     using System.Globalization;
     using System.Net.Mail;
     using System.Text.RegularExpressions;
@@ -19,6 +20,51 @@ namespace ICT4Event
     using ICT4Event.Classes;
 
     // using System.Windows.Forms;
+=======
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// The administration.
+    /// </summary>
+    public class Administration
+    {
+        /// <summary>
+        /// The dbaddress.
+        /// </summary>
+        private readonly DBAddress dbaddress = new DBAddress();
+
+        /// <summary>
+        /// The dbevent.
+        /// </summary>
+        private readonly DBEvent dbevent = new DBEvent();
+
+        /// <summary>
+        /// The db.
+        /// </summary>
+        private Database DB = new Database();
+
+        /// <summary>
+        /// Een event wordt doorgestuurd naar dbEvent zodat er een event toegevoegd kan worden aan de database
+        /// </summary>
+        /// <param name="Event">
+        /// Event
+        /// </param>
+        public void AddEvent(Event Event)
+        {
+            this.dbevent.Insert(Event);
+        }
+
+        /// <summary>
+        /// The delete.
+        /// </summary>
+        /// <param name="Event">
+        /// The event.
+        /// </param>
+        public void Delete(Event Event)
+        {
+            // TODO
+        }
+>>>>>>> origin/Event-aanmaken
 
     /// <summary>
     /// The administration.
@@ -29,26 +75,93 @@ namespace ICT4Event
         /// <summary>
         /// The domain con.
         /// </summary>
+<<<<<<< HEAD
         private const string DomainCon = "CN=Users,DC=pts45,DC=local";
+=======
+        /// <param name="EventName">
+        /// Event.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Event"/>.
+        /// </returns>
+        public Event FindEvent(string EventName)
+        {
+            var foundEvent = this.dbevent.Select(EventName);
+
+            if (foundEvent != null)
+            {
+                return foundEvent;
+            }
+
+            MessageBox.Show("Event niet gevonden");
+            return null;
+        }
+>>>>>>> origin/Event-aanmaken
 
         /// <summary>
         /// The ad registreer login.
         /// </summary>
+<<<<<<< HEAD
         private readonly AdRegistreerLogin adRegistreerLogin = new AdRegistreerLogin();
+=======
+        /// <param name="EventID">
+        /// Event.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Event"/>.
+        /// </returns>
+        public Event FindEvent(int EventID)
+        {
+            var foundEvent = this.dbevent.Select(EventID);
+
+            if (foundEvent != null)
+            {
+                return foundEvent;
+            }
+
+            MessageBox.Show("Event niet gevonden");
+            return null;
+        }
+>>>>>>> origin/Event-aanmaken
 
         /// <summary>
         /// The dbaccount.
         /// </summary>
+<<<<<<< HEAD
         private readonly DbAccount dbaccount = new DbAccount();
 
         /// <summary>
         /// The dblogin.
         /// </summary>
         private readonly DbLogin dblogin = new DbLogin();
+=======
+        /// <param name="zipcode">
+        /// Zipcode.
+        /// </param>
+        /// <param name="number">
+        /// Number.
+        /// </param>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
+        public int FindAddressID(string zipcode, string number)
+        {
+            var foundAddressID = this.dbaddress.FindAdressID(zipcode, number);
+
+            if (foundAddressID != null)
+            {
+                return foundAddressID;
+            }
+
+            MessageBox.Show("AdresID niet gevonden");
+            return Convert.ToInt32(null);
+        }
+>>>>>>> origin/Event-aanmaken
 
         /// <summary>
         /// The db.
         /// </summary>
+<<<<<<< HEAD
         private Database db = new Database();
 
         /// <summary>
@@ -241,5 +354,33 @@ namespace ICT4Event
         {
             return this.dbaccount.UpdateUserAccount(id, email);
         }
+=======
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
+        public List<Event> FindEventAll()
+        {
+            var foundEvents = this.dbevent.SelectAll();
+
+            if (foundEvents != null)
+            {
+                return foundEvents;
+            }
+
+            MessageBox.Show("Geen Events gevonden");
+            return null;
+        }
+
+        /// <summary>
+        /// update de gegevens van het event
+        /// </summary>
+        /// <param name="tempEvent">
+        /// Tijdelijk Event.
+        /// </param>
+        public void UpdateEvent(Event tempEvent)
+        {
+            this.dbevent.UpdateEvent(tempEvent);
+        }
+>>>>>>> origin/Event-aanmaken
     }
 }

@@ -10,18 +10,25 @@
 namespace ICT4Event
 {
     using System;
+<<<<<<< HEAD
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using System.Web;
     using System.Web.UI;
     using ICT4Event.Classes;
+=======
+    using System.Web.UI;
+>>>>>>> origin/Event-aanmaken
 
     /// <summary>
     /// The admin.
     /// </summary>
     public partial class Admin : MasterPage
     {
+<<<<<<< HEAD
         private readonly Administration administration = new Administration();
+=======
+>>>>>>> origin/Event-aanmaken
         /// <summary>
         /// The page_ load.
         /// </summary>
@@ -33,6 +40,7 @@ namespace ICT4Event
         /// </param>
         protected void Page_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             string value = Session[MyKeys.KeyAccountId] + string.Empty;
 
             if (string.IsNullOrEmpty(value))
@@ -93,6 +101,8 @@ namespace ICT4Event
             this.Session.Clear();
             this.Session.Abandon();
             this.Session.RemoveAll();
+=======
+>>>>>>> origin/Event-aanmaken
         }
     }
 }

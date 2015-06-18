@@ -70,7 +70,11 @@
                 <asp:DropDownList ID="dropevent_main" runat="server"></asp:DropDownList>
             </li>
             <li class="sub-flex-item">
+<<<<<<< HEAD
                 <asp:LinkButton ID="btn_Uitloggen" runat="server">Uitloggen</asp:LinkButton>
+=======
+                <a href="#">Uitloggen</a>
+>>>>>>> origin/Event-aanmaken
             </li>
         </ul>
     </div>
