@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true" CodeBehind="main.master.cs" Inherits="ICT4Event.main" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="Subtitle" runat="server">
+    Gebruiker
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="menu_bar_top" runat="server">
+    <li class="flex-item" id="i-home"><a href="#"> Home</a></li>
+   
+    <li class="flex-item" id="i-post"><a href="#">Post</a></li>
+                    
+    <li class="flex-item" id="i-reververingen"><a href="#">Reververingen</a></li>
+
+    <li class="flex-item" id="i-opties"><a href="#">Opties</a></li>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="menu_bar_sub" runat="server">
+    <div class="nav-post">
+        <ul class="sub-flex-container sub sub-post">
+            <a href=""><li class="sub-flex-item">Post Maken</li></a>
+            <a href=""><li class="sub-flex-item">Post Wijzigen</li></a>
+            <a href=""><li class="sub-flex-item">Mijn Posts</li></a>
+        </ul>
+    </div>
+    <div class="nav-reververingen">
+        <ul class="sub-flex-container sub sub-reververingen">
+            <a href=""><li class="sub-flex-item">Plek Reservering Maken</li></a>
+            <a href=""><li class="sub-flex-item">Item Reservering Maken</li></a>
+            <a href=""><li class="sub-flex-item">Mijn Reservering</li></a>
+        </ul>
+    </div>
+
+    <div class="nav-opties">
+        <ul class="sub-flex-container sub sub-opties">
+            <li class="sub-flex-item"><asp:DropDownList ID="dropevent_main" runat="server"></asp:DropDownList></li>
+            <li class="sub-flex-item"><a href="#">Inloggen</a></li>
+            <li class="sub-flex-item"><a href="#">Registeren</a></li>
+        </ul>
+    </div>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="content_left" runat="server">
+     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="contenct_right" runat="server">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
