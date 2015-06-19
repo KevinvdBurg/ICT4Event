@@ -41,8 +41,6 @@ namespace ICT4Event
                 cmd.Parameters.Add(new OracleParameter("naam", location.Name));
                 cmd.Parameters.Add(new OracleParameter("straat", location.Address.Street));
                 cmd.ExecuteNonQuery();
-
-                // OracleDataReader reader = cmd.ExecuteReader();
                 resultaat = true;
             }
             catch (OracleException e)

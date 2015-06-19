@@ -21,6 +21,8 @@ namespace ICT4Event.Classes
     /// </summary>
     public class AdRegistreerLogin
     {
+        PrincipalContext ctx = new PrincipalContext(ContextType.Domain, "pts45.local", "Administrator", "Admin123");
+
         /// <summary>
         /// The create user account.
         /// </summary>
@@ -126,9 +128,7 @@ namespace ICT4Event.Classes
         {
             try
             {
-                var ctx = new PrincipalContext(ContextType.Domain, "pts45.local", "Administrator", "Admin123");
-
-                var usr = UserPrincipal.FindByIdentity(ctx, IdentityType.SamAccountName, username);
+                var usr = UserPrincipal.FindByIdentity(this.ctx, IdentityType.SamAccountName, username);
                 return usr;
             }
             catch (DirectoryServicesCOMException e)
@@ -137,28 +137,14 @@ namespace ICT4Event.Classes
             }
 
             return null;
-        }
-
-        //public bool CheckIdentity(string username, string password)
-        //{
-        //    var ctx = new PrincipalContext(ContextType.Domain, "pts45.local", "Administrator", "Admin123");
-        //    using (ctx)
-        //    {
-        //        // validate the credentials
-        //        bool isValid = ctx.ValidateCredentials(username, password);
-        //    }
-
-        //    return 
-        //}
-            
+        }            
 
         public List<string> FindUserGroup(string username)
         {
             List<string> groupList = new List<string>();
             try
             {
-                var ctx = new PrincipalContext(ContextType.Domain, "pts45.local", "Administrator", "Admin123");
-                UserPrincipal user = UserPrincipal.FindByIdentity(ctx, IdentityType.SamAccountName, username);
+                UserPrincipal user = UserPrincipal.FindByIdentity(this.ctx, IdentityType.SamAccountName, username);
                 if (user != null)
                 {
                     foreach (var group in user.GetGroups())
@@ -196,10 +182,9 @@ namespace ICT4Event.Classes
         {
             try
             {
-                var ctx = new PrincipalContext(ContextType.Domain, "pts45.local", "Administrator", "Admin123");
-                using (ctx)
+                using (this.ctx)
                 {
-                    var validatedOnDomain = ctx.ValidateCredentials(userName, password);
+                    var validatedOnDomain = this.ctx.ValidateCredentials(userName, password);
                     return validatedOnDomain;
                 }                
             }
@@ -216,7 +201,7 @@ namespace ICT4Event.Classes
             bool resultaat = false;
             try
             {
-                UserPrincipal user = FindByIdentity(username);
+                UserPrincipal user = this.FindByIdentity(username);
                 user.SetPassword(wachtwoord);
                 user.EmailAddress = email;
 

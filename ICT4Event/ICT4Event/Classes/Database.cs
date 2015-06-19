@@ -15,7 +15,7 @@ namespace ICT4Event
     /// <summary>
     /// The database.
     /// </summary>
-    public class Database
+    public abstract class Database
     {
         /// <summary>
         /// The connection.
