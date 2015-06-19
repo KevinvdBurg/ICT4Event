@@ -37,44 +37,44 @@ namespace ICT4Event
         /// </param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            string value = Session[MyKeys.KeyAccountId] + string.Empty;
+            //string value = Session[MyKeys.KeyAccountId] + string.Empty;
 
-            if (string.IsNullOrEmpty(value))
-            {
-                string urlSting = Regex.Replace(HttpContext.Current.Request.Url.AbsolutePath, @"\s+", string.Empty);
-                if (urlSting == "/index.aspx" || urlSting == "/pages/registreren.aspx")
-                {
-                    Response.Write("Gelijk");
-                }
-                else
-                {
-                    Response.Redirect("/index.aspx");
-                }
-            }
-            else
-            {
-                List<string> groupsList =
-                    this.administration.GetAccountGroups(Convert.ToString(Session[MyKeys.KeyUsername]));
-                this.administration.GetAccountGroups(Convert.ToString(Session[MyKeys.KeyUsername]));
-                bool admin = false;
-                foreach (string group in groupsList)
-                {
-                    if (group == "Web-Admin")
-                    {
-                        admin = true;
-                    }
-                }
+            //if (string.IsNullOrEmpty(value))
+            //{
+            //    string urlSting = Regex.Replace(HttpContext.Current.Request.Url.AbsolutePath, @"\s+", string.Empty);
+            //    if (urlSting == "/index.aspx" || urlSting == "/pages/registreren.aspx")
+            //    {
+            //        Response.Write("Gelijk");
+            //    }
+            //    else
+            //    {
+            //        Response.Redirect("/index.aspx");
+            //    }
+            //}
+            //else
+            //{
+            //    List<string> groupsList =
+            //        this.administration.GetAccountGroups(Convert.ToString(Session[MyKeys.KeyUsername]));
+            //    this.administration.GetAccountGroups(Convert.ToString(Session[MyKeys.KeyUsername]));
+            //    bool admin = false;
+            //    foreach (string group in groupsList)
+            //    {
+            //        if (group == "Web-Admin")
+            //        {
+            //            admin = true;
+            //        }
+            //    }
 
-                if (admin)
-                {
-                    MessageBox.Show(this.Page, "Web-Admin");
-                }
-                else
-                {
-                    MessageBox.Show(this.Page, "Web-Gebruiker");
-                    Response.Redirect("index.aspx");
-                }
-            }
+            //    if (admin)
+            //    {
+            //        MessageBox.Show(this.Page, "Web-Admin");
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show(this.Page, "Web-Gebruiker");
+            //        Response.Redirect("index.aspx");
+            //    }
+            //}
         }
 
         /// <summary>

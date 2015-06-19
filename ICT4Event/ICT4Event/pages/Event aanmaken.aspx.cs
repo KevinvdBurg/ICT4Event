@@ -33,6 +33,7 @@ namespace ICT4Event
         /// </param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            tbNummer.Text = (administration.GetHoogsteEventID() + 1).ToString();
         }
 
         /// <summary>

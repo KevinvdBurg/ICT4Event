@@ -19,11 +19,11 @@
 <%@ Import Namespace="System.Web.UI.WebControls" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="content_1" runat="server">
     <h1>Event Wijzigen</h1>
-    <p>Naam: <asp:TextBox ID="tbNaam" runat="server"></asp:TextBox>
+    <p>Naam: <asp:TextBox ID="tbNaam" runat="server" Enabled="False"></asp:TextBox>
     </p>
-    <p>Nummer: <asp:TextBox ID="tbNummer" runat="server"></asp:TextBox>
+    <p>Nummer: <asp:TextBox ID="tbNummer" runat="server" Enabled="False"></asp:TextBox>
     </p>
-    <p>Locatienaam: <asp:TextBox ID="tbLocatienaam" runat="server"></asp:TextBox>
+    <p>Locatienaam: <asp:TextBox ID="tbLocatienaam" runat="server" Enabled="False"></asp:TextBox>
     </p>
     <p>Adres: <asp:TextBox ID="tbAdres" runat="server"></asp:TextBox>
     </p>

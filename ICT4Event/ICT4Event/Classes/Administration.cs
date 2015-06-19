@@ -559,5 +559,13 @@ namespace ICT4Event
         {
             this.dbpost.InsertBestand(accountid, bestand, this.dbpost.GetCatId(cat));
         }
+
+        /// <summary>
+        /// The GetHoogsteEventID.
+        /// </summary>
+        public int GetHoogsteEventID()
+        {
+            return this.dbevent.HoogsteEventID();
+        }
     }
 }

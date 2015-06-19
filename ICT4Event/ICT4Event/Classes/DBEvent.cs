@@ -313,5 +313,41 @@ namespace ICT4Event
 
             return resultaat;
         }
+
+        /// <summary>
+        /// Hoogste event id uit de DB
+        /// </summary>
+        /// <returns>
+        /// de hoogste id <see cref="bool"/>.
+        /// </returns>
+        public int HoogsteEventID()
+        {
+            int id = 0;
+            string sql =
+                "SELECT max(\"ID\") as max from event";
+
+            try
+            {
+                this.Connect();
+                var cmd = new OracleCommand(sql, this.Connection);
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        id = Convert.ToInt32(reader["max"]);
+                    }
+                }
+            }
+            catch (OracleException e)
+            {
+                throw;
+            }
+            finally
+            {
+                this.DisConnect();
+            }
+            return id;
+        }
     }
 }

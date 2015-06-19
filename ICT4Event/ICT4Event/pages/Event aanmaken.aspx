@@ -21,7 +21,7 @@
     <h1>Event aanmaken</h1>
     <p>Naam: <asp:TextBox ID="tbNaam" runat="server"></asp:TextBox>
     </p>
-    <p>Nummer: <asp:TextBox ID="tbNummer" runat="server"></asp:TextBox>
+    <p>Nummer: <asp:TextBox ID="tbNummer" runat="server" Enabled="False"></asp:TextBox>
     </p>
     <p>Locatienaam: <asp:TextBox ID="tbLocatienaam" runat="server"></asp:TextBox>
     </p>
