@@ -34,7 +34,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                var cmd = new OracleCommand(sql, this.connection);
+                var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("plaats", location.Address.City));
                 cmd.Parameters.Add(new OracleParameter("postcode", location.Address.ZipCode));
                 cmd.Parameters.Add(new OracleParameter("nr", location.Address.Number));
@@ -77,7 +77,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                var cmd = new OracleCommand(sql, this.connection);
+                var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("plaats", location.Address.City));
                 cmd.Parameters.Add(new OracleParameter("postcode", location.Address.ZipCode));
                 cmd.Parameters.Add(new OracleParameter("nr", location.Address.Number));
@@ -123,7 +123,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                var cmd = new OracleCommand(sql, this.connection);
+                var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("postcode", zipcode));
                 cmd.Parameters.Add(new OracleParameter("huisnummer", number));
                 var reader = cmd.ExecuteReader();

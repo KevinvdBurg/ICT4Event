@@ -6,12 +6,6 @@
 //   AssemblyInfo.cs
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> origin/Event-aanmaken
 using System.Reflection;
 using System.Runtime.InteropServices;
 

@@ -92,13 +92,13 @@
     <Compile Include="Classes\Account.cs" />
     <Compile Include="Classes\Administration.cs" />
     <Compile Include="Classes\ADRegistreerLogin.cs" />
-    <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\Database.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Classes\DBAccount.cs" />
     <Compile Include="Classes\DBLogin.cs" />
     <Compile Include="Classes\Messagebox.cs" />
     <Compile Include="Classes\Address.cs" />
-    <Compile Include="Classes\Administration.cs" />
-    <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\DBAddress.cs" />
     <Compile Include="Classes\DBEvent.cs" />
     <Compile Include="Classes\Event.cs" />

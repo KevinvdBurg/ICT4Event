@@ -28,7 +28,6 @@ namespace ICT4Event
         /// </param>
         protected void Page_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
         }
 
         /// <summary>
@@ -39,8 +38,6 @@ namespace ICT4Event
             this.Session.Clear();
             this.Session.Abandon();
             this.Session.RemoveAll();
-=======
->>>>>>> origin/Event-aanmaken
         }
     }
 }

@@ -3,30 +3,25 @@
 //   ICT4EVENTS.
 // </copyright>
 // <summary>
-//   The index 1.
+//   The index
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ICT4Event
-{
-<<<<<<< HEAD
-    using System.Text.RegularExpressions;
-
+using System;
+using System.Text.RegularExpressions;
+using ICT4Event.Classes;
+using System.Text.RegularExpressions;
     using ICT4Event.Classes;
-
-    public partial class index : System.Web.UI.Page
-    {
-
-        private readonly Administration administration = new Administration();
-=======
-    using System;
     using System.Web.UI;
 
+namespace ICT4Event
+{
     /// <summary>
-    /// The index 1.
+    /// The index
     /// </summary>
-    public partial class Index1 : Page
+    public partial class Index : Page
     {
+        private readonly Administration administration = new Administration();
         /// <summary>
         /// The page_ load.
         /// </summary>
@@ -36,7 +31,6 @@ namespace ICT4Event
         /// <param name="e">
         /// The e.
         /// </param>
->>>>>>> origin/Event-aanmaken
         protected void Page_Load(object sender, EventArgs e)
         {
         }

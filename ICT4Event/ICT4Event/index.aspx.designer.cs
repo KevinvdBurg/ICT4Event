@@ -7,11 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-<<<<<<< HEAD
 namespace ICT4Event {
     
     
-    public partial class index {
+    public partial class Index {
         
         /// <summary>
         /// inlog_gebruikersnaam control.
@@ -48,13 +47,5 @@ namespace ICT4Event {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btn_to_registeren;
-=======
-namespace ICT4Event
-{
-
-
-    public partial class Index1
-    {
->>>>>>> origin/Event-aanmaken
     }
 }

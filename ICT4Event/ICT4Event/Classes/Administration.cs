@@ -11,17 +11,14 @@ namespace ICT4Event
 {
     using System;
     using System.Collections.Generic;
-<<<<<<< HEAD
     using System.Globalization;
     using System.Net.Mail;
     using System.Text.RegularExpressions;
     using System.Web.UI;
-
     using ICT4Event.Classes;
-
-    // using System.Windows.Forms;
-=======
     using System.Windows.Forms;
+
+    using MessageBox = System.Windows.Forms.MessageBox;
 
     /// <summary>
     /// The administration.
@@ -37,11 +34,15 @@ namespace ICT4Event
         /// The dbevent.
         /// </summary>
         private readonly DBEvent dbevent = new DBEvent();
+        /// <summary>
+        /// The dbaccount.
+        /// </summary>
+        private readonly DbAccount dbaccount = new DbAccount();
 
         /// <summary>
-        /// The db.
+        /// The dblogin.
         /// </summary>
-        private Database DB = new Database();
+        private readonly DbLogin dblogin = new DbLogin();
 
         /// <summary>
         /// Een event wordt doorgestuurd naar dbEvent zodat er een event toegevoegd kan worden aan de database
@@ -64,20 +65,12 @@ namespace ICT4Event
         {
             // TODO
         }
->>>>>>> origin/Event-aanmaken
 
-    /// <summary>
-    /// The administration.
-    /// </summary>
-    public class Administration
-    {
         // private const string domainCon = "CN=Users,DC=pts45,DC=local";
         /// <summary>
         /// The domain con.
         /// </summary>
-<<<<<<< HEAD
         private const string DomainCon = "CN=Users,DC=pts45,DC=local";
-=======
         /// <param name="EventName">
         /// Event.
         /// </param>
@@ -96,14 +89,11 @@ namespace ICT4Event
             MessageBox.Show("Event niet gevonden");
             return null;
         }
->>>>>>> origin/Event-aanmaken
 
         /// <summary>
         /// The ad registreer login.
         /// </summary>
-<<<<<<< HEAD
         private readonly AdRegistreerLogin adRegistreerLogin = new AdRegistreerLogin();
-=======
         /// <param name="EventID">
         /// Event.
         /// </param>
@@ -122,19 +112,8 @@ namespace ICT4Event
             MessageBox.Show("Event niet gevonden");
             return null;
         }
->>>>>>> origin/Event-aanmaken
 
-        /// <summary>
-        /// The dbaccount.
-        /// </summary>
-<<<<<<< HEAD
-        private readonly DbAccount dbaccount = new DbAccount();
-
-        /// <summary>
-        /// The dblogin.
-        /// </summary>
-        private readonly DbLogin dblogin = new DbLogin();
-=======
+       
         /// <param name="zipcode">
         /// Zipcode.
         /// </param>
@@ -156,13 +135,6 @@ namespace ICT4Event
             MessageBox.Show("AdresID niet gevonden");
             return Convert.ToInt32(null);
         }
->>>>>>> origin/Event-aanmaken
-
-        /// <summary>
-        /// The db.
-        /// </summary>
-<<<<<<< HEAD
-        private Database db = new Database();
 
         /// <summary>
         /// Een Account wordt doorgestuurd naar dbAccount.Insert zodat het account aan de database toegevoegd kan worden
@@ -174,9 +146,9 @@ namespace ICT4Event
         {
             this.dbaccount.Insert(account);
             this.adRegistreerLogin.CreateUserAccount(
-                DomainCon, 
-                account.Gebruiksersnaam, 
-                account.Wachtwoord, 
+                DomainCon,
+                account.Gebruiksersnaam,
+                account.Wachtwoord,
                 account.Email);
         }
 
@@ -347,14 +319,14 @@ namespace ICT4Event
         public bool UpdateAccountAD(string username, string email, string wachtwoord)
         {
             return this.adRegistreerLogin.UpdateUserAccount(username, email, wachtwoord);
-            
+
         }
 
         public bool UpdateAccountDB(int id, string email)
         {
             return this.dbaccount.UpdateUserAccount(id, email);
         }
-=======
+
         /// <returns>
         /// The <see cref="List"/>.
         /// </returns>
@@ -381,6 +353,5 @@ namespace ICT4Event
         {
             this.dbevent.UpdateEvent(tempEvent);
         }
->>>>>>> origin/Event-aanmaken
     }
 }

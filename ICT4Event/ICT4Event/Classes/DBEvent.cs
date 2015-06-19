@@ -36,7 +36,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                var cmd = new OracleCommand(sql, this.connection);
+                var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("id", Convert.ToInt32(Event.EventID)));
                 cmd.Parameters.Add(new OracleParameter("naam", Event.Name));
                 cmd.Parameters.Add(new OracleParameter("maxbezoekers", Convert.ToInt32(Event.MaxPerson)));
@@ -96,7 +96,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                var cmd = new OracleCommand(sql, this.connection);
+                var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("name", EventName));
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -166,7 +166,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                var cmd = new OracleCommand(sql, this.connection);
+                var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("EventID", EventID));
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -232,7 +232,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                var cmd = new OracleCommand(sql, this.connection);
+                var cmd = new OracleCommand(sql, this.Connection);
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -293,7 +293,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                var cmd = new OracleCommand(sql, this.connection);
+                var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("name", Event.Name));
                 cmd.Parameters.Add(new OracleParameter("maxbezoeker", Event.MaxPerson));
                 cmd.Parameters.Add(new OracleParameter("EventID", Event.EventID));
