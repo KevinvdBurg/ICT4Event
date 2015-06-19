@@ -82,7 +82,6 @@
     <Content Include="pages\wijziggegevens.aspx" />
     <Content Include="pages\Upload.aspx" />
     <Content Include="pages\MijnReserveringen.aspx" />
-    <Content Include="pages\registreren.aspx" />
     <Content Include="pages\Reserve.aspx" />
     <Content Include="pages\ReserveItem.aspx" />
     <Content Include="Posts.aspx" />
@@ -104,11 +103,11 @@
     <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\DBAccount.cs" />
     <Compile Include="Classes\DBLogin.cs" />
+    <Compile Include="Classes\Event.cs" />
     <Compile Include="Classes\Messagebox.cs" />
     <Compile Include="Classes\Address.cs" />
     <Compile Include="Classes\DBAddress.cs" />
     <Compile Include="Classes\DBEvent.cs" />
-    <Compile Include="Classes\Event.cs" />
     <Compile Include="Classes\Location.cs" />
     <Compile Include="pages\EventsWijzigen.aspx.cs">
       <DependentUpon>EventsWijzigen.aspx</DependentUpon>
@@ -126,9 +125,7 @@
     </Compile>
     <Compile Include="Classes\DBPost.cs" />
     <Compile Include="Classes\Ftpverbinding.cs" />
-    <Compile Include="Classes\Administration.cs" />
     <Compile Include="Classes\CampingSpot.cs" />
-    <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\DBCampingspot.cs" />
     <Compile Include="Classes\DBItem.cs" />
     <Compile Include="Classes\DBReserve.cs" />
@@ -179,6 +176,7 @@
     </Compile>
     <Compile Include="pages\wijziggegevens.aspx.cs">
       <DependentUpon>wijziggegevens.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\Reserve.aspx.cs">
       <DependentUpon>Reserve.aspx</DependentUpon>

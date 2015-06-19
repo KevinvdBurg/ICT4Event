@@ -11,10 +11,13 @@
 
 namespace ICT4Event
 {
-    using System;
-    using System.Collections.Generic;
     using System.Data;
     using System.Data.OracleClient;
+    using System.Net.Sockets;
+    using System.Text.RegularExpressions;
+    using System.Xml.Linq;
+    using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web;
 
@@ -38,7 +41,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                OracleCommand cmd = new OracleCommand(sql, this.connection);
+                OracleCommand cmd = new OracleCommand(sql, this.Connection);
                 OracleDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -84,7 +87,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                OracleCommand cmd = new OracleCommand(sql, this.connection);
+                OracleCommand cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("nummer", ID));
                 OracleDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -133,7 +136,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                OracleCommand cmd = new OracleCommand("VRIJEPLEKKEN", this.connection);
+                OracleCommand cmd = new OracleCommand("VRIJEPLEKKEN", this.Connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 // cmd.Parameters.Add("P_ID", OracleType.Int32).Direction = ParameterDirection.Output;

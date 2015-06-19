@@ -8,8 +8,15 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace ICT4Event
 {
-    using System;
+    using System.Data;
     using System.Data.OracleClient;
+    using System.Net.Sockets;
+    using System.Text.RegularExpressions;
+    using System.Xml.Linq;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
 
     /// <summary>
     ///     The db account.

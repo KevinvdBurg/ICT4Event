@@ -1,46 +1,32 @@
-<<<<<<< HEAD
+
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Administration.cs" company="ICT4EVENTS.">
-//   ICT4EVENTS.
-=======
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Administration.cs" company="">
-//   
->>>>>>> origin/Reserve
 // </copyright>
 // <summary>
 //   The administration.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> origin/Reserve
 namespace ICT4Event
 {
     using System;
     using System.Collections.Generic;
-<<<<<<< HEAD
     using System.Globalization;
     using System.Net.Mail;
     using System.Text.RegularExpressions;
     using System.Web.UI;
 
     using ICT4Event.Classes;
-=======
+
     using System.Linq;
     using System.Web;
     using System.Web.UI;
-    using System.Windows.Forms;
-    
->>>>>>> origin/Reserve
+
 
     /// <summary>
     /// The administration.
     /// </summary>
-<<<<<<< HEAD
+
     public class Administration : Page
     {
         /// <summary>
@@ -67,6 +53,21 @@ namespace ICT4Event
         /// Een instatntie van de DBPost
         /// </summary>
         private readonly DBPost dbpost = new DBPost();
+
+        /// <summary>
+        /// The dbreserve.
+        /// </summary>
+        private DBReserve dbreserve = new DBReserve();
+
+        /// <summary>
+        /// The db campingspot.
+        /// </summary>
+        private DBCampingspot dbCampingspot = new DBCampingspot();
+
+        /// <summary>
+        /// The db item.
+        /// </summary>
+        private DBItem dbItem = new DBItem();
 
         /// <summary>
         /// Een instatntie van de AdRegistreerLogin
@@ -588,36 +589,7 @@ namespace ICT4Event
         {
             return this.dbevent.HoogsteEventID();
         }
-=======
-    public class Administration
-    {
-        /// <summary>
-        /// The db.
-        /// </summary>
-        Database DB = new Database();
 
-        /// <summary>
-        /// The dbreserve.
-        /// </summary>
-        private DBReserve dbreserve = new DBReserve();
-
-        /// <summary>
-        /// The db campingspot.
-        /// </summary>
-        private DBCampingspot dbCampingspot = new DBCampingspot();
-
-        /// <summary>
-        /// The db item.
-        /// </summary>
-        private DBItem dbItem = new DBItem();
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Administration"/> class.
-        /// </summary>
-        public Administration()
-        {
-
-        }
 
         /// <summary>
         /// The find all free camping spots.
@@ -706,6 +678,5 @@ namespace ICT4Event
         {
             return this.dbItem.NewItemReservation(item);
         }
->>>>>>> origin/Reserve
     }
 }

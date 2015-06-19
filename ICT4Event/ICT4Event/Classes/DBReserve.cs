@@ -46,7 +46,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                OracleCommand cmd = new OracleCommand("REGISTREERHOOFDBOEKER", this.connection);
+                OracleCommand cmd = new OracleCommand("REGISTREERHOOFDBOEKER", this.Connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("P_Voornaam", voornaam);
                 cmd.Parameters.Add("P_Tussenvoegsel", person.Insertion);
@@ -90,7 +90,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                OracleCommand cmd = new OracleCommand("RESERVEERPLEK", this.connection);
+                OracleCommand cmd = new OracleCommand("RESERVEERPLEK", this.Connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("R_ID", person.PersonID);
                 cmd.Parameters.Add("R_PLEKID", Convert.ToInt32(plekid));

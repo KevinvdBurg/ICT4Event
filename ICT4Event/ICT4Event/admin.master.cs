@@ -1,27 +1,17 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
 // <copyright file="admin.master.cs" company="ICT4EVENTS.">
 //   ICT4EVENTS.
-=======
-// <copyright file="admin.master.cs" company="">
-//   
->>>>>>> origin/Reserve
+
 // </copyright>
 // <summary>
 //   The admin.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> origin/Reserve
 namespace ICT4Event
 {
     using System;
     using System.Collections.Generic;
-<<<<<<< HEAD
     using System.Text.RegularExpressions;
     using System.Web;
     using System.Web.UI;
@@ -37,20 +27,6 @@ namespace ICT4Event
         /// The administration.
         /// </summary>
         private readonly Administration administration = new Administration();
-
-        /// <summary>
-=======
-    using System.Linq;
-    using System.Web;
-    using System.Web.UI;
-    using System.Web.UI.WebControls;
-    /// <summary>
-    /// The admin.
-    /// </summary>
-    public partial class admin : System.Web.UI.MasterPage
-    {
-        /// <summary>
->>>>>>> origin/Reserve
         /// The page_ load.
         /// </summary>
         /// <param name="sender">

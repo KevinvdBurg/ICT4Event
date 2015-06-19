@@ -19,11 +19,7 @@ namespace ICT4Event {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.LinkButton btn_inuitlog;
-=======
-        protected global::System.Web.UI.WebControls.DropDownList dropevent_main;
->>>>>>> origin/Reserve
         
         /// <summary>
         /// ContentPlaceHolder1 control.

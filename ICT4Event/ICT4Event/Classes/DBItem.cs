@@ -12,11 +12,13 @@ namespace ICT4Event
 {
     using System.Data;
     using System.Data.OracleClient;
+    using System.Net.Sockets;
+    using System.Text.RegularExpressions;
+    using System.Xml.Linq;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
-
     /// <summary>
     /// The db item.
     /// </summary>
@@ -39,7 +41,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                OracleCommand cmd = new OracleCommand("BESCHIKBARE_ITEMS", this.connection);
+                OracleCommand cmd = new OracleCommand("BESCHIKBARE_ITEMS", this.Connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 // cmd.Parameters.Add("P_ID", OracleType.Int32).Direction = ParameterDirection.Output;
@@ -90,7 +92,7 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                OracleCommand cmd = new OracleCommand("ITEM_RESERVEREN", this.connection);
+                OracleCommand cmd = new OracleCommand("ITEM_RESERVEREN", this.Connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("productexemplaarid_in", item.ExemplaarID);
                 cmd.Parameters.Add("prijs_in", item.Prijs);
