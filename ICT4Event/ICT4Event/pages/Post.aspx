@@ -31,6 +31,8 @@
    <p>
        <asp:TextBox ID="tbNewContent" runat="server" Height="106px" TextMode="MultiLine" Width="350px" Visible="False"></asp:TextBox>
        <asp:Label ID="Label3" runat="server" Text="Inhoud" Visible="False"></asp:Label>
+       <asp:Button ID="btnLike" runat="server" OnClick="btnLike_Click" Text="Like" />
+       <asp:Button ID="btnReport" runat="server" OnClick="btnReport_Click" Text="Ongewenst" />
    </p>
     <p>
         <asp:Button ID="btnSavePost" runat="server" Text="Post!" OnClick="btnSavePost_Click" Visible="False" />

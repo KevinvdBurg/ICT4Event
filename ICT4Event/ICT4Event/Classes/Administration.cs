@@ -65,6 +65,10 @@ namespace ICT4Event
         /// </summary>
         private DBItem dbItem = new DBItem();
 
+        /// Een instatntie van de DBAddress
+        /// </summary>
+        private readonly DBIncheck dbincheck = new DBIncheck();
+
         /// <summary>
         /// Een instatntie van de AdRegistreerLogin
         /// </summary>
@@ -261,6 +265,7 @@ namespace ICT4Event
         public Account GetDetails(string username)
         {
             return this.dbaccount.Select(username.ToLower());
+            
         }
 
         /// <summary>
@@ -700,6 +705,46 @@ namespace ICT4Event
         public void AddLocation(Location location)
         {
             this.dbAddress.Insert(location);
+        }
+
+        public void InsertResPolsband(int reserveringid, string username, string barcode)
+        {
+            this.dbincheck.InsertResPolsbandje(reserveringid, username, barcode);
+        }
+
+        public void SetPolsbandActive(string barcode)
+        {
+            this.dbincheck.SetPolsbandjeActive(barcode);
+        }
+
+        public int ResPaymentStatus(int resid)
+        {
+            return this.dbincheck.GetPaymentStatus(resid);
+        }
+
+        public void SetResBetaald(int resid)
+        {
+            this.dbincheck.SetBetaald(resid);
+        }
+
+        public void ResCheckOut(string barcode)
+        {
+            this.dbincheck.ResCheckOut(barcode);
+        }
+
+        public void LikePost(string titel)
+        {
+            this.dbpost.LikePost(dbpost.GetMessageID(titel));
+        }
+
+        public void ReportPost(string titel)
+        {
+            this.dbpost.ReportPost(dbpost.GetMessageID(titel));
+        }
+
+        public List<String> ReportedPosts()
+        {
+            return dbpost.ReportedPosts();
         }
     }
 }

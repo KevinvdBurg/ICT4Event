@@ -37,7 +37,6 @@ namespace ICT4Event
         protected void Page_Load(object sender, EventArgs e)
         {
             string value = Session[MyKeys.KeyAccountId] + string.Empty;
-
             if (string.IsNullOrEmpty(value))
             {
                 string urlSting = Regex.Replace(HttpContext.Current.Request.Url.AbsolutePath, @"\s+", string.Empty);

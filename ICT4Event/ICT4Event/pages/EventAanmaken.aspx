@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="Event aanmaken.aspx.cs" Inherits="ICT4Event.Event_aanmaken" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeBehind="EventAanmaken.aspx.cs" Inherits="ICT4Event.Event_aanmaken" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
 <%@ Import Namespace="System.Web.UI" %>
 <%@ Import Namespace="System.Web.UI.WebControls" %>

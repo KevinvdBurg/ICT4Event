@@ -288,5 +288,15 @@ namespace ICT4Event.pages
                 this.lbItems.SelectedValue,
                 this.lblMap.Text);
         }
+
+        protected void btnLike_Click(object sender, EventArgs e)
+        {
+            ad.LikePost(lbItems.SelectedValue);
+        }
+
+        protected void btnReport_Click(object sender, EventArgs e)
+        {
+            ad.ReportPost(lbItems.SelectedValue);
+        }
     }
 }

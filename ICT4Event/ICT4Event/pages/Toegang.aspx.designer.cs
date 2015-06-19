@@ -10,16 +10,16 @@
 namespace ICT4Event.pages {
     
     
-    public partial class Post {
+    public partial class Toegang {
         
         /// <summary>
-        /// btnReturn control.
+        /// Panel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReturn;
+        protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
         /// Label1 control.
@@ -31,76 +31,103 @@ namespace ICT4Event.pages {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// lblMap control.
+        /// lblResId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMap;
+        protected global::System.Web.UI.WebControls.Label lblResId;
         
         /// <summary>
-        /// lbCategorie control.
+        /// tbResId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbCategorie;
+        protected global::System.Web.UI.WebControls.TextBox tbResId;
         
         /// <summary>
-        /// lbItems control.
+        /// btnPaid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lbItems;
+        protected global::System.Web.UI.WebControls.Button btnPaid;
         
         /// <summary>
-        /// btnDownload control.
+        /// lblBetaald control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDownload;
+        protected global::System.Web.UI.WebControls.Label lblBetaald;
         
         /// <summary>
-        /// btnNewPost control.
+        /// btnPay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNewPost;
+        protected global::System.Web.UI.WebControls.Button btnPay;
         
         /// <summary>
-        /// btnComment control.
+        /// lblUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnComment;
+        protected global::System.Web.UI.WebControls.Label lblUsername;
         
         /// <summary>
-        /// btnUpload control.
+        /// tbUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpload;
+        protected global::System.Web.UI.WebControls.TextBox tbUsername;
         
         /// <summary>
-        /// tbNewTitle control.
+        /// lblPolsband control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbNewTitle;
+        protected global::System.Web.UI.WebControls.Label lblPolsband;
+        
+        /// <summary>
+        /// tbPolsbandje control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbPolsbandje;
+        
+        /// <summary>
+        /// btnApply control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnApply;
+        
+        /// <summary>
+        /// Panel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel2;
         
         /// <summary>
         /// Label2 control.
@@ -112,15 +139,6 @@ namespace ICT4Event.pages {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// tbNewContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbNewContent;
-        
-        /// <summary>
         /// Label3 control.
         /// </summary>
         /// <remarks>
@@ -130,66 +148,21 @@ namespace ICT4Event.pages {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// btnLike control.
+        /// tbBarcode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLike;
+        protected global::System.Web.UI.WebControls.TextBox tbBarcode;
         
         /// <summary>
-        /// btnReport control.
+        /// btnCheckOut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReport;
-        
-        /// <summary>
-        /// btnSavePost control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSavePost;
-        
-        /// <summary>
-        /// lblCurrentPost control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCurrentPost;
-        
-        /// <summary>
-        /// lblCurrentPostTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCurrentPostTitle;
-        
-        /// <summary>
-        /// tbInhoud control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbInhoud;
-        
-        /// <summary>
-        /// tbComments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbComments;
+        protected global::System.Web.UI.WebControls.Button btnCheckOut;
     }
 }

@@ -50,7 +50,7 @@ namespace ICT4Event
                 }
                 else
                 {
-                    Response.Redirect("/index.aspx");
+                    //Response.Redirect("/index.aspx");
                 }
             }
             else

@@ -67,7 +67,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\main.css" />
     <Content Include="pages\EventsWijzigen.aspx" />
-    <Content Include="pages\Event aanmaken.aspx" />
+    <Content Include="pages\EventAanmaken.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.aspx" />
     <Content Include="js\main.js" />
@@ -79,11 +79,12 @@
     <Content Include="js\vendor\npm.js" />
     <Content Include="pages\Post.aspx" />
     <Content Include="pages\registreren.aspx" />
+    <Content Include="pages\Reports.aspx" />
+    <Content Include="pages\Toegang.aspx" />
     <Content Include="pages\wijziggegevens.aspx" />
     <Content Include="pages\Upload.aspx" />
     <Content Include="pages\Reserve.aspx" />
     <Content Include="pages\ReserveItem.aspx" />
-    <Content Include="Posts.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +102,7 @@
     <Compile Include="Classes\ADRegistreerLogin.cs" />
     <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\DBAccount.cs" />
+    <Compile Include="Classes\DBIncheck.cs" />
     <Compile Include="Classes\DBLogin.cs" />
     <Compile Include="Classes\Event.cs" />
     <Compile Include="Classes\Messagebox.cs" />
@@ -116,12 +118,12 @@
     <Compile Include="pages\EventsWijzigen.aspx.designer.cs">
       <DependentUpon>EventsWijzigen.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\Event aanmaken.aspx.cs">
-      <DependentUpon>Event aanmaken.aspx</DependentUpon>
+    <Compile Include="pages\EventAanmaken.aspx.cs">
+      <DependentUpon>EventAanmaken.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\Event aanmaken.aspx.designer.cs">
-      <DependentUpon>Event aanmaken.aspx</DependentUpon>
+    <Compile Include="pages\EventAanmaken.aspx.designer.cs">
+      <DependentUpon>EventAanmaken.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\DBPost.cs" />
     <Compile Include="Classes\Ftpverbinding.cs" />
@@ -167,6 +169,20 @@
     <Compile Include="pages\registreren.aspx.designer.cs">
       <DependentUpon>registreren.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Toegang.aspx.cs">
+      <DependentUpon>Toegang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Toegang.aspx.designer.cs">
+      <DependentUpon>Toegang.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\wijziggegevens.aspx.cs">
       <DependentUpon>wijziggegevens.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -184,10 +200,6 @@
     </Compile>
     <Compile Include="pages\ReserveItem.aspx.designer.cs">
       <DependentUpon>ReserveItem.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Posts.aspx.cs">
-      <DependentUpon>Posts.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\wijziggegevens.aspx.designer.cs">
       <DependentUpon>wijziggegevens.aspx</DependentUpon>
@@ -252,7 +264,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>29116</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
