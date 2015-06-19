@@ -6,7 +6,6 @@
 //   The main.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace ICT4Event
 {
     using System;
@@ -14,6 +13,7 @@ namespace ICT4Event
     using System.Text.RegularExpressions;
     using System.Web;
     using System.Web.UI;
+
     using ICT4Event.Classes;
 
     /// <summary>
@@ -21,8 +21,11 @@ namespace ICT4Event
     /// </summary>
     public partial class Main : MasterPage
     {
-
+        /// <summary>
+        /// The administration.
+        /// </summary>
         private readonly Administration administration = new Administration();
+
         /// <summary>
         /// The page_ load.
         /// </summary>
@@ -38,19 +41,22 @@ namespace ICT4Event
 
             if (string.IsNullOrEmpty(value))
             {
-                string urlSting = Regex.Replace(HttpContext.Current.Request.Url.AbsolutePath, @"\s+", "");
-                //Response.Write(urlSting);
+                string urlSting = Regex.Replace(HttpContext.Current.Request.Url.AbsolutePath, @"\s+", string.Empty);
+
+                // Response.Write(urlSting);
                 if (urlSting == "/index.aspx" || urlSting == "/pages/registreren.aspx")
                 {
                     Response.Write("Gelijk");
                 }
-                else{
+                else
+                {
                     Response.Redirect("/index.aspx");
                 }
             }
             else
             {
-                List<string> groupsList = this.administration.GetAccountGroups(Convert.ToString(Session[MyKeys.KeyUsername]));
+                List<string> groupsList =
+                    this.administration.GetAccountGroups(Convert.ToString(Session[MyKeys.KeyUsername]));
                 bool admin = false;
                 foreach (string group in groupsList)
                 {
@@ -66,14 +72,27 @@ namespace ICT4Event
                 }
                 else
                 {
-                    //MessageBox.Show(this.Page, "Web-Gebruiker");
-                    this.Page.Show(Session[MyKeys.KeyUsername] + " - " + Session[MyKeys.KeyEmail] + " - " + Session[MyKeys.KeyAccountId]);
-                    //Response.Redirect("to user page");
+                    // MessageBox.Show(this.Page, "Web-Gebruiker");
+                    this.Page.Show(
+                        Session[MyKeys.KeyUsername] + " - " + Session[MyKeys.KeyEmail] + " - "
+                        + Session[MyKeys.KeyAccountId]);
+
+                    // Response.Redirect("to user page");
                 }
+
                 btn_inuitlog.Text = "Uitloggen";
             }
         }
 
+        /// <summary>
+        /// The btn_inuitlog_ click.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
         protected void btn_inuitlog_Click(object sender, EventArgs e)
         {
             string value = Session[MyKeys.KeyAccountId] + string.Empty;
@@ -87,6 +106,9 @@ namespace ICT4Event
             }
         }
 
+        /// <summary>
+        /// The uitloggen.
+        /// </summary>
         public void Uitloggen()
         {
             this.Session.Clear();

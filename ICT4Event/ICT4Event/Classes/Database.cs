@@ -6,7 +6,6 @@
 //   The database.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace ICT4Event
 {
     using System;
@@ -22,12 +21,10 @@ namespace ICT4Event
         /// </summary>
         protected OracleConnection Connection = new OracleConnection();
 
-
         /// <summary>
         /// The connection string.
         /// </summary>
         protected string ConnectionString = "DATA SOURCE=//ict4events.bb:1521/xe;PASSWORD=hallo;USER ID=hallo";
-
 
         /// <summary>
         /// The connect.

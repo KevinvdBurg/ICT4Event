@@ -6,7 +6,6 @@
 //   The db login.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace ICT4Event
 {
     using System;
@@ -23,9 +22,6 @@ namespace ICT4Event
         /// <param name="username">
         /// The email.
         /// </param>
-        /// <param name="password">
-        /// The password.
-        /// </param>
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
@@ -41,7 +37,7 @@ namespace ICT4Event
                 var cmd = new OracleCommand(sql, this.Connection);
                 cmd.Parameters.Add(new OracleParameter("username", username));
                 var reader = cmd.ExecuteReader();
-                
+
                 if (reader.HasRows)
                 {
                     while (reader.Read())
@@ -52,7 +48,6 @@ namespace ICT4Event
                             resultaat = true;
                         }
                     }
-                    
                 }
             }
             catch (OracleException e)

@@ -21,11 +21,11 @@ namespace ICT4Event.pages
 
         }
 
-        protected void btn(object sender, EventArgs e)
+        protected void Btn(object sender, EventArgs e)
         {
-            string currentemail = huidige_email.Text;
-            string email = Regex.Replace(wijzig_email.Text, @"\s+", "");
-            string heremail = Regex.Replace(her_wijzig_email.Text, @"\s+", "");
+            string currentemail = this.huidige_email.Text;
+            string email = Regex.Replace(this.wijzig_email.Text, @"\s+", string.Empty);
+            string heremail = Regex.Replace(this.her_wijzig_email.Text, @"\s+", string.Empty);
 
             string wachtwoord = wijzig_wachtwoord.Text;
             string herwachtwoord = her_wijzig_wachtwoord.Text;
@@ -34,9 +34,9 @@ namespace ICT4Event.pages
 
             string updatewachtwoord = wachtwoord;
 
-            if (email != "" || wachtwoord != "")
+            if (email != string.Empty || wachtwoord != string.Empty)
             {
-                if (administration.IsValid(email) && email == heremail)
+                if (this.administration.IsValid(email) && email == heremail)
                 {
                     updateemail = email;
                 }
@@ -55,11 +55,11 @@ namespace ICT4Event.pages
                     this.Page.Show("Wachtwoord is niet complex genoeg of komen niet overeen");
                     return;
                 }
-                if (administration.UpdateAccountDB(Convert.ToInt32(Session[MyKeys.KeyAccountId]), updateemail))
+                if (this.administration.UpdateAccountDB(Convert.ToInt32(Session[MyKeys.KeyAccountId]), updateemail))
                 {
                     this.Page.Show("DB Gelukt");
                 }
-                if (administration.UpdateAccountAD(Convert.ToString(Session[MyKeys.KeyUsername]), updateemail, updatewachtwoord))
+                if (this.administration.UpdateAccountAD(Convert.ToString(Session[MyKeys.KeyUsername]), updateemail, updatewachtwoord))
                 {
                     this.Page.Show("AD Gelukt");
                 }

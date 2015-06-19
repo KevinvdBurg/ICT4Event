@@ -6,7 +6,6 @@
 //   The ad registreer login.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace ICT4Event.Classes
 {
     using System;
@@ -21,7 +20,14 @@ namespace ICT4Event.Classes
     /// </summary>
     public class AdRegistreerLogin
     {
-        PrincipalContext ctx = new PrincipalContext(ContextType.Domain, "pts45.local", "Administrator", "Admin123");
+        /// <summary>
+        /// The ctx.
+        /// </summary>
+        private PrincipalContext ctx = new PrincipalContext(
+            ContextType.Domain, 
+            "pts45.local", 
+            "Administrator", 
+            "Admin123");
 
         /// <summary>
         /// The create user account.
@@ -71,17 +77,31 @@ namespace ICT4Event.Classes
             }
         }
 
+        /// <summary>
+        /// The edit user account.
+        /// </summary>
+        /// <param name="userName">
+        /// The user name.
+        /// </param>
+        /// <param name="userPassword">
+        /// The user password.
+        /// </param>
+        /// <param name="userEmail">
+        /// The user email.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool EditUserAccount(string userName, string userPassword, string userEmail)
         {
             try
             {
-
             }
             catch (Exception)
             {
-                
                 throw;
             }
+
             return true;
         }
 
@@ -137,8 +157,17 @@ namespace ICT4Event.Classes
             }
 
             return null;
-        }            
+        }
 
+        /// <summary>
+        /// The find user group.
+        /// </summary>
+        /// <param name="username">
+        /// The username.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<string> FindUserGroup(string username)
         {
             List<string> groupList = new List<string>();
@@ -159,9 +188,9 @@ namespace ICT4Event.Classes
                 Console.WriteLine(e.Message);
                 throw;
             }
+
             return groupList;
         }
-       
 
         /// <summary>
         /// The authenticate ad.
@@ -171,9 +200,6 @@ namespace ICT4Event.Classes
         /// </param>
         /// <param name="password">
         /// The password.
-        /// </param>
-        /// <param name="domain">
-        /// The domain.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
@@ -186,16 +212,30 @@ namespace ICT4Event.Classes
                 {
                     var validatedOnDomain = this.ctx.ValidateCredentials(userName, password);
                     return validatedOnDomain;
-                }                
+                }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 throw;
             }
-           
         }
 
+        /// <summary>
+        /// The update user account.
+        /// </summary>
+        /// <param name="username">
+        /// The username.
+        /// </param>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <param name="wachtwoord">
+        /// The wachtwoord.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool UpdateUserAccount(string username, string email, string wachtwoord)
         {
             bool resultaat = false;
@@ -215,6 +255,7 @@ namespace ICT4Event.Classes
                 Console.WriteLine(e.Message);
                 throw;
             }
+
             return resultaat;
         }
     }

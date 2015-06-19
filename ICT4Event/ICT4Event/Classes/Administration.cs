@@ -16,14 +16,12 @@ namespace ICT4Event
     using System.Text.RegularExpressions;
     using System.Web.UI;
     using ICT4Event.Classes;
-    using System.Windows.Forms;
-
-    using MessageBox = System.Windows.Forms.MessageBox;
+    using ICT4Event.Classes.MessageBox;
 
     /// <summary>
     /// The administration.
     /// </summary>
-    public class Administration
+    public class Administration : Page
     {
         /// <summary>
         /// The dbaddress.
@@ -86,7 +84,7 @@ namespace ICT4Event
                 return foundEvent;
             }
 
-            MessageBox.Show("Event niet gevonden");
+            this.Page.Show("Event niet gevonden");
             return null;
         }
 
@@ -109,11 +107,9 @@ namespace ICT4Event
                 return foundEvent;
             }
 
-            MessageBox.Show("Event niet gevonden");
+            this.Page.Show("Event niet gevonden");
             return null;
         }
-
-       
         /// <param name="zipcode">
         /// Zipcode.
         /// </param>
@@ -132,7 +128,7 @@ namespace ICT4Event
                 return foundAddressID;
             }
 
-            MessageBox.Show("AdresID niet gevonden");
+            this.Page.Show("AdresID niet gevonden");
             return Convert.ToInt32(null);
         }
 
@@ -339,7 +335,7 @@ namespace ICT4Event
                 return foundEvents;
             }
 
-            MessageBox.Show("Geen Events gevonden");
+            this.Page.Show("Geen Events gevonden");
             return null;
         }
 

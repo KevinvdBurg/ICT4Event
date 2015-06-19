@@ -6,7 +6,6 @@
 //   The admin.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace ICT4Event
 {
     using System;
@@ -14,6 +13,7 @@ namespace ICT4Event
     using System.Text.RegularExpressions;
     using System.Web;
     using System.Web.UI;
+
     using ICT4Event.Classes;
 
     /// <summary>
@@ -21,7 +21,11 @@ namespace ICT4Event
     /// </summary>
     public partial class Admin : MasterPage
     {
+        /// <summary>
+        /// The administration.
+        /// </summary>
         private readonly Administration administration = new Administration();
+
         /// <summary>
         /// The page_ load.
         /// </summary>
@@ -37,7 +41,7 @@ namespace ICT4Event
 
             if (string.IsNullOrEmpty(value))
             {
-                string urlSting = Regex.Replace(HttpContext.Current.Request.Url.AbsolutePath, @"\s+", "");
+                string urlSting = Regex.Replace(HttpContext.Current.Request.Url.AbsolutePath, @"\s+", string.Empty);
                 if (urlSting == "/index.aspx" || urlSting == "/pages/registreren.aspx")
                 {
                     Response.Write("Gelijk");
@@ -49,7 +53,8 @@ namespace ICT4Event
             }
             else
             {
-                List<string> groupsList = this.administration.GetAccountGroups(Convert.ToString(Session[MyKeys.KeyUsername]));
+                List<string> groupsList =
+                    this.administration.GetAccountGroups(Convert.ToString(Session[MyKeys.KeyUsername]));
                 bool admin = false;
                 foreach (string group in groupsList)
                 {

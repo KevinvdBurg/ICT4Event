@@ -89,9 +89,9 @@ namespace ICT4Event
                     while (reader.Read())
                     {
                         var returnedAccount = new Account(
-                           Convert.ToInt32(reader["ID"]),
-                           Convert.ToString(reader["gebruikersnaam"]),
-                           Convert.ToString(reader["email"]));
+                            Convert.ToInt32(reader["ID"]), 
+                            Convert.ToString(reader["gebruikersnaam"]), 
+                            Convert.ToString(reader["email"]));
                         resultaat = returnedAccount;
                     }
                 }
@@ -145,9 +145,20 @@ namespace ICT4Event
             return resultaat;
         }
 
+        /// <summary>
+        /// The update.
+        /// </summary>
+        /// <param name="gebruikersnaam">
+        /// The gebruikersnaam.
+        /// </param>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool Update(string gebruikersnaam, string email)
         {
-
             return true;
         }
 
@@ -220,6 +231,18 @@ namespace ICT4Event
             return resultaat;
         }
 
+        /// <summary>
+        /// The update user account.
+        /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool UpdateUserAccount(int id, string email)
         {
             var resultaat = false;

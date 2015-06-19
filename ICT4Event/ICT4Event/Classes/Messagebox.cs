@@ -1,4 +1,15 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Messagebox.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The message box.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,8 +35,8 @@ namespace ICT4Event.Classes
         public static void Show(this Page page, string message)
         {
             page.ClientScript.RegisterStartupScript(
-                page.GetType(),
-                "MessageBox",
+                page.GetType(), 
+                "MessageBox", 
                 "<script language='javascript'>alert('" + message + "');</script>");
         }
     }
