@@ -6,21 +6,17 @@
 //   The upload.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Windows.Forms;
-
-using ICT4Event.Classes;
-
 namespace ICT4Event
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.UI;
+    using System.Web.UI.WebControls;
+    using System.Windows.Forms;
+    using ICT4Event.Classes;
+
     /// <summary>
     /// The upload.
     /// </summary>
@@ -47,9 +43,9 @@ namespace ICT4Event
         /// </param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!this.IsPostBack)
             {
-                StartPosition();
+                this.StartPosition();
             }
         }
 
@@ -64,14 +60,14 @@ namespace ICT4Event
         /// </param>
         protected void lbCategorie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            HFcategory.Value = lbCategorie.SelectedValue;
-            lblMap.Text += lbCategorie.SelectedValue + "\\";
-            string catnaam = lbCategorie.SelectedValue;
+            this.HFcategory.Value = this.lbCategorie.SelectedValue;
+            this.lblMap.Text += this.lbCategorie.SelectedValue + "\\";
+            string catnaam = this.lbCategorie.SelectedValue;
 
-            lbCategorie.Items.Clear();
-            foreach (var s in ad.SubCategories(catnaam))
+            this.lbCategorie.Items.Clear();
+            foreach (var s in this.ad.SubCategories(catnaam))
             {
-                lbCategorie.Items.Add(s);
+                this.lbCategorie.Items.Add(s);
             }
         }
 
@@ -80,11 +76,11 @@ namespace ICT4Event
         /// </summary>
         private void StartPosition()
         {
-            Clear();
+            this.Clear();
 
-            foreach (var s in ad.MainCategories())
+            foreach (var s in this.ad.MainCategories())
             {
-                lbCategorie.Items.Add(s);
+                this.lbCategorie.Items.Add(s);
             }
         }
 
@@ -93,7 +89,7 @@ namespace ICT4Event
         /// </summary>
         private void Clear()
         {
-            lbCategorie.Items.Clear();
+            this.lbCategorie.Items.Clear();
         }
 
         /// <summary>
@@ -107,8 +103,8 @@ namespace ICT4Event
         /// </param>
         protected void btnReturn_Click(object sender, EventArgs e)
         {
-            lblMap.Text = "Home\\";
-            StartPosition();
+            this.lblMap.Text = "Home\\";
+            this.StartPosition();
         }
 
         /// <summary>
@@ -122,13 +118,13 @@ namespace ICT4Event
         /// </param>
         protected void btnUpload_Click(object sender, EventArgs e)
         {
-            fileUpload.SaveAs(Server.MapPath("~/Uploads/" + fileUpload.FileName));
-            ftpt.UploadFileToFtp(
-                lblMap.Text, 
-                Server.MapPath("~/Uploads/") + fileUpload.FileName, 
+            this.fileUpload.SaveAs(this.Server.MapPath("~/Uploads/" + this.fileUpload.FileName));
+            this.ftpt.UploadFileToFtp(
+                this.lblMap.Text,
+               this.Server.MapPath("~/Uploads/") + this.fileUpload.FileName, 
                 "Administrator", 
                 "Admin123");
-            ad.InsertFile(1, fileUpload.FileName, HFcategory.Value);
+            this.ad.InsertFile(1, this.fileUpload.FileName, this.HFcategory.Value);
         }
     }
 }

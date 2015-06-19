@@ -74,13 +74,13 @@ namespace ICT4Event
                 {
                     // MessageBox.Show(this.Page, "Web-Gebruiker");
                     this.Page.Show(
-                        Session[MyKeys.KeyUsername] + " - " + Session[MyKeys.KeyEmail] + " - "
-                        + Session[MyKeys.KeyAccountId]);
+                        this.Session[MyKeys.KeyUsername] + " - " + this.Session[MyKeys.KeyEmail] + " - "
+                        + this.Session[MyKeys.KeyAccountId]);
 
                     // Response.Redirect("to user page");
                 }
 
-                btn_inuitlog.Text = "Uitloggen";
+                this.btn_inuitlog.Text = "Uitloggen";
             }
         }
 

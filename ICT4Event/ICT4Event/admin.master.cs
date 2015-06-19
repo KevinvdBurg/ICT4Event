@@ -53,8 +53,8 @@ namespace ICT4Event
             else
             {
                 List<string> groupsList =
-                    this.administration.GetAccountGroups(Convert.ToString(Session[MyKeys.KeyUsername]));
-                this.administration.GetAccountGroups(Convert.ToString(Session[MyKeys.KeyUsername]));
+                    this.administration.GetAccountGroups(Convert.ToString(this.Session[MyKeys.KeyUsername]));
+                this.administration.GetAccountGroups(Convert.ToString(this.Session[MyKeys.KeyUsername]));
                 bool admin = false;
                 foreach (string group in groupsList)
                 {

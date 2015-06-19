@@ -6,18 +6,17 @@
 //   The camping spot.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-
-
 namespace ICT4Event
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
+
     /// <summary>
     /// The camping spot.
     /// </summary>
+
     public class CampingSpot
     {
         /// <summary>

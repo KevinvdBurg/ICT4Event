@@ -15,18 +15,14 @@ namespace ICT4Event
     using System.Net.Mail;
     using System.Text.RegularExpressions;
     using System.Web.UI;
-
     using ICT4Event.Classes;
-
     using System.Linq;
     using System.Web;
     using System.Web.UI;
 
-
     /// <summary>
     /// The administration.
     /// </summary>
-
     public class Administration : Page
     {
         /// <summary>

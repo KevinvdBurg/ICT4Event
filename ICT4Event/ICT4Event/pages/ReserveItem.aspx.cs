@@ -6,9 +6,6 @@
 //   The web form 1.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-
-
 namespace ICT4Event.pages
 {
     using System.Windows.Forms;
@@ -18,6 +15,7 @@ namespace ICT4Event.pages
     using System.Web;
     using System.Web.UI;
     using System.Web.UI.WebControls;
+    using ICT4Event.Classes;
     /// <summary>
     /// The web form 1.
     /// </summary>
@@ -53,7 +51,7 @@ namespace ICT4Event.pages
         }
 
         /// <summary>
-        /// The btn reserve_ click.
+        /// Reserveer een item.
         /// </summary>
         /// <param name="sender">
         /// The sender.
@@ -66,23 +64,20 @@ namespace ICT4Event.pages
             this.items = this.Session["items"] as List<Item>;
             if (this.administration.NewItemReservation(this.items[this.lbFreeItems.SelectedIndex]))
             {
-                MessageBox.Show("Item is gereserveerd");
-
-                // Page.Response.Redirect();
+                this.Page.Show("Item is gereserveerd");
             }
             else
             {
-                MessageBox.Show("Item is niet gereserveerd");
-
-                // Page.Response.Redirect();
+                this.Page.Show("Item is niet gereserveerd");
             }
         }
 
         /// <summary>
-        /// The refresh items.
+        /// Refresh de listboxes.
         /// </summary>
         private void RefreshItems()
         {
+            lbFreeItems.Items.Clear();
             this.items = this.administration.GetFreeItemsList();
             this.Session["items"] = this.items;
             foreach (var item in this.items)

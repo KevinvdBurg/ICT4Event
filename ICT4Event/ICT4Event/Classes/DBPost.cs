@@ -7,17 +7,15 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-
-
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.OracleClient;
-using System.Linq;
-using System.Web;
-
 namespace ICT4Event.Classes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.OracleClient;
+    using System.Linq;
+    using System.Web;
+
     /// <summary>
     /// The db post.
     /// </summary>

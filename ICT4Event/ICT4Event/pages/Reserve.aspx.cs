@@ -28,7 +28,7 @@ namespace ICT4Event.pages
         Administration administration = new Administration();
 
         /// <summary>
-        /// The page_ load.
+        /// Vul de dropdownlist met beschikbare plekken.
         /// </summary>
         /// <param name="sender">
         /// The sender.
@@ -45,12 +45,10 @@ namespace ICT4Event.pages
                     this.ddlSpot.Items.Add(Convert.ToString(item.ID));
                 }
             }
-            
-            // this.tbInfo.Text = this.administration.FindInfoSpot(Convert.ToInt32(ddlSpot.SelectedItem.Value));
         }
 
         /// <summary>
-        /// The btn reserve_ click.
+        /// Reserveer een plek.
         /// </summary>
         /// <param name="sender">
         /// The sender.
@@ -82,16 +80,11 @@ namespace ICT4Event.pages
                     this.tbCity.Text, 
                     this.tbBank.Text);
             }
-
             newPerson.PersonID = this.administration.NewPerson(newPerson);
-            
             this.administration.NewReservation(newPerson, this.ddlSpot.SelectedValue.ToString());
-
-
         }
-
         /// <summary>
-        /// The btn specificaties_ click.
+        /// Laad de specificaties van de geselecteerde plek.
         /// </summary>
         /// <param name="sender">
         /// The sender.

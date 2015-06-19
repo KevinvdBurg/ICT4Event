@@ -19,7 +19,7 @@ namespace ICT4Event
     using System.Web;
 
     /// <summary>
-    /// The db login.
+    /// The DbLogin.
     /// </summary>
     public class DbLogin : Database	
     {

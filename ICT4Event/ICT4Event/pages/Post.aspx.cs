@@ -6,27 +6,23 @@
 //   The post.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-using ICT4Event.Classes;
-
 namespace ICT4Event.pages
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.UI;
+    using System.Web.UI.WebControls;
+    using ICT4Event.Classes;
+
     /// <summary>
     /// The post.
     /// </summary>
     public partial class Post : System.Web.UI.Page
     {
         /// <summary>
-        /// The ad.
+        /// The administration.
         /// </summary>
         private Administration ad = new Administration();
 
@@ -70,10 +66,10 @@ namespace ICT4Event.pages
         protected void lbCategorie_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Eerst lb clearen
-            lbItems.Items.Clear();
-            tbInhoud.Visible = false;
-            tbComments.Visible = false;
-            btnDownload.Visible = false;
+            this.lbItems.Items.Clear();
+            this.tbInhoud.Visible = false;
+            this.tbComments.Visible = false;
+            this.btnDownload.Visible = false;
 
             // refill lbCategorie indien van toepassing
             /*bericht: show berichten
@@ -83,22 +79,22 @@ namespace ICT4Event.pages
 
             // Als er op berichten word geklikt laat hij gewoon berichten zien
             // Als er op bestand word geklikt worden er categorieën getoond, of bestanden zonder categorie
-            lblMap.Text += lbCategorie.SelectedValue + "\\";
-            string catnaam = lbCategorie.SelectedValue;
-            foreach (string s in ad.CategoryFilesList(catnaam))
+            this.lblMap.Text += this.lbCategorie.SelectedValue + "\\";
+            string catnaam = this.lbCategorie.SelectedValue;
+            foreach (string s in this.ad.CategoryFilesList(catnaam))
             {
-                lbItems.Items.Add(ad.testContains(s));
+                this.lbItems.Items.Add(this.ad.testContains(s));
             }
 
-            lbCategorie.Items.Clear();
-            foreach (var s in ad.SubCategories(catnaam))
+            this.lbCategorie.Items.Clear();
+            foreach (var s in this.ad.SubCategories(catnaam))
             {
-                lbCategorie.Items.Add(s);
+                this.lbCategorie.Items.Add(s);
             }
 
-            foreach (var s in ad.CategoryMessages(catnaam))
+            foreach (var s in this.ad.CategoryMessages(catnaam))
             {
-                lbItems.Items.Add(ad.testContains(s));
+                this.lbItems.Items.Add(this.ad.testContains(s));
             }
         }
 
@@ -113,25 +109,25 @@ namespace ICT4Event.pages
         /// </param>
         protected void lbItems_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tbComments.Text = string.Empty;
+            this.tbComments.Text = string.Empty;
 
-            if (!lbItems.SelectedValue.Contains("."))
+            if (!this.lbItems.SelectedValue.Contains("."))
             {
-                tbInhoud.Text = ad.postTekst(lbItems.SelectedValue);
-                foreach (string s in ad.GetComments(lbItems.SelectedValue))
+                this.tbInhoud.Text = this.ad.postTekst(this.lbItems.SelectedValue);
+                foreach (string s in this.ad.GetComments(this.lbItems.SelectedValue))
                 {
-                    tbComments.Text += s + Environment.NewLine;
+                    this.tbComments.Text += s + Environment.NewLine;
                 }
 
-                tbComments.Visible = true;
-                tbInhoud.Visible = true;
-                btnDownload.Visible = false;
+                this.tbComments.Visible = true;
+                this.tbInhoud.Visible = true;
+                this.btnDownload.Visible = false;
             }
             else
             {
-                tbComments.Visible = false;
-                tbInhoud.Visible = false;
-                btnDownload.Visible = true;
+                this.tbComments.Visible = false;
+                this.tbInhoud.Visible = false;
+                this.btnDownload.Visible = true;
             }
         }
 
@@ -146,8 +142,8 @@ namespace ICT4Event.pages
         /// </param>
         protected void btnReturn_Click(object sender, EventArgs e)
         {
-            lblMap.Text = "Home\\";
-            StartPosition();
+            this.lblMap.Text = "Home\\";
+            this.StartPosition();
         }
 
         /// <summary>
@@ -155,16 +151,16 @@ namespace ICT4Event.pages
         /// </summary>
         private void StartPosition()
         {
-            Clear();
+            this.Clear();
 
-            foreach (var s in ad.MainCategories())
+            foreach (var s in this.ad.MainCategories())
             {
-                lbCategorie.Items.Add(s);
+                this.lbCategorie.Items.Add(s);
             }
 
-            foreach (var s in ad.Posts())
+            foreach (var s in this.ad.Posts())
             {
-                lbItems.Items.Add(ad.testContains(s));
+                this.lbItems.Items.Add(this.ad.testContains(s));
             }
 
             // lbItems.Items.Add(ad.testContains());
@@ -175,11 +171,11 @@ namespace ICT4Event.pages
         /// </summary>
         private void Clear()
         {
-            tbComments.Visible = false;
-            tbInhoud.Visible = false;
-            btnDownload.Visible = false;
-            lbCategorie.Items.Clear();
-            lbItems.Items.Clear();
+            this.tbComments.Visible = false;
+            this.tbInhoud.Visible = false;
+            this.btnDownload.Visible = false;
+            this.lbCategorie.Items.Clear();
+            this.lbItems.Items.Clear();
         }
 
         /// <summary>
@@ -193,11 +189,11 @@ namespace ICT4Event.pages
         /// </param>
         protected void btnNewPost_Click(object sender, EventArgs e)
         {
-            btnSavePost.Visible = true;
-            tbNewTitle.Visible = true;
-            tbNewContent.Visible = true;
-            Label2.Visible = true;
-            Label3.Visible = true;
+            this.btnSavePost.Visible = true;
+            this.tbNewTitle.Visible = true;
+            this.tbNewContent.Visible = true;
+            this.Label2.Visible = true;
+            this.Label3.Visible = true;
         }
 
         /// <summary>
@@ -212,39 +208,38 @@ namespace ICT4Event.pages
         protected void btnSavePost_Click(object sender, EventArgs e)
         {
             // Kijken of een Post is geselecteerd DUS EEN REPLY
-            if (lbItems.SelectedIndex != -1)
+            if (this.lbItems.SelectedIndex != -1)
             {
-                ad.InsertReply(Convert.ToInt32(Session[MyKeys.KeyAccountId]), tbNewContent.Text, lbItems.SelectedValue);
+                this.ad.InsertReply(Convert.ToInt32(this.Session[MyKeys.KeyAccountId]), this.tbNewContent.Text, this.lbItems.SelectedValue);
             }
             else
             {
                 // Mainpost
-                if (lblMap.Text == "Home\\")
+                if (this.lblMap.Text == "Home\\")
                 {
-                    ad.InsertMainMessage(
-                        Convert.ToInt32(Session[MyKeys.KeyAccountId]), 
-                        tbNewTitle.Text, 
-                        tbNewContent.Text);
+                    this.ad.InsertMainMessage(
+                        Convert.ToInt32(this.Session[MyKeys.KeyAccountId]),
+                        this.tbNewTitle.Text,
+                        this.tbNewContent.Text);
                 }
-
-                // Post in een categorie
+                //// Post in een categorie
                 else
                 {
-                    ad.InsertCatMessage(
-                        Convert.ToInt32(Session[MyKeys.KeyAccountId]), 
-                        tbNewTitle.Text, 
-                        tbNewContent.Text, 
-                        lblMap.Text);
+                    this.ad.InsertCatMessage(
+                        Convert.ToInt32(this.Session[MyKeys.KeyAccountId]),
+                        this.tbNewTitle.Text,
+                        this.tbNewContent.Text,
+                        this.lblMap.Text);
                 }
             }
 
-            btnSavePost.Visible = false;
-            tbNewTitle.Visible = false;
-            tbNewTitle.Text = string.Empty;
-            tbNewContent.Visible = false;
-            tbNewContent.Text = string.Empty;
-            Label2.Visible = false;
-            Label3.Visible = false;
+            this.btnSavePost.Visible = false;
+            this.tbNewTitle.Visible = false;
+            this.tbNewTitle.Text = string.Empty;
+            this.tbNewContent.Visible = false;
+            this.tbNewContent.Text = string.Empty;
+            this.Label2.Visible = false;
+            this.Label3.Visible = false;
         }
 
         /// <summary>
@@ -258,9 +253,9 @@ namespace ICT4Event.pages
         /// </param>
         protected void btnComment_Click(object sender, EventArgs e)
         {
-            btnSavePost.Visible = true;
-            tbNewContent.Visible = true;
-            Label2.Visible = true;
+            this.btnSavePost.Visible = true;
+            this.tbNewContent.Visible = true;
+            this.Label2.Visible = true;
         }
 
         /// <summary>
@@ -274,7 +269,7 @@ namespace ICT4Event.pages
         /// </param>
         protected void btnUpload_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/pages/Upload.aspx");
+            this.Response.Redirect("/pages/Upload.aspx");
         }
 
         /// <summary>
@@ -288,10 +283,10 @@ namespace ICT4Event.pages
         /// </param>
         protected void btnDownload_Click(object sender, EventArgs e)
         {
-            ftptj.DownloadFtpFile(
-                Environment.GetFolderPath(Environment.SpecialFolder.Desktop), 
-                lbItems.SelectedValue, 
-                lblMap.Text);
+            this.ftptj.DownloadFtpFile(
+                Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                this.lbItems.SelectedValue,
+                this.lblMap.Text);
         }
     }
 }

@@ -7,19 +7,15 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Text.RegularExpressions;
-
-using ICT4Event.Classes;
-
-using System.Text.RegularExpressions;
-
-using ICT4Event.Classes;
-
-using System.Web.UI;
-
 namespace ICT4Event
 {
+    using System;
+    using System.Text.RegularExpressions;
+    using ICT4Event.Classes;
+    using System.Text.RegularExpressions;
+    using ICT4Event.Classes;
+    using System.Web.UI;
+
     /// <summary>
     /// The index
     /// </summary>

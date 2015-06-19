@@ -42,12 +42,6 @@ namespace ICT4Event
                 {
                     this.ddlEvents.Items.Add(eventje.Name);
                 }
-
-                /*
-                ddlEvents.DataSource = null;
-                ddlEvents.DataSource = administration.FindEventAll();
-                ddlEvents.DataTextField = "Name";
-                 */
             }
         }
 

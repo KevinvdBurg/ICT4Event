@@ -112,10 +112,6 @@ namespace ICT4Event
             resultaat = true;
             return resultaat;
         }
-
-
-
-
         /*public List<Item> SelectAllItems()
         {
             List<CampingSpot> result = new List<CampingSpot>();

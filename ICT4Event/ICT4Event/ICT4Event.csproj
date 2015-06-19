@@ -81,7 +81,6 @@
     <Content Include="pages\registreren.aspx" />
     <Content Include="pages\wijziggegevens.aspx" />
     <Content Include="pages\Upload.aspx" />
-    <Content Include="pages\MijnReserveringen.aspx" />
     <Content Include="pages\Reserve.aspx" />
     <Content Include="pages\ReserveItem.aspx" />
     <Content Include="Posts.aspx" />
@@ -160,13 +159,6 @@
     </Compile>
     <Compile Include="pages\Post.aspx.designer.cs">
       <DependentUpon>Post.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\MijnReserveringen.aspx.cs">
-      <DependentUpon>MijnReserveringen.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\MijnReserveringen.aspx.designer.cs">
-      <DependentUpon>MijnReserveringen.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\registreren.aspx.cs">
       <DependentUpon>registreren.aspx</DependentUpon>

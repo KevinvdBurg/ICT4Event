@@ -33,7 +33,7 @@ namespace ICT4Event
         /// </param>
         protected void Page_Load(object sender, EventArgs e)
         {
-            tbNummer.Text = (administration.GetHoogsteEventID() + 1).ToString();
+            this.tbNummer.Text = (this.administration.GetHoogsteEventID() + 1).ToString();
         }
 
         /// <summary>
@@ -77,19 +77,6 @@ namespace ICT4Event
                 this.administration.AddEvent(newEvent);
                 MessageBox.Show("Het event is aangemaakt!");
             }
-        }
-
-        /// <summary>
-        /// The btn laad event_ click 1.
-        /// </summary>
-        /// <param name="sender">
-        /// The sender.
-        /// </param>
-        /// <param name="e">
-        /// The e.
-        /// </param>
-        protected void btnLaadEvent_Click1(object sender, EventArgs e)
-        {
         }
     }
 }

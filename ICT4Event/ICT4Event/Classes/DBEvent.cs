@@ -48,10 +48,7 @@ namespace ICT4Event
                 cmd.Parameters.Add(new OracleParameter("datumstart", Event.BeginTime));
                 cmd.Parameters.Add(new OracleParameter("datumEinde", Event.EndTime));
                 cmd.Parameters.Add(
-                    new OracleParameter(
-                        "locatie_id", 
-                        Convert.ToInt32(
-                            administration.FindAddressID(Event.Location.Address.ZipCode, Event.Location.Address.Number))));
+                new OracleParameter("locatie_id", Convert.ToInt32(administration.FindAddressID(Event.Location.Address.ZipCode, Event.Location.Address.Number))));
                 cmd.ExecuteNonQuery();
 
                 // OracleDataReader reader = cmd.ExecuteReader();

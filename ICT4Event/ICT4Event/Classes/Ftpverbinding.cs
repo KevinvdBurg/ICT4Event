@@ -6,19 +6,16 @@
 //   The ftpverbinding.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Net;
-using System.IO;
-using System.Text;
-
 namespace ICT4Event.Classes
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Net;
+    using System.IO;
+    using System.Text;
+
     /// <summary>
     /// The ftpverbinding.
     /// </summary>
@@ -42,7 +39,7 @@ namespace ICT4Event.Classes
         public void UploadFileToFtp(string map, string filePath, string username, string password)
         {
             var fileName = Path.GetFileName(filePath);
-            var request = (FtpWebRequest)WebRequest.Create( /*url*/"ftp://192.168.21.145/" + map + fileName);
+            var request = (FtpWebRequest)WebRequest.Create(/*url*/"ftp://192.168.21.145/" + map + fileName);
 
             request.Method = WebRequestMethods.Ftp.UploadFile;
             request.Credentials = new NetworkCredential(username, password);

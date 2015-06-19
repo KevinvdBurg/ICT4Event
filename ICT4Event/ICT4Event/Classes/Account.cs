@@ -16,41 +16,6 @@ namespace ICT4Event
     public class Account
     {
         /// <summary>
-        /// Gets or sets the gebruiker id.
-        /// </summary>
-        public int GebruikerId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the gebruiksersnaam.
-        /// </summary>
-        public string Gebruiksersnaam { get; set; }
-
-        /// <summary>
-        /// Gets or sets the email.
-        /// </summary>
-        public string Email { get; set; }
-
-        /// <summary>
-        /// Gets or sets the wachtwoord.
-        /// </summary>
-        public string Wachtwoord { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether type.
-        /// </summary>
-        public bool Type { get; set; }
-
-        /// <summary>
-        /// Gets or sets the hash.
-        /// </summary>
-        public string Hash { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether geactiveerd.
-        /// </summary>
-        public bool Geactiveerd { get; set; }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="Account"/> class.
         /// Only use if you create a account 
         /// </summary>
@@ -74,13 +39,7 @@ namespace ICT4Event
         /// <param name="geactiveerd">
         /// True or False if the account is active. Default 0
         /// </param>
-        public Account(
-            string gebruiksersnaam, 
-            string email, 
-            string wachtwoord, 
-            bool type, 
-            string hash, 
-            bool geactiveerd)
+        public Account(string gebruiksersnaam, string email, string wachtwoord, bool type, string hash, bool geactiveerd)
         {
             this.Gebruiksersnaam = gebruiksersnaam.ToLower();
             this.Email = email.ToLower();
@@ -133,5 +92,40 @@ namespace ICT4Event
         public Account()
         {
         }
+
+        /// <summary>
+        /// Gets or sets the gebruiker id.
+        /// </summary>
+        public int GebruikerId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the gebruiksersnaam.
+        /// </summary>
+        public string Gebruiksersnaam { get; set; }
+
+        /// <summary>
+        /// Gets or sets the email.
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or sets the wachtwoord.
+        /// </summary>
+        public string Wachtwoord { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether type.
+        /// </summary>
+        public bool Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets the hash.
+        /// </summary>
+        public string Hash { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether geactiveerd.
+        /// </summary>
+        public bool Geactiveerd { get; set; }
     }
 }
