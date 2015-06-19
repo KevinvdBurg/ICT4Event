@@ -20,7 +20,8 @@ namespace ICT4Event.pages
                     this.ddlSpot.Items.Add(Convert.ToString(item.ID));
                 }
             }
-            this.tbInfo.Text = this.administration.FindInfoSpot(Convert.ToInt32(ddlSpot.SelectedItem.Value));
+            
+            // this.tbInfo.Text = this.administration.FindInfoSpot(Convert.ToInt32(ddlSpot.SelectedItem.Value));
         }
 
         protected void btnReserve_Click(object sender, EventArgs e)
@@ -48,9 +49,21 @@ namespace ICT4Event.pages
                     this.tbBank.Text);
             }
 
-            this.administration.NewPerson(newPerson);
+            newPerson.PersonID = this.administration.NewPerson(newPerson);
             
-            this.administration.NewReservation();
+            this.administration.NewReservation(newPerson, ddlSpot.SelectedValue.ToString());
+
+
+        }
+
+        protected void btnSpecificaties_Click(object sender, EventArgs e)
+        {
+            lbSpecificaties.Items.Clear();
+            List<string> specificatieList = this.administration.GetSpecificationsList(Convert.ToInt32(ddlSpot.SelectedItem.Value));
+            foreach (string item in specificatieList)
+            {
+                lbSpecificaties.Items.Add(item);
+            }
         }
     }
 }

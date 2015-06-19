@@ -34,15 +34,12 @@ namespace ICT4Event
                 cmd.Parameters.Add("P_Huisnr", huis);
                 cmd.Parameters.Add("P_Woonplaats", woon);
                 cmd.Parameters.Add("P_Banknr", bank);
-                cmd.Parameters.Add("P_ID", OracleType.Int32).Direction = ParameterDirection.Output;
-                OracleDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        id = Convert.ToInt32(reader["P_ID"]);
-                    }
-                }
+                // cmd.Parameters.Add("P_ID", OracleType.Int32).Direction = ParameterDirection.Output;
+                OracleParameter returnParameter = cmd.Parameters.Add("P_ID", OracleType.Number);
+                returnParameter.Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                id = Convert.ToInt32(cmd.Parameters[7].Value);
+
             }
             catch (OracleException
                 e)
@@ -58,11 +55,30 @@ namespace ICT4Event
         }
 
 
-            public
-            void NewReservation()
+            public void NewReservation(Person person, string plekid)
         {
-            
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand("RESERVEERPLEK", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("R_ID", person.PersonID);
+                cmd.Parameters.Add("R_PLEKID", Convert.ToInt32(plekid));
+                cmd.ExecuteNonQuery();
+            }
+            catch (OracleException
+                e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            finally
+            {
+                this.DisConnect();
+            }
         }
+
+          
 
 
         //public List<CampingSpot> FindCampingSpots()

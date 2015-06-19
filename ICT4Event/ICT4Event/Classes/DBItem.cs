@@ -5,10 +5,87 @@ using System.Web;
 
 namespace ICT4Event
 {
+    using System.Data;
     using System.Data.OracleClient;
 
     public class DBItem : Database
     {
+        public List<Item> FindFreeItemsList()
+        {
+            List<Item> resultaat = new List<Item>();
+            int Exemplaar_ID;
+            string Merk;
+            string Serie;
+            int TypeNummer;
+            int prijs;
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand("BESCHIKBARE_ITEMS", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                // cmd.Parameters.Add("P_ID", OracleType.Int32).Direction = ParameterDirection.Output;
+
+                OracleParameter returnParameter = cmd.Parameters.Add("CURSOR_ITEMS", OracleType.Cursor);
+                returnParameter.Direction = ParameterDirection.Output;
+
+                OracleDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Exemplaar_ID = Convert.ToInt32(reader["ID"]);
+                        Merk = Convert.ToString(reader["merk"]);
+                        Serie = Convert.ToString(reader["serie"]);
+                        TypeNummer = Convert.ToInt32(reader["typenummer"]);
+                        prijs = Convert.ToInt32(reader["prijs"]);
+                        Item item = new Item(Exemplaar_ID, Merk, Serie, TypeNummer, prijs);
+                        resultaat.Add(item);
+                    }
+                }
+
+            }
+            catch (OracleException
+                e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            finally
+            {
+                this.DisConnect();
+            }
+            return resultaat;
+        }
+
+        public bool NewItemReservation(Item item)
+        {
+            var resultaat = false;
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand("ITEM_RESERVEREN", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("productexemplaarid_in", item.ExemplaarID);
+                cmd.Parameters.Add("prijs_in", item.Prijs);
+                cmd.ExecuteNonQuery();
+            }
+            catch (OracleException
+                e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            finally
+            {
+                this.DisConnect();
+            }
+            resultaat = true;
+            return resultaat;
+        }
+
+
+
+
         /*public List<Item> SelectAllItems()
         {
             List<CampingSpot> result = new List<CampingSpot>();

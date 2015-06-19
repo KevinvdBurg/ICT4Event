@@ -5,6 +5,7 @@ using System.Web;
 
 namespace ICT4Event
 {
+    using System.Web.UI;
     using System.Windows.Forms;
 
     public class Administration
@@ -49,19 +50,30 @@ namespace ICT4Event
             return freeItems;
         }
         */
-        public string FindInfoSpot(int id)
+
+        public int NewPerson(Person person)
         {
-            return this.dbCampingspot.FindInfo(id);
+            return this.dbreserve.NewPerson(person);
         }
 
-        public void NewPerson(Person person)
+        public void NewReservation(Person person, string plekid)
         {
-            this.dbreserve.NewPerson(person);
+            this.dbreserve.NewReservation(person, plekid);
         }
 
-        public void NewReservation()
+        public List<string> GetSpecificationsList(int plekid)
         {
-            
+            return this.dbCampingspot.FindInfo(plekid);
+        }
+
+        public List<Item> GetFreeItemsList()
+        {
+            return this.dbItem.FindFreeItemsList();
+        }
+
+        public bool NewItemReservation(Item item)
+        {
+            return this.dbItem.NewItemReservation(item);
         }
     }
 }

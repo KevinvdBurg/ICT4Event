@@ -10,9 +10,9 @@
         Woonplaats: <asp:TextBox ID="tbCity" runat="server"></asp:TextBox> <br/>
         banknr: <asp:TextBox ID="tbBank" runat="server"></asp:TextBox> <br />
     </p>
-    <p> Plek: <asp:DropDownList ID="ddlSpot" runat="server"></asp:DropDownList> 
-    <asp:TextBox ID="tbInfo" runat="server"></asp:TextBox> <br />
-    <asp:Button ID="btnAnulleren" runat="server" Text="Annulleren" />
+    <p> Plek: <asp:DropDownList ID="ddlSpot" runat="server"></asp:DropDownList> <asp:Button ID="btnSpecificaties" runat="server" Text="Laad Specificaties" OnClick="btnSpecificaties_Click" />
+    <p> Specificaties: <asp:ListBox ID="lbSpecificaties" runat="server"></asp:ListBox> </p> <br />
+    <asp:Button ID="btnAnulleren" runat="server" Text="Annuleren" />
     <asp:Button ID="btnReserve" runat="server" Text="Reserveren" OnClick="btnReserve_Click" />
     </p>
         

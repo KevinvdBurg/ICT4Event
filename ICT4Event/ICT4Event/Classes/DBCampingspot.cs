@@ -5,6 +5,7 @@ using System.Web;
 
 namespace ICT4Event
 {
+    using System.Data;
     using System.Data.OracleClient;
 
     public class DBCampingspot : Database
@@ -81,10 +82,54 @@ namespace ICT4Event
             return result;
         }
 
-        public string FindInfo(int id)
+        public List<string> FindInfo(int plekid)
         {
-            string sql = " ";
-            return sql;
+            List<string> resultaat = new List<string>();
+            int locatie_id;
+            string nummer;
+            int capaciteit;
+            string waarde;
+            string naam;
+            string output = "";
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand("VRIJEPLEKKEN", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                // cmd.Parameters.Add("P_ID", OracleType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add((new OracleParameter("P_ID", plekid)));
+
+                OracleParameter returnParameter = cmd.Parameters.Add("C_Vrij", OracleType.Cursor);
+                returnParameter.Direction = ParameterDirection.Output;
+
+                OracleDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        locatie_id = Convert.ToInt32(reader["locatie_id"]);
+                        nummer = Convert.ToString(reader["nummer"]);
+                        capaciteit = Convert.ToInt32(reader["capaciteit"]);
+                        waarde = Convert.ToString(reader["waarde"]);
+                        naam = Convert.ToString(reader["naam"]);
+                        output = "Locatie ID: " + locatie_id + ". Nummer: " + nummer + ". Capaciteit: " + capaciteit
+                                 + ". waarde: " + waarde + ". Naam: " + naam + ".";
+                        resultaat.Add(output);
+                    }
+                }
+
+            }
+            catch (OracleException
+                e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+            finally
+            {
+                this.DisConnect();
+            }
+            return resultaat;
         }
     }
 }

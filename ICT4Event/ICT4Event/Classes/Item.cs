@@ -7,26 +7,32 @@ namespace ICT4Event
 {
     public class Item
     {
-        public string Brand
+        public Item(int exemplaarId, string merk, string serie, int typeNummer, int prijs)
         {
-            get;
-            set;
+            this.ExemplaarID = exemplaarId;
+            this.Merk = merk;
+            this.Serie = serie;
+            this.TypeNummer = typeNummer;
+            this.Prijs = prijs;
         }
 
-        public string Name { get; set; }
+        public int ExemplaarID { get; set; }
 
-        public CategoryItems category { get; set; }
+        public string Merk { get; set; }
 
-        public Item(string Brand)
+        public string Serie { get; set; }
+
+        public int TypeNummer { get; set; }
+
+        public int Prijs { get; set; }
+
+
+        public string ToString()
         {
-            this.Brand = Brand;
-        }
-
-        public Item(CategoryItems category, string Brand, string Name)
-        {
-            this.Brand = Brand;
-            this.Name = Name;
-            this.category = category;
+            string output;
+            output = "Exemplaar_ID: " + this.ExemplaarID + ". Merk: " + this.Merk + ". Serie: " + this.Serie
+                                 + ". TypeNummer: " + this.TypeNummer + ". prijs: " + this.Prijs + ".";
+            return output;
         }
     }
 }
