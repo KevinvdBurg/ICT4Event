@@ -66,7 +66,7 @@ namespace ICT4Event
                     this.tbPostcode.Text, 
                     this.tbAdres.Text);
                 var location = new Location(adres, this.tbLocatienaam.Text);
-                location.AddLocation(location);
+                this.administration.AddLocation(location);
                 var newEvent = new Event(
                     location, 
                     Convert.ToInt32(this.tbBezoekers.Text), 

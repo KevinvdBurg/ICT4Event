@@ -14,11 +14,6 @@ namespace ICT4Event
     public class Location
     {
         /// <summary>
-        /// The db address.
-        /// </summary>
-        private readonly DBAddress dbAddress = new DBAddress();
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="Location"/> class.
         /// </summary>
         /// <param name="Address">
@@ -43,26 +38,6 @@ namespace ICT4Event
         /// </summary>
         public string Name { get; set; }
 
-        /// <summary>
-        /// The update location.
-        /// </summary>
-        /// <param name="location">
-        /// The location.
-        /// </param>
-        public void UpdateLocation(Location location)
-        {
-            this.dbAddress.Update(location);
-        }
-
-        /// <summary>
-        /// The add location.
-        /// </summary>
-        /// <param name="location">
-        /// The location.
-        /// </param>
-        public void AddLocation(Location location)
-        {
-            this.dbAddress.Insert(location);
-        }
+        
     }
 }

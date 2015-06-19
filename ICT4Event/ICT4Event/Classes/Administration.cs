@@ -75,6 +75,11 @@ namespace ICT4Event
         private readonly AdRegistreerLogin adRegistreerLogin = new AdRegistreerLogin();
 
         /// <summary>
+        /// Een instatntie van de DBAddress
+        /// </summary>
+        private readonly DBAddress dbAddress = new DBAddress();
+
+        /// <summary>
         /// The domain con.
         /// </summary>
         private const string DomainCon = "CN=Users,DC=pts45,DC=local";
@@ -677,6 +682,28 @@ namespace ICT4Event
         public bool NewItemReservation(Item item)
         {
             return this.dbItem.NewItemReservation(item);
+        }
+
+        /// <summary>
+        /// The update location.
+        /// </summary>
+        /// <param name="location">
+        /// The location.
+        /// </param>
+        public void UpdateLocation(Location location)
+        {
+            this.dbAddress.Update(location);
+        }
+
+        /// <summary>
+        /// The add location.
+        /// </summary>
+        /// <param name="location">
+        /// The location.
+        /// </param>
+        public void AddLocation(Location location)
+        {
+            this.dbAddress.Insert(location);
         }
     }
 }

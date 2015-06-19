@@ -104,7 +104,7 @@ namespace ICT4Event
                     this.tbPostcode.Text, 
                     this.tbAdres.Text);
                 var location = new Location(adres, this.tbLocatienaam.Text);
-                location.UpdateLocation(location);
+                this.administration.UpdateLocation(location);
                 var newEvent = new Event(
                     location, 
                     Convert.ToInt32(this.tbBezoekers.Text), 
