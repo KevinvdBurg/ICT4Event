@@ -28,7 +28,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="menu_bar_top" runat="server">
     <li class="flex-item" id="i-home">
-        <a href="/index.aspx"> Home</a>
+        <a href="/index.aspx">Home</a>
     </li>
 
     <li class="flex-item" id="i-post">
