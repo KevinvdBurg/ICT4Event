@@ -47,11 +47,11 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="menu_bar_sub" runat="server">
     <div class="nav-reververingen">
         <ul class="sub-flex-container sub sub-reververingen">
-            <a href="">
+            <a href="/pages/ReserveItem.aspx">
                 <li class="sub-flex-item">Item Reservering Maken</li>
             </a>
             
-            <a href="">
+            <a href="/pages/ReserveItem.aspx">
                 <li class="sub-flex-item">Plek Reservering Maken</li>
             </a>
         </ul>

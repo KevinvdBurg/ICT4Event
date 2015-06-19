@@ -3,28 +3,24 @@
    ========================================================================== */
 
 html, body {
-    background-color: #ECECEC;
-    max-width: 900px;
+    max-width: 900px; 
     min-width: 650px;
+    background-color: #ECECEC;
 }
 
 .navbar {
-    background-color: #000;
     height: 100px;
+    background-color: #000;
 }
 
-.navbar a { color: #fff; }
+.navbar a{
+	color: #fff;
+}
 
 .sub-navbar {
-    background-color: #313131;
-    display: none;
     height: 40px;
-    transition: height 0.4s;
-}
-
-.sub-navbar:hover {
-    height: 50px;
-    transition: height 0.4s;
+    background-color: #313131;
+    display:none;
 }
 
 .logo {
@@ -32,7 +28,9 @@ html, body {
     width: 200px;
 }
 
-.logo a { color: #fff; }
+.logo a {
+    color: #fff;
+}
 
 .logoTxt {
     font-size: 29px;
@@ -44,45 +42,49 @@ html, body {
     line-height: 4px;
 }
 
-.navMenuTop { display: flex; }
+.navMenuTop {
+    display: flex;
+}
 
 .flex-container {
-    -webkit-flex-flow: row wrap;
+    list-style: none;
+    margin: 0px;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
+    -webkit-flex-flow: row wrap;
     justify-content: space-around;
-    list-style: none;
-    margin: 0px;
 }
 
 .flex-item {
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    height: 100px;
-    line-height: 80px;
-    margin-top: 0px;
     padding: 5px;
-    text-align: center;
     width: 20%;
+    height: 100px;
+    margin-top: 0px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
 }
 
-.flex-item:hover { background-color: #313131; }
+.flex-item:hover {
+    background-color: #313131;
+}
 
 .sub-flex-container {
-    -webkit-flex-flow: row wrap;
-    display: none;
-    height: 40px;
-    justify-content: space-around;
     list-style: none;
     width: 700px;
+	display:none;
+    height: 40px;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
 }
 
-.sub-active {
-    display: -webkit-box;
+.sub-active{
+	display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -90,26 +92,34 @@ html, body {
 }
 
 .sub-flex-item {
-    color: #fff;
-    float: left;
-    font-size: 14px;
-    font-weight: bold;
-    height: 40px;
-    line-height: 25px;
-    margin-top: 0px;
     padding: 5px;
-    text-align: center;
     width: 20%;
+    height: 40px;
+    margin-top: 0px;
+    line-height: 25px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+    float:left;
 }
 
-.sub-flex-item:hover { background-color: #424242; }
+.sub-flex-item:hover {
+    background-color: #424242;
+}
 
 @media (min-width: 768px) {
-    .sub-flex-container { width: 700px; }
+    .sub-flex-container {
+        width: 700px;
+    }
 }
 
 @media (min-width: 1122px) {
-    .sub-flex-container { width: 960px; }
+    .sub-flex-container {
+        width: 960px;
+    }
 }
 
-#wrapper { background-color: #fff; }
+#wrapper{
+    background-color: #fff;
+}

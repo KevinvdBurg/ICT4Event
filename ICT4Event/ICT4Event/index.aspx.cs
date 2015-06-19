@@ -98,7 +98,7 @@ namespace ICT4Event
         /// </param>
         protected void btn_to_registeren_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/pages/wijziggegevens.aspx");
+            Response.Redirect("/pages/registreren.aspx");
         }
     }
 }
