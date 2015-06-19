@@ -587,5 +587,87 @@ namespace ICT4Event.Classes
                 this.Connection.Close();
             }
         }
+
+        public void LikePost(int postid)
+        {
+            // Zonder parentpost
+            string sql;
+            sql = "update ACCOUNT_BIJDRAGE set \"like\" = \"like\" + 1 where \"bijdrage_id\" = :postid";
+
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand(sql, this.Connection);
+                
+                cmd.Parameters.Add(new OracleParameter("postid", postid));
+                
+
+                cmd.ExecuteNonQuery();
+                
+            }
+            catch (OracleException e)
+            {
+            }
+            finally
+            {
+                this.Connection.Close();
+            }
+        }
+
+        public void ReportPost(int postid)
+        {
+            // Zonder parentpost
+            string sql;
+            sql = "update ACCOUNT_BIJDRAGE set \"ongewenst\" = \"ongewenst\" + 1 where \"bijdrage_id\" = :postid";
+
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand(sql, this.Connection);
+
+                cmd.Parameters.Add(new OracleParameter("postid", postid));
+
+
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (OracleException e)
+            {
+            }
+            finally
+            {
+                this.Connection.Close();
+            }
+        }
+
+        public List<string> ReportedPosts()
+        {
+            // Zonder parentpost
+            List<string> resultaat = new List<string>();
+            string sql;
+            sql =
+                "select \"titel\" from account_bijdrage ab, bijdrage b, bericht be where ab.\"bijdrage_id\" = b.ID and b.ID = be.\"bijdrage_id\" and \"ongewenst\" > 5";
+
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand(sql, this.Connection);
+
+                OracleDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    resultaat.Add(Convert.ToString(reader["titel"]));
+                }
+            }
+            catch (OracleException e)
+            {
+            }
+            finally
+            {
+                this.Connection.Close();
+            }
+
+            return resultaat;
+        }
     }
 }

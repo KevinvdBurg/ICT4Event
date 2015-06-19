@@ -79,6 +79,8 @@
     <Content Include="js\vendor\npm.js" />
     <Content Include="pages\Post.aspx" />
     <Content Include="pages\registreren.aspx" />
+    <Content Include="pages\Reports.aspx" />
+    <Content Include="pages\Toegang.aspx" />
     <Content Include="pages\wijziggegevens.aspx" />
     <Content Include="pages\Upload.aspx" />
     <Content Include="Web.config" />
@@ -98,6 +100,7 @@
     <Compile Include="Classes\ADRegistreerLogin.cs" />
     <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\DBAccount.cs" />
+    <Compile Include="Classes\DBIncheck.cs" />
     <Compile Include="Classes\DBLogin.cs" />
     <Compile Include="Classes\Messagebox.cs" />
     <Compile Include="Classes\Address.cs" />
@@ -156,6 +159,20 @@
     </Compile>
     <Compile Include="pages\registreren.aspx.designer.cs">
       <DependentUpon>registreren.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Toegang.aspx.cs">
+      <DependentUpon>Toegang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Toegang.aspx.designer.cs">
+      <DependentUpon>Toegang.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\wijziggegevens.aspx.cs">
       <DependentUpon>wijziggegevens.aspx</DependentUpon>
