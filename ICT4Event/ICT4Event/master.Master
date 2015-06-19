@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="master.master.cs" Inherits="ICT4Event.Master" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
 <%@ Import Namespace="System.Web.UI" %>
@@ -23,6 +24,21 @@
 <%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
 <%@ Import Namespace="System.Web.UI.WebControls" %>
+=======
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="master.master.cs" Inherits="ICT4Event.master" %>
+<%@ Import Namespace="System.Web.DynamicData" %>
+<%@ Import Namespace="System.Web.DynamicData" %>
+<%@ Import Namespace="System.Web.UI" %>
+<%@ Import Namespace="System.Web.UI" %>
+<%@ Import Namespace="System.Web.UI.WebControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
+<%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
+<%@ Import Namespace="System.Web.UI.WebControls.WebParts" %>
+<%@ Import Namespace="System.Web.UI.WebControls.WebParts" %>
+>>>>>>> origin/Reserve
 
 <!DOCTYPE html>
 
@@ -84,6 +100,7 @@
                 <asp:ContentPlaceHolder ID="contenct_right" runat="server"></asp:ContentPlaceHolder>
             </div>
         </div>
+<<<<<<< HEAD
         <hr>
         <footer>
             <p>&copy; ICT4EVENT 2015</p>
@@ -98,6 +115,17 @@
     <script src="/js/main.js"></script>
 
 </form>
+=======
+        <!-- /container -->
+        <script src="/js/vendor/jquery-2.1.4.js"></script>
+        <script>
+            window.jQuery || document.write('<script src="/js/vendor/jquery-2.1.4.js"><\/script>')
+        </script>
+        <script src="/js/vendor/bootstrap.min.js"></script>
+        <script src="/js/main.js"></script>
+        
+        </form>
+>>>>>>> origin/Reserve
 </body>
 
 </html>

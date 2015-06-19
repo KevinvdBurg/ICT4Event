@@ -81,6 +81,11 @@
     <Content Include="pages\registreren.aspx" />
     <Content Include="pages\wijziggegevens.aspx" />
     <Content Include="pages\Upload.aspx" />
+    <Content Include="pages\MijnReserveringen.aspx" />
+    <Content Include="pages\registreren.aspx" />
+    <Content Include="pages\Reserve.aspx" />
+    <Content Include="pages\ReserveItem.aspx" />
+    <Content Include="Posts.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +126,14 @@
     </Compile>
     <Compile Include="Classes\DBPost.cs" />
     <Compile Include="Classes\Ftpverbinding.cs" />
+    <Compile Include="Classes\Administration.cs" />
+    <Compile Include="Classes\CampingSpot.cs" />
+    <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\DBCampingspot.cs" />
+    <Compile Include="Classes\DBItem.cs" />
+    <Compile Include="Classes\DBReserve.cs" />
+    <Compile Include="Classes\Item.cs" />
+    <Compile Include="Classes\Person.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -150,6 +163,13 @@
     <Compile Include="pages\Post.aspx.designer.cs">
       <DependentUpon>Post.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\MijnReserveringen.aspx.cs">
+      <DependentUpon>MijnReserveringen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\MijnReserveringen.aspx.designer.cs">
+      <DependentUpon>MijnReserveringen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\registreren.aspx.cs">
       <DependentUpon>registreren.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -159,6 +179,23 @@
     </Compile>
     <Compile Include="pages\wijziggegevens.aspx.cs">
       <DependentUpon>wijziggegevens.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Reserve.aspx.cs">
+      <DependentUpon>Reserve.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Reserve.aspx.designer.cs">
+      <DependentUpon>Reserve.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\ReserveItem.aspx.cs">
+      <DependentUpon>ReserveItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\ReserveItem.aspx.designer.cs">
+      <DependentUpon>ReserveItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Posts.aspx.cs">
+      <DependentUpon>Posts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\wijziggegevens.aspx.designer.cs">

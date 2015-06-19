@@ -1,6 +1,11 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
+<<<<<<< HEAD
 // <copyright file="AssemblyInfo.cs" company="ICT4EVENTS.">
 //   ICT4EVENTS.
+=======
+// <copyright file="AssemblyInfo.cs" company="">
+//   
+>>>>>>> origin/Reserve
 // </copyright>
 // <summary>
 //   AssemblyInfo.cs
@@ -8,6 +13,10 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Reflection;
+<<<<<<< HEAD
+=======
+using System.Runtime.CompilerServices;
+>>>>>>> origin/Reserve
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 

@@ -1,4 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
+<<<<<<< HEAD
 // <copyright file="index.aspx.cs" company="ICT4EVENTS.">
 //   ICT4EVENTS.
 // </copyright>
@@ -31,6 +32,32 @@ namespace ICT4Event
         private readonly Administration administration = new Administration();
 
         /// <summary>
+=======
+// <copyright file="index.aspx.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The index 1.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+
+
+namespace ICT4Event
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.UI;
+    using System.Web.UI.WebControls;
+    /// <summary>
+    /// The index 1.
+    /// </summary>
+    public partial class index1 : System.Web.UI.Page
+    {
+        /// <summary>
+>>>>>>> origin/Reserve
         /// The page_ load.
         /// </summary>
         /// <param name="sender">

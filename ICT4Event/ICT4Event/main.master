@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<%@ Master Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true" CodeBehind="main.master.cs" Inherits="ICT4Event.Main" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
 <%@ Import Namespace="System.Web.UI" %>
@@ -23,6 +24,21 @@
 <%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
 <%@ Import Namespace="System.Web.UI.WebControls" %>
+=======
+﻿<%@ Master Language="C#" MasterPageFile="~/master.Master" AutoEventWireup="true" CodeBehind="main.master.cs" Inherits="ICT4Event.main" %>
+<%@ Import Namespace="System.Web.DynamicData" %>
+<%@ Import Namespace="System.Web.DynamicData" %>
+<%@ Import Namespace="System.Web.UI" %>
+<%@ Import Namespace="System.Web.UI" %>
+<%@ Import Namespace="System.Web.UI.WebControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
+<%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
+<%@ Import Namespace="System.Web.UI.WebControls.WebParts" %>
+<%@ Import Namespace="System.Web.UI.WebControls.WebParts" %>
+>>>>>>> origin/Reserve
 <asp:Content ID="Content1" ContentPlaceHolderID="Subtitle" runat="server">
     Gebruiker
 </asp:Content>
@@ -46,6 +62,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="menu_bar_sub" runat="server">
     <div class="nav-reververingen">
         <ul class="sub-flex-container sub sub-reververingen">
+<<<<<<< HEAD
             <a href="">
                 <li class="sub-flex-item">Item Reservering Maken</li>
             </a>
@@ -53,6 +70,11 @@
             <a href="">
                 <li class="sub-flex-item">Plek Reservering Maken</li>
             </a>
+=======
+            <a href=""><li class="sub-flex-item">Plek Reservering Maken</li></a>
+            <a href=""><li class="sub-flex-item">Item Reservering Maken</li></a>
+            <a href=""><li class="sub-flex-item">Mijn Reservering</li></a>
+>>>>>>> origin/Reserve
         </ul>
     </div>
 

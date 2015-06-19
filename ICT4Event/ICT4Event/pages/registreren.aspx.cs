@@ -1,4 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
+<<<<<<< HEAD
 // <copyright file="registreren.aspx.cs" company="ICT4EVENTS.">
 //   ICT4EVENTS.
 // </copyright>
@@ -25,6 +26,33 @@ namespace ICT4Event.pages
 
         /// <summary>
         /// Als er op de button is geklikt wordt deze method aangeroepen
+=======
+// <copyright file="registreren.aspx.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The registreren.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+
+
+namespace ICT4Event.pages
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.UI;
+    using System.Web.UI.WebControls;
+    /// <summary>
+    /// The registreren.
+    /// </summary>
+    public partial class registreren : System.Web.UI.Page
+    {
+        /// <summary>
+        /// The page_ load.
+>>>>>>> origin/Reserve
         /// </summary>
         /// <param name="sender">
         /// The sender.
@@ -32,7 +60,11 @@ namespace ICT4Event.pages
         /// <param name="e">
         /// The e.
         /// </param>
+<<<<<<< HEAD
         protected void BtnRegisterenClick(object sender, EventArgs e)
+=======
+        protected void Page_Load(object sender, EventArgs e)
+>>>>>>> origin/Reserve
         {
             var gebruikersnaam = this.regi_gebruikersnaam.Text;
             var email = this.regi_email.Text;
