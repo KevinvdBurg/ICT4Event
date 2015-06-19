@@ -13,7 +13,7 @@ namespace ICT4Event
 
     public class DBReserve : Database
     {
-        public void NewPerson(Person person)
+        public int NewPerson(Person person)
         {
             int id = 0;
             string voornaam = person.FirstName;
@@ -35,12 +35,17 @@ namespace ICT4Event
                 cmd.Parameters.Add("P_Woonplaats", woon);
                 cmd.Parameters.Add("P_Banknr", bank);
                 cmd.Parameters.Add("P_ID", OracleType.Int32).Direction = ParameterDirection.Output;
-
-                
-
-
+                OracleDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        id = Convert.ToInt32(reader["P_ID"]);
+                    }
+                }
             }
-            catch (OracleException e)
+            catch (OracleException
+                e)
             {
                 Console.WriteLine(e.Message);
                 throw;
@@ -49,10 +54,12 @@ namespace ICT4Event
             {
                 this.DisConnect();
             }
+            return id;
         }
 
 
-        public void NewReservation()
+            public
+            void NewReservation()
         {
             
         }
