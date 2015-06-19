@@ -51,7 +51,7 @@
                 <li class="sub-flex-item">Item Reservering Maken</li>
             </a>
             
-            <a href="/pages/ReserveItem.aspx">
+            <a href="/pages/Reserve.aspx">
                 <li class="sub-flex-item">Plek Reservering Maken</li>
             </a>
         </ul>

@@ -50,7 +50,7 @@ namespace ICT4Event
                 }
                 else
                 {
-                    //Response.Redirect("/index.aspx");
+                    Response.Redirect("/index.aspx");
                 }
             }
             else
@@ -68,14 +68,14 @@ namespace ICT4Event
 
                 if (admin)
                 {
-                    MessageBox.Show(this.Page, "Web-Admin");
+                    //MessageBox.Show(this.Page, "Web-Admin");
                 }
                 else
                 {
                     // MessageBox.Show(this.Page, "Web-Gebruiker");
-                    this.Page.Show(
-                        this.Session[MyKeys.KeyUsername] + " - " + this.Session[MyKeys.KeyEmail] + " - "
-                        + this.Session[MyKeys.KeyAccountId]);
+                    //this.Page.Show(
+                    //    this.Session[MyKeys.KeyUsername] + " - " + this.Session[MyKeys.KeyEmail] + " - "
+                    //    + this.Session[MyKeys.KeyAccountId]);
 
                     // Response.Redirect("to user page");
                 }

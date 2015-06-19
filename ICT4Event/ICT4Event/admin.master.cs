@@ -65,11 +65,11 @@ namespace ICT4Event
 
                 if (admin)
                 {
-                    MessageBox.Show(this.Page, "Web-Admin");
+                    //MessageBox.Show(this.Page, "Web-Admin");
                 }
                 else
                 {
-                    MessageBox.Show(this.Page, "Web-Gebruiker");
+                   // MessageBox.Show(this.Page, "Web-Gebruiker");
                     Response.Redirect("index.aspx");
                 }
             }
