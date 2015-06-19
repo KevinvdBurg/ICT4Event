@@ -90,23 +90,12 @@
     </Compile>
     <Compile Include="Classes\Administration.cs" />
     <Compile Include="Classes\CampingSpot.cs" />
-    <Compile Include="Classes\Category.cs" />
-    <Compile Include="Classes\CategoryItems.cs" />
-    <Compile Include="Classes\CategorySpots.cs" />
     <Compile Include="Classes\Database.cs" />
-    <Compile Include="Classes\DBAddress.cs" />
     <Compile Include="Classes\DBCampingspot.cs" />
-    <Compile Include="Classes\DBEvent.cs" />
     <Compile Include="Classes\DBItem.cs" />
-    <Compile Include="Classes\DBLogin.cs" />
-    <Compile Include="Classes\DBPost.cs" />
     <Compile Include="Classes\DBReserve.cs" />
-    <Compile Include="Classes\Event.cs" />
     <Compile Include="Classes\Item.cs" />
-    <Compile Include="Classes\Location.cs" />
     <Compile Include="Classes\Person.cs" />
-    <Compile Include="Classes\Specification.cs" />
-    <Compile Include="Classes\Spot_Specification.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -164,8 +153,6 @@
       <DependentUpon>Posts.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Classes\Reserve.cs" />
-    <Compile Include="Classes\ReserveItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap-theme.css.map" />

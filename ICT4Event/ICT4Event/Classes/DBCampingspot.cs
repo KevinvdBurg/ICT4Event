@@ -1,25 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DBCampingspot.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The db campingspot.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+
 
 namespace ICT4Event
 {
+    using System;
+    using System.Collections.Generic;
     using System.Data;
     using System.Data.OracleClient;
+    using System.Linq;
+    using System.Web;
 
+    /// <summary>
+    /// The db campingspot.
+    /// </summary>
     public class DBCampingspot : Database
     {
-      
+        /// <summary>
+        /// The find camping spots.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<CampingSpot> FindCampingSpots()
         {
             List<CampingSpot> result = new List<CampingSpot>();
-            //string sql = "SELECT * FROM plek WHERE id NOT IN (SELECT plek_id FROM plek_reservering)";
+
+            // string sql = "SELECT * FROM plek WHERE id NOT IN (SELECT plek_id FROM plek_reservering)";
             string sql = "SELECT * FROM plek";
             try
             {
                 this.Connect();
-                OracleCommand cmd = new OracleCommand(sql, connection);
+                OracleCommand cmd = new OracleCommand(sql, this.connection);
                 OracleDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -42,11 +61,21 @@ namespace ICT4Event
             }
             finally
             {
-                DisConnect();
+                this.DisConnect();
             }
+
             return result;
         }
 
+        /// <summary>
+        /// The find free spots.
+        /// </summary>
+        /// <param name="ID">
+        /// The id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool FindFreeSpots(int ID)
         {
             string sql = "SELECT  \"plek_id\" FROM plek_reservering WHERE \"plek_id\" = :nummer";
@@ -55,8 +84,8 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                OracleCommand cmd = new OracleCommand(sql, connection);
-                cmd.Parameters.Add((new OracleParameter("nummer", ID)));
+                OracleCommand cmd = new OracleCommand(sql, this.connection);
+                cmd.Parameters.Add(new OracleParameter("nummer", ID));
                 OracleDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -77,11 +106,21 @@ namespace ICT4Event
             }
             finally
             {
-                DisConnect();
+                this.DisConnect();
             }
+
             return result;
         }
 
+        /// <summary>
+        /// The find info.
+        /// </summary>
+        /// <param name="plekid">
+        /// The plekid.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<string> FindInfo(int plekid)
         {
             List<string> resultaat = new List<string>();
@@ -90,14 +129,15 @@ namespace ICT4Event
             int capaciteit;
             string waarde;
             string naam;
-            string output = "";
+            string output = string.Empty;
             try
             {
                 this.Connect();
-                OracleCommand cmd = new OracleCommand("VRIJEPLEKKEN", connection);
+                OracleCommand cmd = new OracleCommand("VRIJEPLEKKEN", this.connection);
                 cmd.CommandType = CommandType.StoredProcedure;
+
                 // cmd.Parameters.Add("P_ID", OracleType.Int32).Direction = ParameterDirection.Output;
-                cmd.Parameters.Add((new OracleParameter("P_ID", plekid)));
+                cmd.Parameters.Add(new OracleParameter("P_ID", plekid));
 
                 OracleParameter returnParameter = cmd.Parameters.Add("C_Vrij", OracleType.Cursor);
                 returnParameter.Direction = ParameterDirection.Output;
@@ -117,7 +157,6 @@ namespace ICT4Event
                         resultaat.Add(output);
                     }
                 }
-
             }
             catch (OracleException
                 e)
@@ -129,6 +168,7 @@ namespace ICT4Event
             {
                 this.DisConnect();
             }
+
             return resultaat;
         }
     }

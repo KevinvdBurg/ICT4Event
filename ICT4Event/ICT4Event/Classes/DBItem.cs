@@ -1,15 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DBItem.cs" company="">
+//   
+// </copyright>
+// <summary>
+//   The db item.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 
 namespace ICT4Event
 {
     using System.Data;
     using System.Data.OracleClient;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
 
+    /// <summary>
+    /// The db item.
+    /// </summary>
     public class DBItem : Database
     {
+        /// <summary>
+        /// The find free items list.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
         public List<Item> FindFreeItemsList()
         {
             List<Item> resultaat = new List<Item>();
@@ -21,10 +39,10 @@ namespace ICT4Event
             try
             {
                 this.Connect();
-                OracleCommand cmd = new OracleCommand("BESCHIKBARE_ITEMS", connection);
+                OracleCommand cmd = new OracleCommand("BESCHIKBARE_ITEMS", this.connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                // cmd.Parameters.Add("P_ID", OracleType.Int32).Direction = ParameterDirection.Output;
 
+                // cmd.Parameters.Add("P_ID", OracleType.Int32).Direction = ParameterDirection.Output;
                 OracleParameter returnParameter = cmd.Parameters.Add("CURSOR_ITEMS", OracleType.Cursor);
                 returnParameter.Direction = ParameterDirection.Output;
 
@@ -42,7 +60,6 @@ namespace ICT4Event
                         resultaat.Add(item);
                     }
                 }
-
             }
             catch (OracleException
                 e)
@@ -54,16 +71,26 @@ namespace ICT4Event
             {
                 this.DisConnect();
             }
+
             return resultaat;
         }
 
+        /// <summary>
+        /// The new item reservation.
+        /// </summary>
+        /// <param name="item">
+        /// The item.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool NewItemReservation(Item item)
         {
             var resultaat = false;
             try
             {
                 this.Connect();
-                OracleCommand cmd = new OracleCommand("ITEM_RESERVEREN", connection);
+                OracleCommand cmd = new OracleCommand("ITEM_RESERVEREN", this.connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("productexemplaarid_in", item.ExemplaarID);
                 cmd.Parameters.Add("prijs_in", item.Prijs);
@@ -79,6 +106,7 @@ namespace ICT4Event
             {
                 this.DisConnect();
             }
+
             resultaat = true;
             return resultaat;
         }
@@ -112,37 +140,37 @@ namespace ICT4Event
             }
         */
 
-            //public int ItemID (stringnaam)
-            //{
-            //    int itemID = -1;
-            //    string sql = "SELECT itemid FROM item i WHERE naam = :naam";
-            //    try
-            //    {
-            //        Connect();
-            //        OracleCommand cmd = new OracleCommand(sql, connection);
-            //        cmd.Parameters.Add(new OracleParameter("email", naam));
-            //        OracleDataReader reader = cmd.ExecuteReader();
-            //        if (reader.HasRows)
-            //        {
-            //            while (reader.Read())
-            //            {
-            //                itemID = Convert.ToInt32(reader["itemid"]);
+            // public int ItemID (stringnaam)
+            // {
+            // int itemID = -1;
+            // string sql = "SELECT itemid FROM item i WHERE naam = :naam";
+            // try
+            // {
+            // Connect();
+            // OracleCommand cmd = new OracleCommand(sql, connection);
+            // cmd.Parameters.Add(new OracleParameter("email", naam));
+            // OracleDataReader reader = cmd.ExecuteReader();
+            // if (reader.HasRows)
+            // {
+            // while (reader.Read())
+            // {
+            // itemID = Convert.ToInt32(reader["itemid"]);
 
-            //            }
-            //            return itemID;
-            //        }
-            //    }
-            //    catch (OracleException e)
-            //    {
-            //        Console.WriteLine(e.Message);
-            //        throw;
-            //    }
-            //    finally
-            //    {
-            //        DisConnect();
-            //    }
-            //    return itemID;
+            // }
+            // return itemID;
+            // }
+            // }
+            // catch (OracleException e)
+            // {
+            // Console.WriteLine(e.Message);
+            // throw;
+            // }
+            // finally
+            // {
+            // DisConnect();
+            // }
+            // return itemID;
 
-            //}
+            // }
         }
     }
