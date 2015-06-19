@@ -3,7 +3,7 @@
 //   ICT4EVENTS.
 // </copyright>
 // <summary>
-//   In this object will be all the account data stored. 
+//   In this object will be all the account data stored.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 namespace ICT4Event
@@ -75,11 +75,11 @@ namespace ICT4Event
         /// True or False if the account is active. Default 0
         /// </param>
         public Account(
-            string gebruiksersnaam,
-            string email,
-            string wachtwoord,
-            bool type,
-            string hash,
+            string gebruiksersnaam, 
+            string email, 
+            string wachtwoord, 
+            bool type, 
+            string hash, 
             bool geactiveerd)
         {
             this.Gebruiksersnaam = gebruiksersnaam.ToLower();

@@ -6,7 +6,6 @@
 //   The db event.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace ICT4Event
 {
     using System;
@@ -44,8 +43,9 @@ namespace ICT4Event
                 cmd.Parameters.Add(new OracleParameter("datumEinde", Event.EndTime));
                 cmd.Parameters.Add(
                     new OracleParameter(
-                        "locatie_id",
-                        Convert.ToInt32(administration.FindAddressID(Event.Location.Address.ZipCode, Event.Location.Address.Number))));
+                        "locatie_id", 
+                        Convert.ToInt32(
+                            administration.FindAddressID(Event.Location.Address.ZipCode, Event.Location.Address.Number))));
                 cmd.ExecuteNonQuery();
 
                 // OracleDataReader reader = cmd.ExecuteReader();

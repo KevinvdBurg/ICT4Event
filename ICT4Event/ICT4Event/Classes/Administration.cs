@@ -6,7 +6,6 @@
 //   The administration.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace ICT4Event
 {
     using System;
@@ -15,38 +14,48 @@ namespace ICT4Event
     using System.Net.Mail;
     using System.Text.RegularExpressions;
     using System.Web.UI;
-    using ICT4Event.Classes;
-    using ICT4Event.Classes.MessageBox;
 
+    using ICT4Event.Classes;
     /// <summary>
     /// The administration.
     /// </summary>
     public class Administration : Page
     {
         /// <summary>
-        /// The dbaddress.
+        /// Een instatntie van de DBAddress
         /// </summary>
         private readonly DBAddress dbaddress = new DBAddress();
 
         /// <summary>
-        /// The dbevent.
+        /// Een instatntie van de DBEvent
         /// </summary>
         private readonly DBEvent dbevent = new DBEvent();
+
         /// <summary>
-        /// The dbaccount.
+        /// Een instatntie van de DBAccount
         /// </summary>
         private readonly DbAccount dbaccount = new DbAccount();
 
         /// <summary>
-        /// The dblogin.
+        /// Een instatntie van de DBLogin
         /// </summary>
         private readonly DbLogin dblogin = new DbLogin();
+
+        /// <summary>
+        /// Een instatntie van de AdRegistreerLogin
+        /// </summary>
+        private readonly AdRegistreerLogin adRegistreerLogin = new AdRegistreerLogin();
+
+        /// <summary>
+        /// The domain con.
+        /// </summary>
+        private const string DomainCon = "CN=Users,DC=pts45,DC=local";
 
         /// <summary>
         /// Een event wordt doorgestuurd naar dbEvent zodat er een event toegevoegd kan worden aan de database
         /// </summary>
         /// <param name="Event">
-        /// Event
+        /// Een Event
         /// </param>
         public void AddEvent(Event Event)
         {
@@ -54,21 +63,8 @@ namespace ICT4Event
         }
 
         /// <summary>
-        /// The delete.
+        /// The find event.
         /// </summary>
-        /// <param name="Event">
-        /// The event.
-        /// </param>
-        public void Delete(Event Event)
-        {
-            // TODO
-        }
-
-        // private const string domainCon = "CN=Users,DC=pts45,DC=local";
-        /// <summary>
-        /// The domain con.
-        /// </summary>
-        private const string DomainCon = "CN=Users,DC=pts45,DC=local";
         /// <param name="EventName">
         /// Event.
         /// </param>
@@ -89,9 +85,8 @@ namespace ICT4Event
         }
 
         /// <summary>
-        /// The ad registreer login.
+        /// The find event.
         /// </summary>
-        private readonly AdRegistreerLogin adRegistreerLogin = new AdRegistreerLogin();
         /// <param name="EventID">
         /// Event.
         /// </param>
@@ -110,6 +105,10 @@ namespace ICT4Event
             this.Page.Show("Event niet gevonden");
             return null;
         }
+
+        /// <summary>
+        /// The find address id.
+        /// </summary>
         /// <param name="zipcode">
         /// Zipcode.
         /// </param>
@@ -142,17 +141,17 @@ namespace ICT4Event
         {
             this.dbaccount.Insert(account);
             this.adRegistreerLogin.CreateUserAccount(
-                DomainCon,
-                account.Gebruiksersnaam,
-                account.Wachtwoord,
+                DomainCon, 
+                account.Gebruiksersnaam, 
+                account.Wachtwoord, 
                 account.Email);
         }
 
         /// <summary>
-        /// The find gebruikersnaam.
+        /// VInd het gebruikersnaam en kijk of deze bestaat
         /// </summary>
         /// <param name="gebruikersnaam">
-        /// The gebruikersnaam.
+        /// Gebruikersnaam.
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
@@ -170,10 +169,10 @@ namespace ICT4Event
         }
 
         /// <summary>
-        /// The find email.
+        /// Vind een email en kijkt of hij bestaat
         /// </summary>
         /// <param name="email">
-        /// The email.
+        /// Een email
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
@@ -208,13 +207,10 @@ namespace ICT4Event
         }
 
         /// <summary>
-        /// The login check.
+        /// Controleerd of de gebruiker mag inloggen. Hier wordt gekeken of de activatie correct is.
         /// </summary>
         /// <param name="username">
-        /// The username.
-        /// </param>
-        /// <param name="password">
-        /// The password.
+        /// De gebruikersnaam
         /// </param>
         /// <returns>
         /// The <see cref="string"/>.
@@ -225,32 +221,10 @@ namespace ICT4Event
         }
 
         /// <summary>
-        /// The is valid email.
-        /// </summary>
-        /// <param name="email">
-        /// The email.
-        /// </param>
-        /// <returns>
-        /// The <see cref="bool"/>.
-        /// </returns>
-        private bool IsValidEmail(string email)
-        {
-            try
-            {
-                var addr = new MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// The get details.
+        /// Krijgt alle details van de Gebruiker uit de database
         /// </summary>
         /// <param name="username">
-        /// The username.
+        /// De gebruikers naam
         /// </param>
         /// <returns>
         /// The <see cref="Account"/>.
@@ -261,10 +235,10 @@ namespace ICT4Event
         }
 
         /// <summary>
-        /// The send email.
+        /// Stuurt een Email naar de gebruiker
         /// </summary>
         /// <param name="account">
-        /// The account.
+        /// Een Account Object
         /// </param>
         public void SendEmail(Account account)
         {
@@ -287,10 +261,10 @@ namespace ICT4Event
         }
 
         /// <summary>
-        /// The activate account.
+        /// Activeerd een account als de Hash correct is
         /// </summary>
         /// <param name="hash">
-        /// The hash.
+        /// Activatie Hash
         /// </param>
         /// <returns>
         /// The <see cref="bool"/>.
@@ -300,29 +274,77 @@ namespace ICT4Event
             return this.dbaccount.ActivateAccount(hash);
         }
 
+        /// <summary>
+        /// Koppeld een gebruiker aan een groep
+        /// </summary>
+        /// <param name="username">
+        /// Gebruikers naam
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// Een lijst met alle groepen waar de gebruiker inzit
+        /// </returns>
         public List<string> GetAccountGroups(string username)
         {
             return this.adRegistreerLogin.FindUserGroup(username);
         }
 
+        /// <summary>
+        /// Kijkt of het email valide is
+        /// </summary>
+        /// <param name="email">
+        /// The email.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool IsValid(string email)
         {
             string pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
             return Regex.IsMatch(email, pattern);
         }
 
-
+        /// <summary>
+        /// Updated een Account in de AD
+        /// </summary>
+        /// <param name="username">
+        /// Een Gebruikersnaam
+        /// </param>
+        /// <param name="email">
+        /// Een Email
+        /// </param>
+        /// <param name="wachtwoord">
+        /// Een Wachtwoord
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool UpdateAccountAD(string username, string email, string wachtwoord)
         {
             return this.adRegistreerLogin.UpdateUserAccount(username, email, wachtwoord);
-
         }
 
+        /// <summary>
+        /// Update een gebruiker in de DB
+        /// Je kan geen Gebruikersnaam wijzigen
+        /// </summary>
+        /// <param name="id">
+        /// Een Account ID
+        /// </param>
+        /// <param name="email">
+        /// Een Email
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public bool UpdateAccountDB(int id, string email)
         {
             return this.dbaccount.UpdateUserAccount(id, email);
         }
 
+        /// <summary>
+        /// Vind alle events
+        /// </summary>
         /// <returns>
         /// The <see cref="List"/>.
         /// </returns>
@@ -340,7 +362,7 @@ namespace ICT4Event
         }
 
         /// <summary>
-        /// update de gegevens van het event
+        /// Update een event
         /// </summary>
         /// <param name="tempEvent">
         /// Tijdelijk Event.
