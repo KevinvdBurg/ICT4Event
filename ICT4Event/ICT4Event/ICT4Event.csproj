@@ -109,6 +109,7 @@
     <Compile Include="Classes\DBAddress.cs" />
     <Compile Include="Classes\DBEvent.cs" />
     <Compile Include="Classes\Location.cs" />
+    <Compile Include="Classes\Specification.cs" />
     <Compile Include="pages\EventsWijzigen.aspx.cs">
       <DependentUpon>EventsWijzigen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
