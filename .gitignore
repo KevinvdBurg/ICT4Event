@@ -154,3 +154,5 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+ICT4Event/ICT4Event/Resources/test.png
+*.resx

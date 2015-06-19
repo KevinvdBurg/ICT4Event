@@ -3,7 +3,7 @@
 //   ICT4EVENTS.
 // </copyright>
 // <summary>
-// Al het wijzigen van de gegevens wordt in deze klasse afgehandled
+//   Al het wijzigen van de gegevens wordt in deze klasse afgehandled
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 

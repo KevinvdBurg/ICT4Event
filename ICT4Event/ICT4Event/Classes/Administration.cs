@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Administration.cs" company="ICT4EVENTS.">
 //   ICT4EVENTS.
 // </copyright>
@@ -16,6 +16,7 @@ namespace ICT4Event
     using System.Web.UI;
 
     using ICT4Event.Classes;
+
     /// <summary>
     /// The administration.
     /// </summary>
@@ -40,6 +41,11 @@ namespace ICT4Event
         /// Een instatntie van de DBLogin
         /// </summary>
         private readonly DbLogin dblogin = new DbLogin();
+
+        /// <summary>
+        /// Een instatntie van de DBPost
+        /// </summary>
+        private readonly DBPost dbpost = new DBPost();
 
         /// <summary>
         /// Een instatntie van de AdRegistreerLogin
@@ -370,6 +376,188 @@ namespace ICT4Event
         public void UpdateEvent(Event tempEvent)
         {
             this.dbevent.UpdateEvent(tempEvent);
+        }
+
+        /// <summary>
+        /// The main categories.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
+        public List<string> MainCategories()
+        {
+            return this.dbpost.GetMainCategories();
+        }
+
+        /// <summary>
+        /// The sub categories.
+        /// </summary>
+        /// <param name="catnaam">
+        /// The catnaam.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
+        public List<string> SubCategories(string catnaam)
+        {
+            return this.dbpost.GetSubCategories(this.dbpost.GetCategorieID(catnaam));
+        }
+
+        /// <summary>
+        /// The category files list.
+        /// </summary>
+        /// <param name="catnaam">
+        /// The catnaam.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
+        public List<string> CategoryFilesList(string catnaam)
+        {
+            return this.dbpost.CategoryFiles(this.dbpost.GetCategorieID(catnaam));
+        }
+
+        /// <summary>
+        /// The posts.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
+        public List<string> Posts()
+        {
+            return this.dbpost.MainMessages();
+        }
+
+        /// <summary>
+        /// The post tekst.
+        /// </summary>
+        /// <param name="titel">
+        /// The titel.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public string postTekst(string titel)
+        {
+            return this.dbpost.GetMessage(this.dbpost.GetMessageID(titel));
+        }
+
+        /// <summary>
+        /// The get comments.
+        /// </summary>
+        /// <param name="titel">
+        /// The titel.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
+        public List<string> GetComments(string titel)
+        {
+            return this.dbpost.GetComments(this.dbpost.GetMessageID(titel));
+        }
+
+        /// <summary>
+        /// The test contains.
+        /// </summary>
+        /// <param name="str">
+        /// The str.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public string testContains(string str)
+        {
+            while (str.IndexOf("/") != -1)
+            {
+                str = str.Substring(str.IndexOf("/") + 1);
+            }
+
+            return str;
+        }
+
+        /// <summary>
+        /// The category messages.
+        /// </summary>
+        /// <param name="catnaam">
+        /// The catnaam.
+        /// </param>
+        /// <returns>
+        /// The <see cref="List"/>.
+        /// </returns>
+        public List<string> CategoryMessages(string catnaam)
+        {
+            return this.dbpost.CatMessages(this.dbpost.GetCategorieID(catnaam));
+        }
+
+        /// <summary>
+        /// The insert main message.
+        /// </summary>
+        /// <param name="accountid">
+        /// The accountid.
+        /// </param>
+        /// <param name="titel">
+        /// The titel.
+        /// </param>
+        /// <param name="inhoud">
+        /// The inhoud.
+        /// </param>
+        public void InsertMainMessage(int accountid, string titel, string inhoud)
+        {
+            this.dbpost.InsetMainMessage(accountid, titel, inhoud);
+        }
+
+        /// <summary>
+        /// The insert cat message.
+        /// </summary>
+        /// <param name="accountid">
+        /// The accountid.
+        /// </param>
+        /// <param name="titel">
+        /// The titel.
+        /// </param>
+        /// <param name="inhoud">
+        /// The inhoud.
+        /// </param>
+        /// <param name="catnaam">
+        /// The catnaam.
+        /// </param>
+        public void InsertCatMessage(int accountid, string titel, string inhoud, string catnaam)
+        {
+            this.dbpost.InsertCatMessage(accountid, titel, inhoud, this.dbpost.GetCatId(catnaam));
+        }
+
+        /// <summary>
+        /// The insert reply.
+        /// </summary>
+        /// <param name="accountid">
+        /// The accountid.
+        /// </param>
+        /// <param name="inhoud">
+        /// The inhoud.
+        /// </param>
+        /// <param name="postTitel">
+        /// The post titel.
+        /// </param>
+        public void InsertReply(int accountid, string inhoud, string postTitel)
+        {
+            this.dbpost.InsertReply(accountid, inhoud, this.dbpost.GetMessageID(postTitel));
+        }
+
+        /// <summary>
+        /// The insert file.
+        /// </summary>
+        /// <param name="accountid">
+        /// The accountid.
+        /// </param>
+        /// <param name="bestand">
+        /// The bestand.
+        /// </param>
+        /// <param name="cat">
+        /// The cat.
+        /// </param>
+        public void InsertFile(int accountid, string bestand, string cat)
+        {
+            this.dbpost.InsertBestand(accountid, bestand, this.dbpost.GetCatId(cat));
         }
     }
 }

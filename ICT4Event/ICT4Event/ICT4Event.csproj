@@ -77,8 +77,10 @@
     <Content Include="js\vendor\jquery-2.1.4.js" />
     <Content Include="js\vendor\modernizr-2.8.3-respond-1.4.2.min.js" />
     <Content Include="js\vendor\npm.js" />
+    <Content Include="pages\Post.aspx" />
     <Content Include="pages\registreren.aspx" />
     <Content Include="pages\wijziggegevens.aspx" />
+    <Content Include="pages\Upload.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -90,11 +92,11 @@
       <DependentUpon>admin.master</DependentUpon>
     </Compile>
     <Compile Include="Classes\Account.cs" />
-    <Compile Include="Classes\Administration.cs" />
-    <Compile Include="Classes\ADRegistreerLogin.cs" />
-    <Compile Include="Classes\Database.cs">
-      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    <Compile Include="Classes\Administration.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Classes\ADRegistreerLogin.cs" />
+    <Compile Include="Classes\Database.cs" />
     <Compile Include="Classes\DBAccount.cs" />
     <Compile Include="Classes\DBLogin.cs" />
     <Compile Include="Classes\Messagebox.cs" />
@@ -117,6 +119,8 @@
     <Compile Include="pages\Event aanmaken.aspx.designer.cs">
       <DependentUpon>Event aanmaken.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Classes\DBPost.cs" />
+    <Compile Include="Classes\Ftpverbinding.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -139,6 +143,13 @@
     <Compile Include="master.Master.designer.cs">
       <DependentUpon>master.Master</DependentUpon>
     </Compile>
+    <Compile Include="pages\Post.aspx.cs">
+      <DependentUpon>Post.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Post.aspx.designer.cs">
+      <DependentUpon>Post.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\registreren.aspx.cs">
       <DependentUpon>registreren.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -154,6 +165,13 @@
       <DependentUpon>wijziggegevens.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="pages\Upload.aspx.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Upload.aspx.designer.cs">
+      <DependentUpon>Upload.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap-theme.css.map" />
@@ -175,6 +193,7 @@
   <ItemGroup>
     <Folder Include="admin\" />
     <Folder Include="img\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

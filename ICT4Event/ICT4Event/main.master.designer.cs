@@ -13,15 +13,6 @@ namespace ICT4Event {
     public partial class Main {
         
         /// <summary>
-        /// dropevent_main control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropevent_main;
-        
-        /// <summary>
         /// btn_inuitlog control.
         /// </summary>
         /// <remarks>

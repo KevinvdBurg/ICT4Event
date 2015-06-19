@@ -11,6 +11,12 @@
 <%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
 <%@ Import Namespace="System.Web.UI.WebControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls.WebParts" %>
+<%@ Import Namespace="System.Web.UI" %>
+<%@ Import Namespace="System.Web.UI.WebControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
+<%@ Import Namespace="System.Web.DynamicData" %>
+<%@ Import Namespace="System.Web.UI.WebControls" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="content_1" runat="server">
     <h1>Event aanmaken</h1>
     <p>Naam: <asp:TextBox ID="tbNaam" runat="server"></asp:TextBox>
