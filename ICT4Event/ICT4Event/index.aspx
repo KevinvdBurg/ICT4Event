@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <%@ Page Title="" Language="C#" MasterPageFile="~/main.master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="ICT4Event.Index" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
 <%@ Import Namespace="System.Web.UI" %>
@@ -18,21 +18,6 @@
 <%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
 <%@ Import Namespace="System.Web.UI.WebControls" %>
-=======
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/main.master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="ICT4Event.index1" %>
-<%@ Import Namespace="System.Web.DynamicData" %>
-<%@ Import Namespace="System.Web.DynamicData" %>
-<%@ Import Namespace="System.Web.UI" %>
-<%@ Import Namespace="System.Web.UI" %>
-<%@ Import Namespace="System.Web.UI.WebControls" %>
-<%@ Import Namespace="System.Web.UI.WebControls" %>
-<%@ Import Namespace="System.Web.UI.WebControls" %>
-<%@ Import Namespace="System.Web.UI.WebControls" %>
-<%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
-<%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
-<%@ Import Namespace="System.Web.UI.WebControls.WebParts" %>
-<%@ Import Namespace="System.Web.UI.WebControls.WebParts" %>
->>>>>>> origin/Reserve
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Inloggen</h1>
     <p>Gebruikersnaam: <asp:TextBox ID="inlog_gebruikersnaam" runat="server"></asp:TextBox>

@@ -47,11 +47,11 @@ namespace ICT4Event
                 // Response.Write(urlSting);
                 if (urlSting == "/index.aspx" || urlSting == "/pages/registreren.aspx")
                 {
-                    Response.Write("Gelijk");
+                    //Response.Write("Gelijk");
                 }
                 else
                 {
-                    Response.Redirect("/index.aspx");
+                    //Response.Redirect("/index.aspx");
                 }
             }
             else

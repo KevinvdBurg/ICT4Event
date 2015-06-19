@@ -1,4 +1,3 @@
-
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/main.master" AutoEventWireup="true" CodeBehind="registreren.aspx.cs" Inherits="ICT4Event.pages.Registreren" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
 <%@ Import Namespace="System.Web.UI" %>

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="master.master.cs" Inherits="ICT4Event.Master" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
 <%@ Import Namespace="System.Web.UI" %>
@@ -24,26 +24,10 @@
 <%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
 <%@ Import Namespace="System.Web.DynamicData" %>
 <%@ Import Namespace="System.Web.UI.WebControls" %>
-=======
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="master.master.cs" Inherits="ICT4Event.master" %>
-<%@ Import Namespace="System.Web.DynamicData" %>
-<%@ Import Namespace="System.Web.DynamicData" %>
-<%@ Import Namespace="System.Web.UI" %>
-<%@ Import Namespace="System.Web.UI" %>
-<%@ Import Namespace="System.Web.UI.WebControls" %>
-<%@ Import Namespace="System.Web.UI.WebControls" %>
-<%@ Import Namespace="System.Web.UI.WebControls" %>
-<%@ Import Namespace="System.Web.UI.WebControls" %>
-<%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
-<%@ Import Namespace="System.Web.UI.WebControls.Expressions" %>
-<%@ Import Namespace="System.Web.UI.WebControls.WebParts" %>
-<%@ Import Namespace="System.Web.UI.WebControls.WebParts" %>
->>>>>>> origin/Reserve
 
 <!DOCTYPE html>
 
 <html class="no-js" lang="">
-<!--<![endif]-->
 
 <head>
     <meta charset="utf-8">
@@ -52,7 +36,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <style>
         body {
             padding-bottom: 20px;
@@ -70,21 +54,22 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <nav class="navbar navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header logo">
-            <div class="logoTxt">
-                <a href="#">ICT4Event</a>
+        <div class="container">
+            <div class="navbar-header logo">
+                <div class="logoTxt">
+                    <a href="#">ICT4Event</a>
+                </div>
+                <div class="logoBot">
+                    <asp:ContentPlaceHolder ID="Subtitle" runat="server"></asp:ContentPlaceHolder>
+                </div>
             </div>
-            <div class="logoBot">
-                <asp:ContentPlaceHolder ID="Subtitle" runat="server"></asp:ContentPlaceHolder>
+            <div id="navbar">
+                <ul class="flex-container navMenuTop">
+                    <asp:ContentPlaceHolder ID="menu_bar_top" runat="server"></asp:ContentPlaceHolder>
+                </ul>
             </div>
         </div>
-        <div id="navbar">
-            <ul class="flex-container navMenuTop">
-                <asp:ContentPlaceHolder ID="menu_bar_top" runat="server"></asp:ContentPlaceHolder>
-            </ul>
-        </div>
-    </div>
+    </nav>
     <nav class="sub-navbar">
         <div class="container">
             <asp:ContentPlaceHolder ID="menu_bar_sub" runat="server"></asp:ContentPlaceHolder>
@@ -100,7 +85,6 @@
                 <asp:ContentPlaceHolder ID="contenct_right" runat="server"></asp:ContentPlaceHolder>
             </div>
         </div>
-<<<<<<< HEAD
         <hr>
         <footer>
             <p>&copy; ICT4EVENT 2015</p>
@@ -115,17 +99,6 @@
     <script src="/js/main.js"></script>
 
 </form>
-=======
-        <!-- /container -->
-        <script src="/js/vendor/jquery-2.1.4.js"></script>
-        <script>
-            window.jQuery || document.write('<script src="/js/vendor/jquery-2.1.4.js"><\/script>')
-        </script>
-        <script src="/js/vendor/bootstrap.min.js"></script>
-        <script src="/js/main.js"></script>
-        
-        </form>
->>>>>>> origin/Reserve
 </body>
 
 </html>
