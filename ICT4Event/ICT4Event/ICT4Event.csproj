@@ -159,6 +159,7 @@
   <ItemGroup>
     <Folder Include="admin\" />
     <Folder Include="img\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

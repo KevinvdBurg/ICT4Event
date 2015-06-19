@@ -396,6 +396,38 @@ namespace ICT4Event.Classes
             }
         }
 
+        public void InsertBestand(int accountid, string bestand, int catid)//Zonder parentpost
+        {
+            string sql;
+            sql = "insert into bijdrage (\"account_id\", \"soort\") values (:accountid, 'bestand')";
+            string sql2 = "INSERT INTO bestand(\"bijdrage_id\",\"categorie_id\",\"bestandslocatie\") values ((select max(ID) from bijdrage), :catid, :bestand)";
+            string sql3 = "insert into account_bijdrage(\"account_id\", \"bijdrage_id\") values (:accountid, (select max(ID) from bijdrage))";
+            try
+            {
+                Connect();
+                OracleCommand cmd = new OracleCommand(sql, connection);
+                OracleCommand cmd2 = new OracleCommand(sql2, connection);
+                OracleCommand cmd3 = new OracleCommand(sql3, connection);
+                cmd.Parameters.Add(new OracleParameter("accountid", accountid));
+                cmd2.Parameters.Add(new OracleParameter("catid", catid));
+                cmd2.Parameters.Add(new OracleParameter("bestand", bestand));
+                cmd3.Parameters.Add(new OracleParameter("accountid", accountid));
+
+                cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+                cmd3.ExecuteNonQuery();
+
+            }
+            catch (OracleException e)
+            {
+
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
 
 
 

@@ -7,6 +7,20 @@
     </p>
     
     <p>
-        <asp:ListBox ID="lbCategorie" runat="server" Height="125px" OnSelectedIndexChanged="lbCategorie_SelectedIndexChanged" Width="121px"></asp:ListBox>
+        <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" Text="Home" />
+        <asp:HiddenField ID="HFcategory" runat="server" />
+   </p>
+    <p>
+        <asp:Label ID="Label2" runat="server" Text="Selecteer een map!"></asp:Label>
     </p>
+    <p>
+        <asp:ListBox ID="lbCategorie" runat="server" AutoPostBack="True" Height="125px" OnSelectedIndexChanged="lbCategorie_SelectedIndexChanged" Width="121px"></asp:ListBox>
+    </p>
+    
+    <p>
+        <asp:FileUpload ID="fileUpload" runat="server" />
+        <asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="btnUpload_Click" />
+    </p>
+    
+
 </asp:Content>

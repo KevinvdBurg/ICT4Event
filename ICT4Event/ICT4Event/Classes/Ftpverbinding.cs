@@ -11,10 +11,10 @@ namespace ICT4Event.Classes
     public class Ftpverbinding
     {
 
-        public  void UploadFileToFtp(/*string url,*/ string filePath, string username, string password)
+        public  void UploadFileToFtp(string map, string filePath, string username, string password)
         {
             var fileName = Path.GetFileName(filePath);
-            var request = (FtpWebRequest)WebRequest.Create(/*url*/"ftp://192.168.21.145/Home/" + fileName);
+            var request = (FtpWebRequest)WebRequest.Create(/*url*/"ftp://192.168.21.145/" +  map + fileName);
 
             request.Method = WebRequestMethods.Ftp.UploadFile;
             request.Credentials = new NetworkCredential(username, password);

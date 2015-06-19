@@ -120,7 +120,7 @@ namespace ICT4Event.pages
 
         protected void btnNewPost_Click(object sender, EventArgs e)
         {
-            //SME De Valkenhof 2014ftptj.UploadFileToFtp("C:\\Users\\ASUS\\Desktop\\Hoi.txt", "Administrator", "Admin123");
+            // 
             btnSavePost.Visible = true;
             tbNewTitle.Visible = true;
             tbNewContent.Visible = true;

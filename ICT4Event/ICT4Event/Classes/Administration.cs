@@ -88,5 +88,10 @@ namespace ICT4Event.Classes
         {
             db.InsertReply(accountid, inhoud, db.GetMessageID(postTitel));
         }
+
+        public void InsertFile(int accountid, string bestand, string cat)
+        {
+            db.InsertBestand(accountid, bestand, db.GetCatId(cat));
+        }
     }
 }
