@@ -54,8 +54,8 @@
     </div>
     <div class="nav-opties">
         <ul class="sub-flex-container sub sub-opties">
-            <a href="/pages/Reports.aspx.aspx">
-                <li class="sub-flex-item">Event Maken</li>
+            <a href="/pages/Reports.aspx">
+                <li class="sub-flex-item">Reports</li>
             </a>
             <li class="sub-flex-item">
                 <asp:LinkButton ID="btn_Uitloggen" runat="server">Uitloggen</asp:LinkButton>

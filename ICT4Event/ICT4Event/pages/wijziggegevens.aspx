@@ -36,8 +36,8 @@
     </p>
     <p>Her-E-mail: <asp:TextBox ID="her_wijzig_email" runat="server"></asp:TextBox>
     </p>
-    <asp:Button ID="btn_wijzig_gegevens" runat="server" Text="Registeren" OnClick="Btn"/>
-    <p class="alert-link">Wijzig Gegevens</p>
+    <asp:Button ID="btn_wijzig_gegevens" runat="server" Text="Wijzig Gegevens" OnClick="Btn"/>
+    <p class="alert-link"></p>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 </asp:Content>
