@@ -69,6 +69,7 @@ namespace ICT4Event
                 if (admin)
                 {
                     //MessageBox.Show(this.Page, "Web-Admin");
+                    this.admin_opties.Text = "<li class=\"sub-flex-item\"><a href=\"/pages/Toegang.aspx\">Admin</a></li'>";
                 }
                 else
                 {

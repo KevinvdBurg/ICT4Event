@@ -37,7 +37,7 @@
     </li>
 
     <li class="flex-item" id="i-reververingen">
-        <a href="/pages/registreren.aspx">Reververingen</a>
+        <a href="#">Reververingen</a>
     </li>
 
     <li class="flex-item" id="i-opties">
@@ -65,6 +65,7 @@
             <li class="sub-flex-item">
                 <a href="/pages/registreren.aspx">Registeren</a>
             </li>
+            <asp:Literal ID="admin_opties" runat="server"></asp:Literal>
         </ul>
     </div>
 </asp:Content>
