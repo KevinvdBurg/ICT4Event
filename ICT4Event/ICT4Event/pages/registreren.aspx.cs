@@ -32,7 +32,41 @@ namespace ICT4Event.pages
         /// <param name="e">
         /// The e.
         /// </param>
-        protected void BtnRegisterenClick(object sender, EventArgs e)
+        protected void btn_registeren_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        /// <summary>
+        /// Bij het klikken op deze knop word er gecontroleerd of de activatie code bestaat en of hij geactiveerd kan worden.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        protected void BtnActieverenClick(object sender, EventArgs e)
+        {
+           
+        }
+
+
+        protected void btn_actieveren_Click(object sender, EventArgs e)
+        {
+            // Controleerd of het activatie bestaat
+            if (this.administration.ActivateAccount(this.tbActivatiecode.Text))
+            {
+                this.Page.Show("Account is geactiveerd");
+                this.Response.Redirect("/index.aspx");
+            }
+            else
+            {
+                this.Page.Show("Activatie code is niet gevonden");
+            }
+        }
+
+        protected void btn_registeren_Click1(object sender, EventArgs e)
         {
             var gebruikersnaam = this.regi_gebruikersnaam.Text;
             var email = this.regi_email.Text;
@@ -76,29 +110,6 @@ namespace ICT4Event.pages
                 this.administration.Add(newAccount);
                 this.administration.SendEmail(newAccount);
                 this.Show("Account is aangemaakt, Controleer uw email");
-            }
-        }
-
-        /// <summary>
-        /// Bij het klikken op deze knop word er gecontroleerd of de activatie code bestaat en of hij geactiveerd kan worden.
-        /// </summary>
-        /// <param name="sender">
-        /// The sender.
-        /// </param>
-        /// <param name="e">
-        /// The e.
-        /// </param>
-        protected void BtnActieverenClick(object sender, EventArgs e)
-        {
-            // Controleerd of het activatie bestaat
-            if (this.administration.ActivateAccount(this.tbActivatiecode.Text))
-            {
-                this.Page.Show("Account is geactiveerd");
-                this.Response.Redirect("/index.aspx");
-            }
-            else
-            {
-                this.Page.Show("Activatie code is niet gevonden");
             }
         }
     }

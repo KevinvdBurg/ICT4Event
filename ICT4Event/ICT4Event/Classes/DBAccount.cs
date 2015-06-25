@@ -36,8 +36,6 @@ namespace ICT4Event
         {
             var resultaat = false;
             var geactiveerd = 0;
-
-            // string sql = "INSERT INTO GEBRUIKER(RFID, EMAILADRES, WACHTWOORD, PLAATS, POSTCODE, HUISNUMMER, ISADMIN, VOORNAAM, ACHTERNAAM) VALUES (:RFID, :emailadres, :wachtwoord, :plaats, :postcode, :huisnummer, :isadmin, :voornaam, :achternaam)";
             var sql =
                 "INSERT INTO ACCOUNT(\"gebruikersnaam\", \"email\", \"activatiehash\") VALUES(:gebruikersnaam, :email, :activatiehash)";
 

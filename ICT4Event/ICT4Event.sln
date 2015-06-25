@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICT4Event", "ICT4Event\ICT4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICT4EventTests", "ICT4EventTests\ICT4EventTests.csproj", "{0D1A4680-6944-4893-AC0E-8AB0816BB5A0}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ICT4Event model", "ICT4Event model\ICT4Event model.modelproj", "{566B3451-7617-49BA-AAF0-EDEA69E575C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,12 @@ Global
 		{0D1A4680-6944-4893-AC0E-8AB0816BB5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D1A4680-6944-4893-AC0E-8AB0816BB5A0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0D1A4680-6944-4893-AC0E-8AB0816BB5A0}.Release|x86.ActiveCfg = Release|Any CPU
+		{566B3451-7617-49BA-AAF0-EDEA69E575C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{566B3451-7617-49BA-AAF0-EDEA69E575C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{566B3451-7617-49BA-AAF0-EDEA69E575C9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{566B3451-7617-49BA-AAF0-EDEA69E575C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{566B3451-7617-49BA-AAF0-EDEA69E575C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{566B3451-7617-49BA-AAF0-EDEA69E575C9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

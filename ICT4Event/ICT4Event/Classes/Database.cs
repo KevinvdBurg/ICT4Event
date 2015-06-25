@@ -24,7 +24,7 @@ namespace ICT4Event
         /// The connection string.
         /// </summary>
         protected string ConnectionString = "DATA SOURCE=//ict4events.bb:1521/xe;PASSWORD=hallo;USER ID=hallo";
-
+        //protected string ConnectionString = "DATA SOURCE=//localhost:1521/xe;PASSWORD=hallo;USER ID=hallo";
         /// <summary>
         /// The connect.
         /// </summary>

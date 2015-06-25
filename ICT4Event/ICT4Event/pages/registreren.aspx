@@ -35,7 +35,7 @@
     <p>Her-Wachtwoord: <asp:TextBox ID="regi_herwachtwoord" runat="server"></asp:TextBox>
     </p>
     <p>
-        <asp:Button ID="btn_registeren" runat="server" Text="Registeren"/>
+        <asp:Button ID="btn_registeren" runat="server" Text="Registeren" OnClick="btn_registeren_Click1"/>
     </p>
 
 </asp:Content>
@@ -44,6 +44,6 @@
     <p>Activerings code: <asp:TextBox ID="tbActivatiecode" runat="server"></asp:TextBox>
     </p>
     <p>
-        <asp:Button ID="btn_actieveren" runat="server" Text="Activeren"/>
+        <asp:Button ID="btn_actieveren" runat="server" Text="Activeren" OnClick="btn_actieveren_Click"/>
     </p>
 </asp:Content>
