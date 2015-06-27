@@ -151,9 +151,9 @@ namespace ICT4Event
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public int FindAddressID(string zipcode, string number)
+        public int FindAddressID(string locatienaam)
         {
-            var foundAddressID = this.dbaddress.FindAdressID(zipcode, number);
+            var foundAddressID = this.dbaddress.FindAdressID(locatienaam);
 
             if (foundAddressID != null)
             {

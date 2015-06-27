@@ -74,7 +74,7 @@ namespace ICT4Event
         public bool Update(Location location)
         {
             var administration = new Administration();
-            var locatieid = administration.FindAddressID(location.Address.ZipCode, location.Address.Number);
+            var locatieid = administration.FindAddressID(location.Name);
             var resultaat = false;
             var sql =
                 "UPDATE LOCATIE SET \"plaats\" = :plaats, \"postcode\" = :postcode, \"nr\" = :nr , \"naam\" = :naam , \"straat\" = :straat WHERE \"ID\" = :locatieid";
@@ -118,18 +118,17 @@ namespace ICT4Event
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public int FindAdressID(string zipcode, string number)
+        public int FindAdressID(string locatienaam)
         {
             string sql;
-            sql = "Select \"ID\" From LOCATIE WHERE \"postcode\" = :postcode AND \"nr\" = :huisnummer";
+            sql = "Select \"ID\" From LOCATIE WHERE \"naam\" = :naam";
             var ADRESID = -1;
 
             try
             {
                 this.Connect();
                 var cmd = new OracleCommand(sql, this.Connection);
-                cmd.Parameters.Add(new OracleParameter("postcode", zipcode));
-                cmd.Parameters.Add(new OracleParameter("huisnummer", number));
+                cmd.Parameters.Add(new OracleParameter("naam", locatienaam));
                 var reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
