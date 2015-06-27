@@ -215,7 +215,7 @@ namespace ICT4Event
         public bool ActivateAccount(string hash)
         {
             var resultaat = false;
-            var sql = "Update ACCOUNT SET \"geactiveerd\" = 1 WHERE \"activatiehash\" = :hash ";
+            var sql = "Update ACCOUNT SET \"geactiveerd\" = 1 WHERE \"activatiehash\" = :hash";
             try
             {
                 this.Connect();
@@ -272,5 +272,33 @@ namespace ICT4Event
 
             return resultaat;
         }
+
+        public bool FindHash(string hash)
+        {
+            var resultaat = false;
+            var sql = "SELECT * FROM ACCOUNT WHERE \"activatiehash\" = :hash";
+            try
+            {
+                this.Connect();
+                var cmd = new OracleCommand(sql, this.Connection);
+                cmd.Parameters.Add(new OracleParameter("hash", hash));
+                var reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    resultaat = true;
+                }
+            }
+            catch (OracleException e)
+            {
+                Console.WriteLine("Hash niet gevonden: " + e.Message);
+            }
+            finally
+            {
+                this.DisConnect();
+            }
+
+            return resultaat;
+        }
+
     }
 }

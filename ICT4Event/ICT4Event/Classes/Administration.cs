@@ -308,6 +308,11 @@ namespace ICT4Event
             return this.dbaccount.ActivateAccount(hash);
         }
 
+        public bool FindHash(string hash)
+        {
+            return this.dbaccount.FindHash(hash);
+        }
+
         /// <summary>
         /// Koppeld een gebruiker aan een groep
         /// </summary>

@@ -55,8 +55,10 @@ namespace ICT4Event.pages
         protected void btn_actieveren_Click(object sender, EventArgs e)
         {
             // Controleerd of het activatie bestaat
-            if (this.administration.ActivateAccount(this.tbActivatiecode.Text))
+            string hash = this.tbActivatiecode.Text;
+            if (this.administration.FindHash(hash))
             {
+                this.administration.ActivateAccount(this.tbActivatiecode.Text);
                 this.Page.Show("Account is geactiveerd");
                 this.Response.Redirect("/index.aspx");
             }

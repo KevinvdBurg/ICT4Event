@@ -87,6 +87,7 @@ namespace ICT4Event
         protected void BtnUitloggenClick(object sender, EventArgs e)
         {
             this.Uitloggen();
+            Response.Redirect("index.aspx");
         }
 
         /// <summary>
