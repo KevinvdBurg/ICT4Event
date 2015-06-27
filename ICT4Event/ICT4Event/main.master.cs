@@ -104,7 +104,7 @@ namespace ICT4Event
             else
             {
                 this.Uitloggen();
-                Response.Redirect("index.aspx");
+                Response.Redirect("/index.aspx");
             }
         }
 
