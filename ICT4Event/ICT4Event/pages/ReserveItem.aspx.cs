@@ -62,7 +62,7 @@ namespace ICT4Event.pages
         protected void btnReserve_Click(object sender, EventArgs e)
         {
             this.items = this.Session["items"] as List<Item>;
-            if (this.administration.NewItemReservation(this.items[this.lbFreeItems.SelectedIndex]))
+            if (this.administration.NewItemReservation(this.items[this.lbFreeItems.SelectedIndex + 1]))
             {
                 this.Page.Show("Item is gereserveerd");
             }
