@@ -87,7 +87,7 @@ namespace ICT4Event.pages
 
                 if (this.administration.UpdateAccountDB(Convert.ToInt32(this.Session[MyKeys.KeyAccountId]), updateemail))
                 {
-                    this.Page.Show("DB Gelukt");
+                    this.Page.Show("DB - Update Gelukt");
                 }
 
                 if (this.administration.UpdateAccountAD(
@@ -95,7 +95,7 @@ namespace ICT4Event.pages
                     updateemail, 
                     updatewachtwoord))
                 {
-                    this.Page.Show("AD Gelukt");
+                    this.Page.Show("AD - Update Gelukt");
                 }
 
                 var detailsAccount = this.administration.GetDetails(Convert.ToString(this.Session[MyKeys.KeyUsername]));
@@ -105,10 +105,11 @@ namespace ICT4Event.pages
                 this.Session[MyKeys.KeyUsername] = detailsAccount.Gebruiksersnaam;
                 this.Session[MyKeys.KeyAccountId] = detailsAccount.GebruikerId;
                 this.Session[MyKeys.KeyEmail] = detailsAccount.Email;
+                Response.Redirect(Request.RawUrl);
             }
             else
             {
-                this.Page.Show("Niets is ingevultd");
+                this.Page.Show("Niets is ingevuld");
             }
         }
     }
