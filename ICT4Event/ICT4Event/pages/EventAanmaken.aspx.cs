@@ -55,7 +55,7 @@ namespace ICT4Event
                 && this.calDatumBegin.SelectedDate.ToString("dd-MMMM-yy") == string.Empty
                 && this.calDatumEind.SelectedDate.ToString("dd-MMMM-yy") == string.Empty)
             {
-                Classes.MessageBox.Show(this.Page, "Event is aangemaakt");
+                Classes.MessageBox.Show(this.Page, "Alle velden moeten ingevuld zijn.");
             }
             else
             {
@@ -75,7 +75,7 @@ namespace ICT4Event
                     this.calDatumBegin.SelectedDate.ToString("dd-MMMM-yy"), 
                     this.calDatumEind.SelectedDate.ToString("dd-MMMM-yy"));
                 this.administration.AddEvent(newEvent);
-                Classes.MessageBox.Show(this.Page, "Het event is veranderd!");
+                Classes.MessageBox.Show(this.Page, "Het event is aangemaakt!");
             }
         }
     }
