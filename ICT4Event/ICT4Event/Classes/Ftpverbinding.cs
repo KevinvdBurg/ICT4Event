@@ -36,12 +36,12 @@ namespace ICT4Event.Classes
         /// <param name="password">
         /// The password.
         /// </param>
-        public void UploadFileToFtp(string map, string filePath, string username, string password)
+        /*public void UploadFileToFtp(string map, string filePath, string username, string password)
         {
             var fileName = Path.GetFileName(filePath);
-            var request = (FtpWebRequest)WebRequest.Create(/*url*/"ftp://192.168.21.145/" + map + fileName);
+            var request = (FtpWebRequest)WebRequest.Create(/*url"ftp://192.168.21.145/" + map + fileName);
 
-            request.Method = WebRequestMethods.Ftp.UploadFile;
+           /* request.Method = WebRequestMethods.Ftp.UploadFile;
             request.Credentials = new NetworkCredential(username, password);
             request.UsePassive = false;
             request.UseBinary = true;
@@ -59,7 +59,7 @@ namespace ICT4Event.Classes
             var response = (FtpWebResponse)request.GetResponse();
             Console.WriteLine("Upload done: {0}", response.StatusDescription);
             response.Close();
-        }
+        }*/
 
         /// <summary>
         /// The download ftp file.
@@ -73,7 +73,7 @@ namespace ICT4Event.Classes
         /// <param name="map">
         /// The map.
         /// </param>
-        public void DownloadFtpFile(string savePath, string fileName, string map)
+       /* public void DownloadFtpFile(string savePath, string fileName, string map)
         {
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://192.168.21.145/" + map + fileName);
             request.Method = WebRequestMethods.Ftp.DownloadFile;
@@ -100,6 +100,6 @@ namespace ICT4Event.Classes
                     }
                 }
             }
-        }
+        }*/
     }
 }
