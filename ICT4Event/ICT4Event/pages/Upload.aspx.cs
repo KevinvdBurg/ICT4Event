@@ -118,12 +118,12 @@ namespace ICT4Event
         /// </param>
         protected void btnUpload_Click(object sender, EventArgs e)
         {
-            this.fileUpload.SaveAs(this.Server.MapPath("~/Uploads/" + this.fileUpload.FileName));
-            this.ftpt.UploadFileToFtp(
+            this.fileUpload.SaveAs(this.Server.MapPath("~/Uploads/" + lblMap.Text + this.fileUpload.FileName));
+            /*this.ftpt.UploadFileToFtp(
                 this.lblMap.Text,
                this.Server.MapPath("~/Uploads/") + this.fileUpload.FileName, 
                 "Administrator", 
-                "Admin123");
+                "Admin123");*/
             this.ad.InsertFile(1, this.fileUpload.FileName, this.HFcategory.Value);
         }
     }
