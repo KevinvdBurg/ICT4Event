@@ -283,10 +283,10 @@ namespace ICT4Event.pages
         /// </param>
         protected void btnDownload_Click(object sender, EventArgs e)
         {
-            this.ftptj.DownloadFtpFile(
-                Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-                this.lbItems.SelectedValue,
-                this.lblMap.Text);
+            //this.ftptj.DownloadFtpFile(
+            //    Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+            //    this.lbItems.SelectedValue,
+            //    this.lblMap.Text);
         }
 
         protected void btnLike_Click(object sender, EventArgs e)
