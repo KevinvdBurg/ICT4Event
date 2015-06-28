@@ -126,5 +126,11 @@ namespace ICT4Event
                 "Admin123");*/
             this.ad.InsertFile(1, this.fileUpload.FileName, this.HFcategory.Value);
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            fileUpload.SaveAs(this.Server.MapPath("~/Uploads/" + this.fileUpload.FileName));
+            this.ad.InsertFile(1, this.fileUpload.FileName, this.HFcategory.Value);
+        }
     }
 }

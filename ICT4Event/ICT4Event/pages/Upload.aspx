@@ -26,6 +26,7 @@
     <p>
         <asp:FileUpload ID="fileUpload" runat="server" />
         <asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="btnUpload_Click" />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
     </p>
     
 
