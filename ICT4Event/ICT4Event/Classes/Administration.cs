@@ -646,9 +646,9 @@ namespace ICT4Event
         /// <param name="plekid">
         /// The plekid.
         /// </param>
-        public void NewReservation(Person person, string plekid)
+        public string NewReservation(Person person, string plekid)
         {
-            this.dbreserve.NewReservation(person, plekid);
+            return this.dbreserve.NewReservation(person, plekid);
         }
 
         /// <summary>

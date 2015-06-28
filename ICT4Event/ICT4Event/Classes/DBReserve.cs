@@ -82,8 +82,9 @@ namespace ICT4Event
         /// <param name="plekid">
         /// The plekid.
         /// </param>
-        public void NewReservation(Person person, string plekid)
+        public string NewReservation(Person person, string plekid)
         {
+            string id;
             try
             {
                 this.Connect();
@@ -91,7 +92,11 @@ namespace ICT4Event
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("R_ID", person.PersonID);
                 cmd.Parameters.Add("R_PLEKID", Convert.ToInt32(plekid));
+
+                OracleParameter returnParameter = cmd.Parameters.Add("O_ID", OracleType.Number);
+                returnParameter.Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
+                id = Convert.ToString(cmd.Parameters[3].Value);
             }
             catch (OracleException
                 e)
@@ -103,6 +108,7 @@ namespace ICT4Event
             {
                 this.DisConnect();
             }
+            return id;
         }
     }
 }

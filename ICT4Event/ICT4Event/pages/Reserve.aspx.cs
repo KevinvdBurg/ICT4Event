@@ -81,7 +81,9 @@ namespace ICT4Event.pages
                     this.tbBank.Text);
             }
             newPerson.PersonID = this.administration.NewPerson(newPerson);
-            this.administration.NewReservation(newPerson, this.ddlSpot.SelectedValue.ToString());
+            string number = this.administration.NewReservation(newPerson, this.ddlSpot.SelectedValue.ToString());
+            number = "Reservering gelukt en het nummer is: " + number + "onthoud dit goed!";
+            Classes.MessageBox.Show(this.Page, number);
         }
         /// <summary>
         /// Laad de specificaties van de geselecteerde plek.
