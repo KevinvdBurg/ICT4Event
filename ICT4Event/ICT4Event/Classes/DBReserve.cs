@@ -96,7 +96,7 @@ namespace ICT4Event
                 OracleParameter returnParameter = cmd.Parameters.Add("O_ID", OracleType.Number);
                 returnParameter.Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
-                id = Convert.ToString(cmd.Parameters[3].Value);
+                id = Convert.ToString(cmd.Parameters[2].Value);
             }
             catch (OracleException
                 e)
