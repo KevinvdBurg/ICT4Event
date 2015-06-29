@@ -88,7 +88,7 @@ namespace ICT4Event.Classes
             return resultaat;
         }
 
-        public void SetBetaald(int resid)
+        public bool SetBetaald(int resid)
         {
 
             string sql;
@@ -103,14 +103,17 @@ namespace ICT4Event.Classes
                 cmd.Parameters.Add(new OracleParameter("resid", resid));
 
                 cmd.ExecuteNonQuery();
+                return true;
 
             }
             catch (OracleException e)
             {
+                return false;
             }
             finally
             {
                 this.Connection.Close();
+                
             }
         }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ICT4Event.Classes;
 
 namespace ICT4Event.pages
 {
@@ -20,6 +21,7 @@ namespace ICT4Event.pages
         {
             ad.InsertResPolsband(Convert.ToInt32(tbResId.Text), tbUsername.Text, tbPolsbandje.Text);
             ad.SetPolsbandActive(tbPolsbandje.Text);
+            this.Page.Show("Ingecheckt");
         }
 
         protected void btnPaid_Click(object sender, EventArgs e)
@@ -38,7 +40,10 @@ namespace ICT4Event.pages
 
         protected void btnPay_Click(object sender, EventArgs e)
         {
-            ad.SetResBetaald(Convert.ToInt32(tbResId.Text));
+            if (ad.SetResBetaald(Convert.ToInt32(tbResId.Text)))
+            {
+                this.Page.Show("Betaald");
+            }
             lblBetaald.Text = "Betaald";
             lblBetaald.ForeColor = System.Drawing.Color.GreenYellow;
         }
@@ -46,6 +51,7 @@ namespace ICT4Event.pages
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
             ad.ResCheckOut(tbBarcode.Text);
+            this.Page.Show("Uitgecheckt");
         }
     }
 }

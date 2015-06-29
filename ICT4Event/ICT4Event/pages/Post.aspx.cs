@@ -286,29 +286,12 @@ namespace ICT4Event.pages
         /// </param>
         protected void btnDownload_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string type = lbItems.SelectedValue.Substring(lbItems.SelectedValue.LastIndexOf('-') + 1);
-                /*string strURL = lbItems.SelectedValue;
-                WebClient req = new WebClient();
-                HttpResponse response = HttpContext.Current.Response;
-                response.Clear();
-                response.ClearContent();
-                response.ClearHeaders();
-                response.Buffer = true;
-                response.AddHeader("Content-Disposition", "attachment;filename=\"" + Server.MapPath(strURL) + "\"");
-                //byte[] data = req.DownloadData(Server.MapPath(strURL));
-                req.DownloadFile(Server.MapPath("~/Uploads/"), strURL);
-                //response.BinaryWrite(data);
-                response.End();*/
-            }
-            catch (Exception ex)
-            {
-            }
-            //this.ftptj.DownloadFtpFile(
-            //    Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-            //    this.lbItems.SelectedValue,
-            //    this.lblMap.Text);
+
+            string filename = lbItems.SelectedValue;
+            Response.ContentType = "application/octet-stream";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + filename);
+            Response.TransmitFile(Server.MapPath("~/Uploads/" + filename));
+            Response.End();
         }
 
         protected void btnLike_Click(object sender, EventArgs e)

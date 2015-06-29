@@ -727,9 +727,9 @@ namespace ICT4Event
             return this.dbincheck.GetPaymentStatus(resid);
         }
 
-        public void SetResBetaald(int resid)
+        public bool SetResBetaald(int resid)
         {
-            this.dbincheck.SetBetaald(resid);
+            return dbincheck.SetBetaald(resid);
         }
 
         public void ResCheckOut(string barcode)
